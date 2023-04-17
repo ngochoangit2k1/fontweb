@@ -79,11 +79,7 @@ function Home() {
 									height={250}
 									className='w-full h-60 object-cover z-1'
 								></Image>
-								<button className='demo bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  '>
-									<Link className='   ' href='' legacyBehavior>
-										<a className='font-bold'>Lưu</a>
-									</Link>
-								</button>
+
 								<h2 className='ml-3 mt-4 font-normal text-base'>
 									{item.title}
 								</h2>
