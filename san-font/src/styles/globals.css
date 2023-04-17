@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("./reset.css");
+@import url("./font.css");
+
+header {
+  border-bottom: 1px solid #eee;
+}
+
+button .demo {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+}
