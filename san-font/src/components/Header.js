@@ -17,7 +17,7 @@ const Header = () => {
 
 	return (
 		<header>
-			<nav className='bg-white border-gray-200 py-3.5'>
+			<nav className='bg-white shadow-xl  py-3.5'>
 				<div className='w-[90%] flex flex-wrap justify-between items-center mx-auto lg:px-12 xl:px-20'>
 					<Link href={'/'} className='max-lg:ml-3'>
 						<Image
@@ -29,17 +29,18 @@ const Header = () => {
 
 					<div className='flex items-center gap-1 xl:order-2'>
 						<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
-							<AiOutlineCloudUpload className='font-extrabold max-md:text-sm' />
+							<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
 							<span className='ml-2 max-md:text-[13px] text-[15px]'>
 								Upload font
 							</span>
 						</button>
-						<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
-							<FiUser className='font-extrabold max-md:text-sm' />
-							<span className='ml-2 max-md:text-[13px] text-[15px]'>
+
+						<Link href={'/register'}>
+							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
+								<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 								Đăng ký
-							</span>
-						</button>
+							</button>
+						</Link>
 						<button
 							onClick={() => setToggleMenu(!toggleMenu)}
 							data-collapse-toggle='mobile-menu-2'
@@ -101,7 +102,7 @@ const Header = () => {
 								}`}
 							>
 								<Link href={'/viet-hoa'}>Font việt hóa</Link>
-								{pathName === '/viet-hóa' ? (
+								{pathName === '/viet-hoa' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>

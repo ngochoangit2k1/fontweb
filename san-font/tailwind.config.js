@@ -13,6 +13,9 @@ module.exports = {
 			colors: {
 				oranges: '#ff5d38',
 			},
+			listStyleImage: {
+				checkmark: 'url("/img/checkmark.png")',
+			},
 		},
 	},
 	plugins: [],

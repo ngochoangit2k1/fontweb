@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import MenuFont from '@/components/MenuFont'
-import { data } from '@/data/products'
+import { HomeData } from '@/data/products'
 function Home() {
 	return (
 		<>
@@ -19,7 +19,7 @@ function Home() {
 						type='text'
 						id='small-input'
 						placeholder='Tìm font tại đây'
-						className='pl-4 font-normal w-full py-3 border border-none rounded-[30px] outline-none text-base '
+						className='pl-4 font-normal w-full py-3 border border-white hover:border-oranges rounded-[30px] outline-oranges text-base '
 					/>
 				</div>
 			</div>
@@ -68,29 +68,53 @@ function Home() {
 			{/* products */}
 			<h2 className='font-medium text-3xl ml-[10%] mt-16'>All font</h2>
 			<div className='w-[80%] mx-auto mt-6 grid grid-cols-4 gap-6'>
-				{data.map((item, index) => {
+				{HomeData.map((item, index) => {
 					return (
 						<>
 							<div className='bg-white' key={index}>
-								<Image
-									src={item.image}
-									alt='logo'
-									width={300}
-									height={250}
-									className='w-full h-60 object-cover z-1'
-								></Image>
+								<div className='overflow-hidden relative '>
+									<Link href={'productDetail'}>
+										<Image
+											src={item.image}
+											alt='logo'
+											width={300}
+											height={250}
+											className=' w-full h-60 object-cover duration-500 hover:scale-[1.1]'
+										></Image>
+									</Link>
+									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-30'>
+										<Link className='' href='' legacyBehavior>
+											<a className='font-bold '>Lưu</a>
+										</Link>
+									</button>
+								</div>
 
-								<h2 className='ml-3 mt-4 font-normal text-base'>
+								<h2 className='ml-3 mt-4 font-medium text-base'>
 									{item.title}
 								</h2>
 								<div className='ml-3 py-4 font-normal text-xs leading-6 '>
-									<p>{item.author}</p>
-									<p>{item.user}</p>
-									<p>{item.translate}</p>
-									<p>{item.date}</p>
-									<p>{item.quantity}</p>
+									<p>
+										<span className='font-bold'>Tác giả:</span>
+										{item.author}
+									</p>
+									<p>
+										<span className='font-bold'>Người đăng:</span>
+										{item.user}
+									</p>
+									<p>
+										<span className='font-bold'>Việt hóa :</span>
+										{item.translate}
+									</p>
+									<p>
+										<span className='font-bold'>Ngày đăng:</span>
+										{item.date}
+									</p>
+									<p>
+										<span className='font-bold'>Số lượt tải font:</span>
+										{item.quantity}
+									</p>
 								</div>
-								<div className=' text-sm text-center bg-oranges py-3 text-white'>
+								<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
 									<Link href='/' legacyBehavior>
 										<a className='font-medium'>TẢI FONT NÀY NGAY</a>
 									</Link>

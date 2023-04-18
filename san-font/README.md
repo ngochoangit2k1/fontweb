@@ -2,8 +2,8 @@
 
 ## Environment requirement
 
-NodeJS: v18.14.0
-npm: 9.4.2
+NodeJS: v17.9.0
+npm: 8.7.0
 
 ## Install Dependencies``
 
