@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import Link from 'next/link'
+import { QCData } from '@/data/products'
 
 const fontQC = () => {
 	return (
@@ -9,7 +12,71 @@ const fontQC = () => {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<h1>font qcao</h1>
+			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
+				Font Quảng cáo ( {QCData.length} font)
+			</h2>
+			<div className='w-[85%] mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
+				{QCData.map((item, id) => {
+					return (
+						<>
+							<div className='bg-white' key={id}>
+								<div className='overflow-hidden relative '>
+									<Link href={'productDetail'}>
+										<Image
+											src={item.image}
+											alt='logo'
+											width={308}
+											height={183}
+											className=' w-full h-44 object-cover duration-500 hover:scale-[1.1]'
+										></Image>
+									</Link>
+									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-30'>
+										<Link className='' href='' legacyBehavior>
+											<a className='font-bold '>Lưu</a>
+										</Link>
+									</button>
+									<button className='demo1 absolute bg-[#34A853] py-[3px] px-[6px] text-white text-xs rounded-bl-lg  z-30'>
+										<Link className='' href='' legacyBehavior>
+											<a className='font-bold '>Lưu</a>
+										</Link>
+									</button>
+								</div>
+
+								<h2 className='ml-3 mt-4 font-medium text-base'>
+									{item.title}
+								</h2>
+								<div className='ml-3 py-4 font-normal text-xs leading-6 '>
+									<p>
+										<span className='font-bold'>Tác giả:</span>
+										{item.author}
+									</p>
+									<p>
+										<span className='font-bold'>Người đăng:</span>
+										{item.user}
+									</p>
+									<p>
+										<span className='font-bold'>Việt hóa :</span>
+										{item.translate}
+									</p>
+									<p>
+										<span className='font-bold'>Ngày đăng:</span>
+										{item.date}
+									</p>
+									<p>
+										<span className='font-bold'>Số lượt tải font:</span>
+										{item.quantity}
+									</p>
+								</div>
+								<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+									<Link href='/' legacyBehavior>
+										<a className='font-medium'>TẢI FONT NÀY NGAY</a>
+									</Link>
+								</div>
+							</div>
+						</>
+					)
+				})}
+			</div>
 		</>
 	)
 }

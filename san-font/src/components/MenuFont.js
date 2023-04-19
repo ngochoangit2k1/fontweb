@@ -1,20 +1,16 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-const MenuFont = ({ test }) => {
-	const router = useRouter()
-	const currentRoute = router.pathname
+
+const MenuFont = ({ test, onClick }) => {
 	return (
 		<>
 			<li
+				onClick={onClick}
 				className={
-					currentRoute === '/'
-						? 'bg-white rounded-[30px] py-2 px-3 font-normal text-base'
-						: 'bg-oranges rounded-[30px] py-2 px-3 font-normal text-base text-white'
+					'bg-white cursor-pointer rounded-[30px] py-3 px-4 font-medium text-base focus:bg-oranges focus:text-white'
 				}
 			>
-				<Link href='/' legacyBehavior>
-					<a>{test}</a>
-				</Link>
+				<a className='text-black'>{test}</a>
 			</li>
 		</>
 	)

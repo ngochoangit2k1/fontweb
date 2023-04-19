@@ -4,8 +4,8 @@ const Footer = () => {
 	return (
 		<>
 			<footer>
-				<div className='w-full bg-white'>
-					<div className='grid grid-cols-3 w-[80%] mx-auto gap-24 mt-20 py-12'>
+				<div className='w-full bg-white '>
+					<div className='grid grid-cols-3 w-[80%] mx-auto gap-24 mt-20 py-12 max-lg:grid-cols-1 max-lg:gap-10'>
 						<div>
 							<h1 className='text-2xl font-medium'>GIỚI THIỆU</h1>
 							<div className='font-normal text-base mt-4'>

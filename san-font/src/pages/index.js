@@ -3,7 +3,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import MenuFont from '@/components/MenuFont'
 import { HomeData } from '@/data/products'
+import { BsSearch } from 'react-icons/bs'
+import { useState } from 'react'
+import imgGlobal from '@/data/images'
+
 function Home() {
+	const [HomeDatas, setHomeData] = useState(HomeData)
+
+	const funcFilter = category => {
+		const categorys = HomeData.filter(item => item.category === category)
+		setHomeData(categorys)
+	}
 	return (
 		<>
 			<Head>
@@ -13,39 +23,49 @@ function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			{/* search */}
-			<div className='w-full mt-16'>
-				<div className='mx-auto w-[65%]'>
+			<div className=' w-full mt-16'>
+				<div className='relative mx-auto w-[65%]'>
 					<input
 						type='text'
 						id='small-input'
 						placeholder='Tìm font tại đây'
-						className='pl-4 font-normal w-full py-3 border border-white hover:border-oranges rounded-[30px] outline-oranges text-base '
+						className='pl-4 font-normal w-full py-3 border border-white hover:border-oranges rounded-[30px] focus:outline-none focus:border-oranges text-base '
 					/>
+
+					<div className='absolute top-3 right-6'>
+						<BsSearch className='w-5 h-6 text-[#9ca3af]' />
+					</div>
 				</div>
 			</div>
 
 			{/* Menu font */}
-			<div className='w-[60%] mx-auto mt-10'>
-				<ul className=' flex w-full gap-6 justify-center'>
-					<MenuFont test={'All font'} />
-					<MenuFont test={'Font 1FTV'} />
-					<MenuFont test={'UTM font'} />
-					<MenuFont test={'Font MJ'} />
-					<MenuFont test={'Font trang trí'} />
-					<MenuFont test={'Font viết tay'} />
-					<MenuFont test={'Font có chân'} />
-				</ul>
-
-				<ul className=' flex w-full gap-6 justify-center mt-4'>
+			<div className='w-[65%] mx-auto mt-10 '>
+				<ul className=' flex flex-wrap w-full gap-5 justify-center max-2xl:w-[100%]'>
+					<MenuFont onClick={() => HomeData} test={'All font'} />
+					<MenuFont
+						onClick={() => funcFilter('Font 1FTV')}
+						test={'Font 1FTV'}
+					/>
+					<MenuFont onClick={() => funcFilter('UTM font')} test={'UTM font'} />
+					<MenuFont onClick={() => funcFilter('Font MJ')} test={'Font MJ'} />
+					<MenuFont
+						onClick={() => funcFilter('Font trang trí')}
+						test={'Font trang trí'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font viết tay')}
+						test={'Font viết tay'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font có chân')}
+						test={'Font có chân'}
+					/>
 					<MenuFont test={'Font không chân'} />
 					<MenuFont test={'Font bất động sản'} />
 					<MenuFont test={'Font ẩm thực'} />
 					<MenuFont test={'Font mỹ phẩm - Spa'} />
 					<MenuFont test={'Font ICIEL'} />
 					<MenuFont test={'Font MTD'} />
-				</ul>
-
-				<ul className=' flex w-full gap-6 justify-center mt-4'>
 					<MenuFont test={'Font SVN'} />
 					<MenuFont test={'Font Việt Linh'} />
 					<MenuFont test={'Font LNTH'} />
@@ -53,9 +73,6 @@ function Home() {
 					<MenuFont test={'FFont KS'} />
 					<MenuFont test={'Font Google'} />
 					<MenuFont test={'Font Vintage'} />
-				</ul>
-
-				<ul className=' flex w-full gap-6 justify-center mt-4'>
 					<MenuFont test={'Font thư pháp'} />
 					<MenuFont test={'Font việt hóa khác'} />
 					<MenuFont test={'Font việt hoá'} />
@@ -66,29 +83,49 @@ function Home() {
 			</div>
 
 			{/* products */}
-			<h2 className='font-medium text-3xl ml-[10%] mt-16'>All font</h2>
-			<div className='w-[80%] mx-auto mt-6 grid grid-cols-4 gap-6'>
-				{HomeData.map((item, index) => {
+			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
+				{HomeDatas.length} font
+			</h2>
+			<div className='w-[85%] mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
+				{HomeDatas.map((item, id) => {
 					return (
 						<>
-							<div className='bg-white' key={index}>
-								<div className='overflow-hidden relative '>
-									<Link href={'productDetail'}>
-										<Image
-											src={item.image}
-											alt='logo'
-											width={300}
-											height={250}
-											className=' w-full h-60 object-cover duration-500 hover:scale-[1.1]'
-										></Image>
-									</Link>
+							<div className='bg-white' key={id}>
+								<div
+									htmlFor='my-modal-4'
+									className='cursor-pointer overflow-hidden relative '
+								>
+									<Image
+										src={item.image}
+										alt='logo'
+										width={300}
+										height={250}
+										className=' w-full h-44 object-cover duration-500 hover:scale-[1.1]'
+									></Image>
+
 									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-30'>
 										<Link className='' href='' legacyBehavior>
 											<a className='font-bold '>Lưu</a>
 										</Link>
 									</button>
 								</div>
-
+								{/* Put this part before </body> tag */}
+								<input
+									type='checkbox'
+									id='my-modal-4'
+									className='modal-toggle'
+								/>
+								<label htmlFor='my-modal-4' className='modal cursor-pointer'>
+									<label className='modal-box relative' htmlFor=''>
+										<h3 className='text-lg font-bold'>
+											Congratulations random Internet user!
+										</h3>
+										<p className='py-4'>
+											You've been selected for a chance to get one year of
+											subscription to use Wikipedia for free!
+										</p>
+									</label>
+								</label>
 								<h2 className='ml-3 mt-4 font-medium text-base'>
 									{item.title}
 								</h2>

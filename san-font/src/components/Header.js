@@ -18,7 +18,7 @@ const Header = () => {
 	return (
 		<header>
 			<nav className='bg-white shadow-xl  py-3.5'>
-				<div className='w-[90%] flex flex-wrap justify-between items-center mx-auto lg:px-12 xl:px-20'>
+				<div className='w-[95%] flex flex-wrap justify-between items-center mx-auto lg:px-12 xl:px-20'>
 					<Link href={'/'} className='max-lg:ml-3'>
 						<Image
 							src={imgGlobal.Logo}
@@ -96,12 +96,15 @@ const Header = () => {
 									''
 								)}
 							</li>
+
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/viet-hoa' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link href={'/viet-hoa'}>Font việt hóa</Link>
+								<Link tabIndex={0} href={'/viet-hoa'}>
+									Font việt hóa
+								</Link>
 								{pathName === '/viet-hoa' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
@@ -109,13 +112,46 @@ const Header = () => {
 								) : (
 									''
 								)}
+
+								<ul
+									tabIndex={0}
+									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
+								>
+									<li>
+										<a>Font 1FTV</a>
+									</li>
+									<li>
+										<a>Font trang trí</a>
+									</li>
+									<li>
+										<a>Font viết tay</a>
+									</li>
+									<li>
+										<a>Font có chân</a>
+									</li>
+									<li>
+										<a>Font không chân</a>
+									</li>
+									<li>
+										<a>Font ICIEL</a>
+									</li>
+									<li>
+										<a>Font MTD</a>
+									</li>
+									<li>
+										<a>Font SVN</a>
+									</li>
+								</ul>
 							</li>
+
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/quang-cao' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link href={'/quang-cao'}>Font quảng cáo</Link>
+								<Link tabIndex={0} href={'/quang-cao'}>
+									Font quảng cáo
+								</Link>
 								{pathName === '/quang-cao' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
@@ -123,6 +159,20 @@ const Header = () => {
 								) : (
 									''
 								)}
+								<ul
+									tabIndex={0}
+									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
+								>
+									<li>
+										<a>Font bất động sản</a>
+									</li>
+									<li>
+										<a>Font ẩm thực</a>
+									</li>
+									<li>
+										<a>Font mỹ phẩm - Spa</a>
+									</li>
+								</ul>
 							</li>
 							<li
 								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${

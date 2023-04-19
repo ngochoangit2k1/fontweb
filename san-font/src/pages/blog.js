@@ -13,8 +13,11 @@ const Blog = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<h1 className='text-4xl font-bold text-center mt-20'>Blog</h1>
+			<div className='w-20 rounded-[30px] bg-white text-center py-2 mx-auto mt-5'>
+				<button className='text-base font-normal'>Design</button>
+			</div>
 
-			<div className='w-[80%] mx-auto mt-6 grid grid-cols-3 gap-6'>
+			<div className='w-[80%] mx-auto mt-10 grid grid-cols-3 gap-6'>
 				{BlogData.map((item, index) => {
 					return (
 						<>
@@ -29,9 +32,7 @@ const Blog = () => {
 									></Image>
 								</div>
 
-								<h2 className='ml-4 mt-4 font-semibold text-xl'>
-									{item.title}
-								</h2>
+								<h2 className='ml-4 mt-4 font-bold text-xl'>{item.title}</h2>
 								<div className='ml-4 py-4 font-normal text-base'>
 									<p>{item.text}</p>
 								</div>
