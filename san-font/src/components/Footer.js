@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Footer = () => {
@@ -25,10 +26,15 @@ const Footer = () => {
 							{' '}
 							<h1 className='text-2xl font-medium'>HỖ TRỢ</h1>
 							<div className='font-normal text-base mt-4'>
-								<li> Hướng dẫn cài font chữ cho máy tính</li>
-								<li> Donate </li>
-								<li> Top Download</li>
-								<li> Blog</li>
+								<Link href={'/huong-dan'}>
+									<li> Hướng dẫn cài font chữ cho máy tính</li>
+								</Link>
+								<Link href={'/donate'}>
+									<li> Donate </li>
+								</Link>
+								<Link href={'/top-download'}>
+									<li> Top Download</li>
+								</Link>
 							</div>
 						</div>
 					</div>

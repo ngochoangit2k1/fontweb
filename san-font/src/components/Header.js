@@ -102,7 +102,7 @@ const Header = () => {
 									pathName === '/viet-hoa' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link tabIndex={0} href={'/viet-hoa'}>
+								<Link tabIndex={0} href={'/fontVH'}>
 									Font việt hóa
 								</Link>
 								{pathName === '/viet-hoa' ? (

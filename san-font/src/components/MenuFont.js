@@ -1,16 +1,13 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-
 const MenuFont = ({ test, onClick }) => {
 	return (
 		<>
 			<li
 				onClick={onClick}
-				className={
-					'bg-white cursor-pointer rounded-[30px] py-3 px-4 font-medium text-base focus:bg-oranges focus:text-white'
-				}
+				className={'bg-white   rounded-[30px]   font-medium text-base'}
 			>
-				<a className='text-black'>{test}</a>
+				<button className='py-3 px-4 cursor-pointer bg-white rounded-[30px]  focus:bg-oranges focus:text-white text-black'>
+					{test}
+				</button>
 			</li>
 		</>
 	)

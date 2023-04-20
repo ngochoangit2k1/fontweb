@@ -21,7 +21,7 @@ const Blog = () => {
 				{BlogData.map((item, index) => {
 					return (
 						<>
-							<div className='bg-white' key={index}>
+							<div className='bg-white shadow-md' key={index}>
 								<div className=' overflow-hidden relative w-full '>
 									<Image
 										src={item.image}
@@ -32,8 +32,10 @@ const Blog = () => {
 									></Image>
 								</div>
 
-								<h2 className='ml-4 mt-4 font-bold text-xl'>{item.title}</h2>
-								<div className='ml-4 py-4 font-normal text-base'>
+								<h2 className='text-black ml-4 mt-4 font-extrabold text-xl'>
+									{item.title}
+								</h2>
+								<div className='text-black ml-4 py-4 font-medium text-base'>
 									<p>{item.text}</p>
 								</div>
 							</div>

@@ -1,19 +1,29 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import React from 'react'
 import Link from 'next/link'
 import MenuFont from '@/components/MenuFont'
 import { HomeData } from '@/data/products'
 import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
 import imgGlobal from '@/data/images'
+import PreviousMap from 'postcss/lib/previous-map'
 
 function Home() {
 	const [HomeDatas, setHomeData] = useState(HomeData)
-
 	const funcFilter = category => {
 		const categorys = HomeData.filter(item => item.category === category)
 		setHomeData(categorys)
 	}
+
+	const [seeMore, setSeeMore] = useState(8)
+
+	const showMore = HomeDatas.slice(0, seeMore)
+
+	const loadMore = () => {
+		setSeeMore(prevValue => prevValue + 4)
+	}
+
 	return (
 		<>
 			<Head>
@@ -41,7 +51,7 @@ function Home() {
 			{/* Menu font */}
 			<div className='w-[65%] mx-auto mt-10 '>
 				<ul className=' flex flex-wrap w-full gap-5 justify-center max-2xl:w-[100%]'>
-					<MenuFont onClick={() => HomeData} test={'All font'} />
+					<MenuFont onClick={() => setHomeData(HomeData)} test={'All font'} />
 					<MenuFont
 						onClick={() => funcFilter('Font 1FTV')}
 						test={'Font 1FTV'}
@@ -60,37 +70,86 @@ function Home() {
 						onClick={() => funcFilter('Font có chân')}
 						test={'Font có chân'}
 					/>
-					<MenuFont test={'Font không chân'} />
-					<MenuFont test={'Font bất động sản'} />
-					<MenuFont test={'Font ẩm thực'} />
-					<MenuFont test={'Font mỹ phẩm - Spa'} />
-					<MenuFont test={'Font ICIEL'} />
-					<MenuFont test={'Font MTD'} />
-					<MenuFont test={'Font SVN'} />
-					<MenuFont test={'Font Việt Linh'} />
-					<MenuFont test={'Font LNTH'} />
-					<MenuFont test={'Font FS'} />
-					<MenuFont test={'FFont KS'} />
-					<MenuFont test={'Font Google'} />
-					<MenuFont test={'Font Vintage'} />
-					<MenuFont test={'Font thư pháp'} />
-					<MenuFont test={'Font việt hóa khác'} />
-					<MenuFont test={'Font việt hoá'} />
-					<MenuFont test={'Font quảng cáo'} />
-					<MenuFont className={'bg-[#ffa800]'} test={'Font chọn lọc'} />
-					<MenuFont className='bg-[#34a853]' test={'VIP'} />
+					<MenuFont
+						onClick={() => funcFilter('Font bất động sản')}
+						test={'Font không chân'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font có chân')}
+						test={'Font bất động sản'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font ẩm thực')}
+						test={'Font ẩm thực'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font mỹ phẩm - Spa')}
+						test={'Font mỹ phẩm - Spa'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font ICIE')}
+						test={'Font ICIEL'}
+					/>
+					<MenuFont onClick={() => funcFilter('Font MTD')} test={'Font MTD'} />
+					<MenuFont onClick={() => funcFilter('Font SVN')} test={'Font SVN'} />
+					<MenuFont
+						onClick={() => funcFilter('Font Việt Linh')}
+						test={'Font Việt Linh'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font LNTH')}
+						test={'Font LNTH'}
+					/>
+					<MenuFont onClick={() => funcFilter('Font FS')} test={'Font FS'} />
+					<MenuFont onClick={() => funcFilter('Font KS')} test={'Font KS'} />
+					<MenuFont
+						onClick={() => funcFilter('Font Google')}
+						test={'Font Google'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font Vintage')}
+						test={'Font Vintage'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font thư pháp')}
+						test={'Font thư pháp'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font việt hóa khác')}
+						test={'Font việt hóa khác'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font việt hoá')}
+						test={'Font việt hoá'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font quảng cáo')}
+						test={'Font quảng cáo'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('Font chọn lọc')}
+						className={'bg-[#ffa800]'}
+						test={'Font chọn lọc'}
+					/>
+					<MenuFont
+						onClick={() => funcFilter('VIP')}
+						className='bg-[#34a853]'
+						test={'VIP'}
+					/>
 				</ul>
 			</div>
 
 			{/* products */}
+
 			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
 				{HomeDatas.length} font
 			</h2>
-			<div className='w-[85%] mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
-				{HomeDatas.map((item, id) => {
+
+			<div className='w-[85%]	 mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
+				{showMore.map((item, id) => {
 					return (
 						<>
-							<div className='bg-white' key={id}>
+							<div className='bg-white shadow-md' key={id}>
 								<div
 									htmlFor='my-modal-4'
 									className='cursor-pointer overflow-hidden relative '
@@ -160,6 +219,16 @@ function Home() {
 						</>
 					)
 				})}
+			</div>
+
+			{/* Xem thêm */}
+			<div className='w-full text-center mt-6'>
+				<button
+					onClick={loadMore}
+					className='bg-oranges  hover:bg-[#ff0000] py-2 px-6 font-normal text-base text-white rounded-[8px]'
+				>
+					Xem thêm
+				</button>
 			</div>
 		</>
 	)
