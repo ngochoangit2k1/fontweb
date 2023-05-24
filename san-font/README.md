@@ -17,3 +17,11 @@ Open browser at: http://localhost:3000
 ## Development Build
 
 Run: npm start
+
+## Install Json
+
+Install json-server: npm i json-server
+
+## Run Server
+
+Run: npm run serve-json
