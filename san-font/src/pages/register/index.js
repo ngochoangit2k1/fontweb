@@ -52,7 +52,7 @@ const Register = () => {
 							className='bg-white  border-gray-300 text-gray-900 text-sm rounded  border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
 						/>
 					</div>
-					<p className='mt-4 font-normal text-xs text-[#6D757D]'>
+					<p className='mt-4 font-normal text-xs text-[#8d9399]'>
 						* Không sử dụng email Yahoo, email trường CĐ, ĐH khi đăng ký
 					</p>
 					<div className=' mt-4 relative '>

@@ -2,23 +2,23 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import MenuFont from '@/components/MenuFont'
-import { HomeData } from '@/data/products'
+import NameFont from '@/components/MenuFonts/NameFont'
+
 import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
-import imgGlobal from '@/data/images'
-import PreviousMap from 'postcss/lib/previous-map'
+import MenuFont from '@/components/MenuFonts/MenuFont'
+import ProductFont from '@/components/ProductFont'
 
-function Home() {
-	const [HomeDatas, setHomeData] = useState(HomeData)
-	const funcFilter = category => {
-		const categorys = HomeData.filter(item => item.category === category)
-		setHomeData(categorys)
+function Home({ Data }) {
+	const [HomeData, setHomeData] = useState(Data)
+	const funcFilter = nameFont => {
+		const nameFonts = Data.filter(item => item.nameFont === nameFont)
+		setHomeData(nameFonts)
 	}
 
 	const [seeMore, setSeeMore] = useState(8)
 
-	const showMore = HomeDatas.slice(0, seeMore)
+	const showMore = HomeData.slice(0, seeMore)
 
 	const loadMore = () => {
 		setSeeMore(prevValue => prevValue + 4)
@@ -33,8 +33,8 @@ function Home() {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			{/* search */}
-			<div className=' w-full mt-16'>
-				<div className='relative mx-auto w-[65%]'>
+			<div className=' w-full mt-12'>
+				<div className='relative mx-auto w-[70%] max-lg:w-[80%]'>
 					<input
 						type='text'
 						id='small-input'
@@ -43,180 +43,159 @@ function Home() {
 					/>
 
 					<div className='absolute top-3 right-6'>
-						<BsSearch className='w-5 h-6 text-[#9ca3af]' />
+						<BsSearch className='w-7 h-6 text-[#9ca3af]' />
 					</div>
 				</div>
 			</div>
 
 			{/* Menu font */}
-			<div className='w-[65%] mx-auto mt-10 '>
-				<ul className=' flex flex-wrap w-full gap-5 justify-center max-2xl:w-[100%]'>
-					<MenuFont onClick={() => setHomeData(HomeData)} test={'All font'} />
-					<MenuFont
-						onClick={() => funcFilter('Font 1FTV')}
-						test={'Font 1FTV'}
-					/>
-					<MenuFont onClick={() => funcFilter('UTM font')} test={'UTM font'} />
-					<MenuFont onClick={() => funcFilter('Font MJ')} test={'Font MJ'} />
-					<MenuFont
-						onClick={() => funcFilter('Font trang trí')}
-						test={'Font trang trí'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font viết tay')}
-						test={'Font viết tay'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font có chân')}
-						test={'Font có chân'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font bất động sản')}
-						test={'Font không chân'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font có chân')}
-						test={'Font bất động sản'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font ẩm thực')}
-						test={'Font ẩm thực'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font mỹ phẩm - Spa')}
-						test={'Font mỹ phẩm - Spa'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font ICIE')}
-						test={'Font ICIEL'}
-					/>
-					<MenuFont onClick={() => funcFilter('Font MTD')} test={'Font MTD'} />
-					<MenuFont onClick={() => funcFilter('Font SVN')} test={'Font SVN'} />
-					<MenuFont
-						onClick={() => funcFilter('Font Việt Linh')}
-						test={'Font Việt Linh'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font LNTH')}
-						test={'Font LNTH'}
-					/>
-					<MenuFont onClick={() => funcFilter('Font FS')} test={'Font FS'} />
-					<MenuFont onClick={() => funcFilter('Font KS')} test={'Font KS'} />
-					<MenuFont
-						onClick={() => funcFilter('Font Google')}
-						test={'Font Google'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font Vintage')}
-						test={'Font Vintage'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font thư pháp')}
-						test={'Font thư pháp'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font việt hóa khác')}
-						test={'Font việt hóa khác'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font việt hoá')}
-						test={'Font việt hoá'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font quảng cáo')}
-						test={'Font quảng cáo'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('Font chọn lọc')}
-						className={'bg-[#ffa800]'}
-						test={'Font chọn lọc'}
-					/>
-					<MenuFont
-						onClick={() => funcFilter('VIP')}
-						className='bg-[#34a853]'
-						test={'VIP'}
-					/>
-				</ul>
-			</div>
+			<MenuFont Data={Data} setHomeData={setHomeData} />
 
 			{/* products */}
 
-			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
-				{HomeDatas.length} font
-			</h2>
+			<div className='flex gap-3'>
+				<h2 className='font-medium text-3xl ml-[7%] mt-16'>
+					{HomeData.length} font
+				</h2>
+			</div>
 
 			<div className='w-[85%]	 mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
 				{showMore.map((item, id) => {
 					return (
-						<>
-							<div className='bg-white shadow-md' key={id}>
-								<div
-									htmlFor='my-modal-4'
-									className='cursor-pointer overflow-hidden relative '
-								>
-									<Image
-										src={item.image}
-										alt='logo'
-										width={300}
-										height={250}
-										className=' w-full h-44 object-cover duration-500 hover:scale-[1.1]'
-									></Image>
+						// <div className='bg-[#ffffff] shadow-md' key={id}>
+						// 	<div
+						// 		htmlFor='my-modal-4'
+						// 		className='cursor-pointer overflow-hidden relative '
+						// 	>
+						// 		<Image
+						// 			src={item.image}
+						// 			alt='logo'
+						// 			width={300}
+						// 			height={250}
+						// 			className=' w-full h-44 object-cover duration-500 hover:scale-[1.1]'
+						// 		></Image>
 
-									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-30'>
-										<Link className='' href='' legacyBehavior>
-											<a className='font-bold '>Lưu</a>
-										</Link>
-									</button>
+						// 		<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-[#ffffff] text-xs rounded-br-lg  z-30'>
+						// 			<Link className='' href='' legacyBehavior>
+						// 				<a className='font-bold '>Lưu</a>
+						// 			</Link>
+						// 		</button>
+						// 	</div>
+
+						// 	<Link href={`/fontVH/${item.id}`}>
+						// 		<h2 className='ml-3 mt-4 font-semibold text-[#000000] text-base'>
+						// 			{item.title}
+						// 		</h2>
+						// 	</Link>
+						// 	<div className='ml-3 py-4 font-normal text-xs leading-6 text-[#818181]'>
+						// 		<p>
+						// 			<span className='font-bold'>Tác giả:</span>
+						// 			{item.author}
+						// 		</p>
+						// 		<p>
+						// 			<span className='font-bold'>Người đăng:</span>
+						// 			{item.user}
+						// 		</p>
+						// 		<p>
+						// 			<span className='font-bold'>Việt hóa :</span>
+						// 			{item.translate}
+						// 		</p>
+						// 		<p>
+						// 			<span className='font-bold'>Ngày đăng:</span>
+						// 			{item.date}
+						// 		</p>
+						// 		<p>
+						// 			<span className='font-bold'>Số lượt tải font:</span>
+						// 			{item.quantity}
+						// 		</p>
+						// 	</div>
+						// 	<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+						// 		<Link href='/' legacyBehavior>
+						// 			<a className='font-medium'>TẢI FONT NÀY NGAY</a>
+						// 		</Link>
+						// 	</div>
+						// </div>
+						<div className='bg-white shadow-md' key={id}>
+							<div className='relative'>
+								<div className=' group overflow-hidden'>
+									<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
+										<label for='my-modal-3' className=' '>
+											<Image
+												src={item.image}
+												alt='logo'
+												width={300}
+												height={250}
+												className=' w-full h-44 object-cover '
+											></Image>
+											<div className='w-full h-44 absolute top-0 bg-black/60  duration-500  opacity-0 group-hover:opacity-100 '>
+												<h2 className='text-white text-center text-lg font-semibold mt-[25%] '>
+													XEM DEMO
+												</h2>
+											</div>
+										</label>
+									</div>
 								</div>
-								{/* Put this part before </body> tag */}
-								<input
-									type='checkbox'
-									id='my-modal-4'
-									className='modal-toggle'
-								/>
-								<label htmlFor='my-modal-4' className='modal cursor-pointer'>
-									<label className='modal-box relative' htmlFor=''>
-										<h3 className='text-lg font-bold'>
-											Congratulations random Internet user!
-										</h3>
-										<p className='py-4'>
-											You've been selected for a chance to get one year of
-											subscription to use Wikipedia for free!
-										</p>
-									</label>
-								</label>
-								<h2 className='ml-3 mt-4 font-medium text-base'>
+
+								<input type='checkbox' id='my-modal-3' class=' modal-toggle' />
+								<div class='modal rounded-none'>
+									<div class='modal-box relative '>
+										<label
+											for='my-modal-3'
+											class='btn btn-sm btn-circle absolute right-2 top-2'
+										>
+											✕
+										</label>
+										<div>
+											<Image
+												src={item.image}
+												alt='img'
+												width={800}
+												height={800}
+												className='w-[99%]  object-cover  '
+											></Image>
+										</div>
+									</div>
+								</div>
+
+								<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-1'>
+									<Link className='' href='' legacyBehavior>
+										<a className='font-bold '>Lưu</a>
+									</Link>
+								</button>
+							</div>
+							<Link href={`/fontVH/${item.id}`}>
+								<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
 									{item.title}
 								</h2>
-								<div className='ml-3 py-4 font-normal text-xs leading-6 '>
-									<p>
-										<span className='font-bold'>Tác giả:</span>
-										{item.author}
-									</p>
-									<p>
-										<span className='font-bold'>Người đăng:</span>
-										{item.user}
-									</p>
-									<p>
-										<span className='font-bold'>Việt hóa :</span>
-										{item.translate}
-									</p>
-									<p>
-										<span className='font-bold'>Ngày đăng:</span>
-										{item.date}
-									</p>
-									<p>
-										<span className='font-bold'>Số lượt tải font:</span>
-										{item.quantity}
-									</p>
-								</div>
-								<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
-									<Link href='/' legacyBehavior>
-										<a className='font-medium'>TẢI FONT NÀY NGAY</a>
-									</Link>
-								</div>
+							</Link>
+							<div className='ml-3 py-4 font-normal text-xs leading-6 text-[#818181]'>
+								<p>
+									<span className='font-bold'>Tác giả:</span>
+									{item.author}
+								</p>
+								<p>
+									<span className='font-bold'>Người đăng:</span>
+									{item.user}
+								</p>
+								<p>
+									<span className='font-bold'>Việt hóa :</span>
+									{item.translate}
+								</p>
+								<p>
+									<span className='font-bold'>Ngày đăng:</span>
+									{item.date}
+								</p>
+								<p>
+									<span className='font-bold'>Số lượt tải font:</span>
+									{item.quantity}
+								</p>
 							</div>
-						</>
+							<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+								<Link href='/' legacyBehavior>
+									<a className='font-medium'>TẢI FONT NÀY NGAY</a>
+								</Link>
+							</div>
+						</div>
 					)
 				})}
 			</div>
@@ -230,8 +209,21 @@ function Home() {
 					Xem thêm
 				</button>
 			</div>
+
+			<div className='w-[85%] h-96 bg-white mx-auto mt-12'></div>
 		</>
 	)
 }
 
 export default Home
+
+export async function getStaticProps() {
+	const response = await fetch('http://localhost:4000/HomeData')
+	const data = await response.json()
+
+	return {
+		props: {
+			Data: data,
+		},
+	}
+}

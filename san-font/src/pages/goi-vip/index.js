@@ -108,7 +108,7 @@ const Vip = () => {
 						</div>
 
 						<div className='mt-12 w-[70%] mx-auto'>
-							<ul className='font-normal text-sm'>
+							<ul className='font-normal text-sm '>
 								<li className='flex'>
 									<MdCheck className='text-[20px] mr-2' />
 									Không giới hạn lượt tải

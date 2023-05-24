@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Link from 'next/link'
-
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { FiUser } from 'react-icons/fi'
 
 const Login = () => {

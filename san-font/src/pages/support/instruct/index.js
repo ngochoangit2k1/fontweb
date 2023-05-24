@@ -1,6 +1,6 @@
 import imgGlobal from '@/data/images'
 import Image from 'next/image'
-const HuongDan = () => {
+const instruct = () => {
 	return (
 		<>
 			<div className='w-[55%] mx-auto bg-white mt-10 '>
@@ -40,4 +40,4 @@ const HuongDan = () => {
 		</>
 	)
 }
-export default HuongDan
+export default instruct

@@ -19,7 +19,7 @@ const fontQC = () => {
 				{QCData.map((item, id) => {
 					return (
 						<>
-							<div className='bg-white shadow-lg' key={id}>
+							<div className='bg-[#ffffff] shadow-lg' key={id}>
 								<div className='overflow-hidden relative '>
 									<Link href={'productDetail'}>
 										<Image

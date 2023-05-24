@@ -81,7 +81,7 @@ const Header = () => {
 						} justify-between items-center w-full xl:flex xl:w-auto xl:order-1`}
 						id='mobile-menu-2'
 					>
-						<ul className='flex flex-col mt-4 gap-6 font-medium xl:flex-row xl:space-x-8 xl:mt-0'>
+						<ul className='flex flex-col mt-4 gap-6 font-bold xl:flex-row xl:space-x-8 xl:mt-0'>
 							<li
 								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/' ? 'lg:relative' : ' '
@@ -99,13 +99,13 @@ const Header = () => {
 
 							<li
 								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
-									pathName === '/viet-hoa' ? 'xl:relative' : ''
+									pathName === '/fontVH' ? 'xl:relative' : ''
 								}`}
 							>
 								<Link tabIndex={0} href={'/fontVH'}>
 									Font việt hóa
 								</Link>
-								{pathName === '/viet-hoa' ? (
+								{pathName === '/fontVH' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>
@@ -146,13 +146,13 @@ const Header = () => {
 
 							<li
 								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
-									pathName === '/quang-cao' ? 'xl:relative' : ''
+									pathName === '/fontQC' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link tabIndex={0} href={'/quang-cao'}>
+								<Link tabIndex={0} href={'/fontQC'}>
 									Font quảng cáo
 								</Link>
-								{pathName === '/quang-cao' ? (
+								{pathName === '/fontQC' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>
@@ -176,11 +176,11 @@ const Header = () => {
 							</li>
 							<li
 								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
-									pathName === '/vip' ? 'xl:relative' : ''
+									pathName === '/goi-vip' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link href={'/vip'}>Gói VIP</Link>
-								{pathName === '/vip' ? (
+								<Link href={'/goi-vip'}>Gói VIP</Link>
+								{pathName === '/goi-vip' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>

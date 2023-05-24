@@ -26,6 +26,8 @@ header {
  
 }
 
+
+
 .test-demo::before {
   content: '';
   top:23px;
@@ -38,6 +40,10 @@ header {
 }
 
 
+.modal-box { 
+    max-width: 50rem !important;
+    height: 500px;
+}
 
 .messenger::before {
   content: '';
@@ -109,11 +115,10 @@ header {
     transition-timing-function: ease-in-out;
   }
 
-  /* 87.5% {
+  87.5% {
     transform: scale(1.65);
     opacity: 1;
-    border: 1px solid red;
-   
+    border: 1px solid #1197f6;
     transition-timing-function: ease-in-out;
-  } */
+  }
 }

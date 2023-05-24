@@ -286,61 +286,6 @@ export const HomeData = [
 		date: '12/04/2023',
 		quantity: '126',
 	},
-	{
-		id: 18,
-		image:
-			'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-		title: 'Font việt hóa UTM Alba Matter',
-		author: 'Không rõ ràng',
-		user: 'Phượng Huỳnh',
-		translate: 'Không rõ',
-		date: '12/04/2023',
-		quantity: '126',
-	},
-	{
-		id: 19,
-		image:
-			'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-		title: 'Font việt hóa UTM Alba Matter',
-		author: 'Không rõ ràng',
-		user: 'Phượng Huỳnh',
-		translate: 'Không rõ',
-		date: '12/04/2023',
-		quantity: '126',
-	},
-	{
-		id: 20,
-		image:
-			'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-		title: 'Font việt hóa UTM Alba Matter',
-		author: 'Không rõ ràng',
-		user: 'Phượng Huỳnh',
-		translate: 'Không rõ',
-		date: '12/04/2023',
-		quantity: '126',
-	},
-	{
-		id: 21,
-		image:
-			'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-		title: 'Font việt hóa UTM Alba Matter',
-		author: 'Không rõ ràng',
-		user: 'Phượng Huỳnh',
-		translate: 'Không rõ',
-		date: '12/04/2023',
-		quantity: '126',
-	},
-	{
-		id: 22,
-		image:
-			'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
-		title: 'Font việt hóa UTM Alba Matter',
-		author: 'Không rõ ràng',
-		user: 'Phượng Huỳnh',
-		translate: 'Không rõ',
-		date: '12/04/2023',
-		quantity: '126',
-	},
 ]
 
 export const BlogData = [

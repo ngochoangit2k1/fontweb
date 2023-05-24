@@ -1,6 +1,12 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import React from 'react'
+import Link from 'next/link'
+import { FaLongArrowAltLeft } from 'react-icons/fa'
+import { FaLongArrowAltRight } from 'react-icons/fa'
+import ProductFont from '@/components/ProductFont'
 
-const fontVH = () => {
+const fontVH = ({ dataFont }) => {
 	return (
 		<>
 			<Head>
@@ -10,9 +16,68 @@ const fontVH = () => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
-			<div>hé lô nha</div>
+			<h2 className='font-bold text-4xl ml-[7%] mt-16'>Font việt hóa</h2>
+
+			<div className='w-[85%]	 mx-auto mt-10 grid grid-cols-4 gap-6  max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
+				<ProductFont dataFont={dataFont} />
+			</div>
+
+			<div className='text-center justify-center mt-6'>
+				<ul class='inline-flex items-center -space-x-px gap-2 '>
+					<li className='p-3 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						<FaLongArrowAltLeft />
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						1
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						2
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						3
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						4
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						5
+					</li>
+					<li className='px-4 py-2 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						6
+					</li>
+
+					<li className='p-3 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
+						<FaLongArrowAltRight />
+					</li>
+				</ul>
+			</div>
 		</>
 	)
 }
 
 export default fontVH
+
+// export async function getStaticProps() {
+// 	const response = await fetch('http://localhost:4000/HomeData')
+// 	const data = await response.json()
+
+// 	return {
+// 		props: {
+// 			dataFont: data,
+// 		},
+// 	}
+// }
+
+export async function getServerSideProps(context) {
+	const { query } = context
+	const { category } = query
+	const queryString = category ? 'category=FontVH' : ''
+	const response = await fetch(`http://localhost:4000/HomeData/${queryString}`)
+	const data = await response.json()
+
+	return {
+		props: {
+			dataFont: data,
+		},
+	}
+}
