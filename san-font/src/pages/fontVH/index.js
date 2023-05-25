@@ -1,12 +1,18 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 import ProductFont from '@/components/ProductFont'
 
-const fontVH = ({ dataFont }) => {
+const fontVH = ({ categoryFont }) => {
+	const [type, setType] = useState(categoryFont)
+
+	const funcFilter = category => {
+		const categorys = categoryFont.filter(item => item.category === category)
+		setType(categorys)
+	}
 	return (
 		<>
 			<Head>
@@ -16,10 +22,25 @@ const fontVH = ({ dataFont }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 
+			<div className='flex gap-4 text-center'>
+				<button
+					onClick={() => funcFilter('FontVH')}
+					className='px-4 py-4 bg-red-600'
+				>
+					vh
+				</button>
+
+				<button
+					onClick={() => funcFilter('FontQC')}
+					className='px-4 py-4 bg-red-600'
+				>
+					qc
+				</button>
+			</div>
 			<h2 className='font-bold text-4xl ml-[7%] mt-16'>Font việt hóa</h2>
 
 			<div className='w-[85%]	 mx-auto mt-10 grid grid-cols-4 gap-6  max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
-				<ProductFont dataFont={dataFont} />
+				<ProductFont type={type} />
 			</div>
 
 			<div className='text-center justify-center mt-6'>
@@ -77,7 +98,7 @@ export async function getServerSideProps(context) {
 
 	return {
 		props: {
-			dataFont: data,
+			categoryFont: data,
 		},
 	}
 }

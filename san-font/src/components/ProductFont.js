@@ -2,16 +2,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
 
-const ProductFont = ({ dataFont }) => {
+const ProductFont = ({ type }) => {
 	return (
 		<>
-			{dataFont.map(item => {
+			{type.map(item => {
 				return (
 					<div className='bg-white shadow-md' key={item.id}>
 						<div className='relative'>
 							<div className=' group overflow-hidden'>
 								<div className=' cursor-pointer duration-500 hover:scale-[1.1]  relative'>
-									<label for='my-modal-3' className=''>
+									<label htmlFor='my-modal-3' className=''>
 										<Image
 											src={item.image}
 											alt='logo'
@@ -32,7 +32,7 @@ const ProductFont = ({ dataFont }) => {
 							<div class='modal rounded-none'>
 								<div class='modal-box relative'>
 									<label
-										for='my-modal-3'
+										htmlFor='my-modal-3'
 										class='btn btn-sm btn-circle absolute right-2 top-2'
 									>
 										✕

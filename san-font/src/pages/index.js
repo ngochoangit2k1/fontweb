@@ -119,7 +119,7 @@ function Home({ Data }) {
 							<div className='relative'>
 								<div className=' group overflow-hidden'>
 									<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
-										<label for='my-modal-3' className=' '>
+										<label htmlFor='my-modal-3' className=' '>
 											<Image
 												src={item.image}
 												alt='logo'
@@ -136,12 +136,16 @@ function Home({ Data }) {
 									</div>
 								</div>
 
-								<input type='checkbox' id='my-modal-3' class=' modal-toggle' />
-								<div class='modal rounded-none'>
-									<div class='modal-box relative '>
+								<input
+									type='checkbox'
+									id='my-modal-3'
+									className=' modal-toggle'
+								/>
+								<div className='modal rounded-none'>
+									<div className='modal-box relative '>
 										<label
-											for='my-modal-3'
-											class='btn btn-sm btn-circle absolute right-2 top-2'
+											htmlFor='my-modal-3'
+											className='btn btn-sm btn-circle absolute right-2 top-2'
 										>
 											✕
 										</label>

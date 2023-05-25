@@ -74,7 +74,7 @@ const Login = () => {
 							className='w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded'
 						/>
 						<label
-							for='bordered-checkbox-1'
+							htmlFor='bordered-checkbox-1'
 							className='w-full py-4 ml-2 text-base font-medium text-gray-900'
 						>
 							Tự động nhập mật khẩu

@@ -28,12 +28,14 @@ const Header = () => {
 					</Link>
 
 					<div className='flex items-center gap-1 xl:order-2'>
-						<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
-							<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
-							<span className='ml-2 max-md:text-[13px] text-[15px]'>
-								Upload font
-							</span>
-						</button>
+						<Link href={'/upFont'}>
+							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
+								<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
+								<span className='ml-2 max-md:text-[13px] text-[15px]'>
+									Upload font
+								</span>
+							</button>
+						</Link>
 
 						<Link href={'/register'}>
 							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
@@ -113,7 +115,7 @@ const Header = () => {
 									''
 								)}
 
-								<ul
+								{/* <ul
 									tabIndex={0}
 									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
 								>
@@ -141,7 +143,7 @@ const Header = () => {
 									<li>
 										<a>Font SVN</a>
 									</li>
-								</ul>
+								</ul> */}
 							</li>
 
 							<li
@@ -159,7 +161,7 @@ const Header = () => {
 								) : (
 									''
 								)}
-								<ul
+								{/* <ul
 									tabIndex={0}
 									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
 								>
@@ -172,7 +174,7 @@ const Header = () => {
 									<li>
 										<a>Font mỹ phẩm - Spa</a>
 									</li>
-								</ul>
+								</ul> */}
 							</li>
 							<li
 								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
