@@ -40,10 +40,7 @@ header {
 }
 
 
-.modal-box { 
-    max-width: 50rem !important;
-    height: 500px;
-}
+
 
 .messenger::before {
   content: '';
@@ -122,3 +119,26 @@ header {
     transition-timing-function: ease-in-out;
   }
 }
+
+.modal-box {
+  padding: 0 !important;
+}
+
+/* .react-tabs__tab--selected {
+
+   background: none !important; 
+  border-color: none !important; 
+  color: none !important; 
+  border-radius: none !important; 
+}
+
+.react-tabs__tab {
+  display: flex;
+  border: none !important;
+  border-bottom: none;
+  bottom: 0 !important;
+  position: relative;
+  list-style: none;
+  padding: 0 !important;
+  cursor: pointer;
+} */
