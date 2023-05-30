@@ -1,5 +1,6 @@
-import LayoutBody from '@/components/Navbar/layoutBody'
-import NavBar from '@/components/Navbar/navUpfont'
+import SelectFont from '@/components/SelectFonts/SelectFont'
+import SelectImage from '@/components/SelectImages/SelectImage'
+import Media from '@/components/SelectMedia/Media'
 import TextEditor from '@/components/textEditor'
 import { BsFillCameraFill } from 'react-icons/bs'
 
@@ -10,6 +11,8 @@ const UpFont = () => {
 				<div className='px-12'>
 					<h2 className='text-black font-bold text-2xl'>ĐĂNG TẢI FONT</h2>
 					<hr className='mt-4' />
+
+					{/* Tiêu đề */}
 					<h3 className='font-bold text-black mt-10'>
 						Tiêu đề <span className='text-[#ff0808]'>*</span>
 					</h3>
@@ -26,10 +29,12 @@ const UpFont = () => {
 						className='bg-white mt-4  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
 					/>
 					<hr className='mt-4' />
+
+					{/* Nội dung */}
 					<h3 className='text-black font-bold mt-3'>Nội dung</h3>
 					{/* The button to open modal */}
 					<label htmlFor='my-modal-3'>
-						<div className='mt-2 flex w-[105px] gap-1 py-2 px-2 bg-[#f6f7f7] hover:bg-gray-100 font-medium text-xs text-[#2270b0] hover:text-[#014d8b] border border-solid border-[#2270b0] hover:border-[#014d8b] rounded'>
+						<div className='cursor-pointer mt-2 flex w-[105px] gap-1 py-2 px-2 bg-[#f6f7f7] hover:bg-gray-100 font-medium text-xs text-[#2270b0] hover:text-[#014d8b] border border-solid border-[#2270b0] hover:border-[#014d8b] rounded'>
 							<BsFillCameraFill className='text-[14px]' />
 							Thêm media
 						</div>
@@ -46,11 +51,13 @@ const UpFont = () => {
 								✕
 							</label>
 
-							<LayoutBody></LayoutBody>
+							<Media />
 						</div>
 					</div>
-					{/* <ReactQuill value={body} onChange={handleBody} /> */}
+
 					<hr className='mt-14' />
+
+					{/* Ảnh đại diện */}
 					<h3 className='text-black font-bold mt-3 '>
 						Ảnh đại diện <span className='text-[#ff0808]'>*</span>
 					</h3>
@@ -59,32 +66,460 @@ const UpFont = () => {
 						<p className=' text-[15px] font-medium text-black'>
 							Chưa có ảnh nào được chọn.
 						</p>
-						<label htmlFor='my-modal-3'>
-							<div className='font-medium text-[15px] text-[#0d6efd] hover:text-[#014d8b]'>
+						<label htmlFor='my-modal'>
+							<div className='font-medium text-[15px] text-[#0d6efd] cursor-pointer hover:text-[#014d8b]'>
 								Thêm ảnh
 							</div>
 						</label>
 
-						{/* Put this part before </body> tag */}
-						<input type='checkbox' id='my-modal-3' className='modal-toggle' />
+						<input type='checkbox' id='my-modal' className='modal-toggle' />
 						<div className='modal'>
 							<div className='modal-box rounded-none max-w-[95%] h-[90%] relative'>
 								<label
-									htmlFor='my-modal-3'
+									htmlFor='my-modal'
 									className=' btn-sm font-black text-lg hover:text-[#014d8b] text-black absolute right-2 top-2'
 								>
 									✕
 								</label>
+								<SelectImage />
 							</div>
 						</div>
 					</div>
 					<hr className='mt-4' />
 
+					{/* Danh mục */}
 					<h3 className='text-black font-bold mt-3 '>
 						Danh mục <span className='text-[#ff0808]'>*</span>
 					</h3>
+					<div className='w-[100%]  mt-2 border border-solid border-gray-300 rounded'>
+						<div className='box-check-lick w-full leading-4'>
+							<ul className='w-full '>
+								<li className='w-full'>
+									<label className='flex items-center pl-3'>
+										<input
+											id='vue-checkbox'
+											type='checkbox'
+											value=''
+											className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+										/>
+										<span
+											for='vue-checkbox'
+											className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+										>
+											Font tiếng việt
+										</span>
+									</label>
+								</li>
+								<li className='w-full'>
+									<label className='flex items-center pl-3'>
+										<input
+											id='vue-checkbox'
+											type='checkbox'
+											value=''
+											className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+										/>
+										<span
+											for='vue-checkbox'
+											className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+										>
+											Font việt hóa
+										</span>
+									</label>
+
+									<ul className='ml-4'>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font 1FTV
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													UTM font
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font MJ
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font trang trí
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font viết tay
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font có chân
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font không chân
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font ẩm thực
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font mỹ phẩm - Spa
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font ICIEL
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font MTD
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font SVN
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font Việt Linh
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font LNTH
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font FS
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font KS
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font Google
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font Vintage
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font thư pháp
+												</span>
+											</label>
+										</li>
+										<li className='w-full'>
+											<label className='flex items-center pl-3'>
+												<input
+													id='vue-checkbox'
+													type='checkbox'
+													value=''
+													className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+												/>
+												<span
+													for='vue-checkbox'
+													className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+												>
+													Font việt hóa khác
+												</span>
+											</label>
+										</li>
+									</ul>
+								</li>
+
+								<li className='w-full'>
+									<label className='flex items-center pl-3'>
+										<input
+											id='vue-checkbox'
+											type='checkbox'
+											value=''
+											className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+										/>
+										<span
+											for='vue-checkbox'
+											className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+										>
+											Font quảng cáo
+										</span>
+									</label>
+								</li>
+								<li className='w-full'>
+									<label className='flex items-center pl-3'>
+										<input
+											id='vue-checkbox'
+											type='checkbox'
+											value=''
+											className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+										/>
+										<span
+											for='vue-checkbox'
+											className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+										>
+											Font chọn lọc
+										</span>
+									</label>
+								</li>
+								<li className='w-full'>
+									<label className='flex items-center pl-3'>
+										<input
+											id='vue-checkbox'
+											type='checkbox'
+											value=''
+											className='w-3 h-3 text-blue-600 bg-gray-100 border-gray-300 shadow-inner rounded focus:ring-blue-500'
+										/>
+										<span
+											for='vue-checkbox'
+											className='w-full pt-2 ml-2 text-[13px] font-medium text-black'
+										>
+											VIP
+										</span>
+									</label>
+								</li>
+							</ul>
+						</div>
+					</div>
 					<hr className='mt-4' />
 
+					{/* Tác giả */}
 					<h3 className='font-bold text-black mt-4'>Tác giả</h3>
 					<input
 						type='text'
@@ -106,6 +541,8 @@ const UpFont = () => {
 						className='bg-white mt-2  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
 					/>
 					<hr className='mt-4' />
+
+					{/* Font tải lên */}
 					<h3 className='font-bold text-black mt-4'>
 						Font tải lên <span className='text-[#ff0808]'>*</span>
 					</h3>
@@ -118,22 +555,23 @@ const UpFont = () => {
 						<p className=' text-[15px] font-normal text-black'>
 							Chưa có font nào được chọn.
 						</p>
-						<label htmlFor='my-modal-3'>
-							<div className='font-medium text-[15px] text-[#0d6efd] hover:text-[#014d8b]'>
-								Thêm ảnh
+						<label htmlFor='my-modal-2'>
+							<div className='cursor-pointer font-medium text-[15px] text-[#0d6efd] hover:text-[#014d8b]'>
+								Thêm font
 							</div>
 						</label>
 
 						{/* Put this part before </body> tag */}
-						<input type='checkbox' id='my-modal-3' className='modal-toggle' />
+						<input type='checkbox' id='my-modal-2' className='modal-toggle' />
 						<div className='modal'>
 							<div className='modal-box rounded-none max-w-[95%] h-[90%] relative'>
 								<label
-									htmlFor='my-modal-3'
+									htmlFor='my-modal-2'
 									className=' btn-sm font-black text-lg hover:text-[#014d8b] text-black absolute right-2 top-2'
 								>
 									✕
 								</label>
+								<SelectFont />
 							</div>
 						</div>
 					</div>

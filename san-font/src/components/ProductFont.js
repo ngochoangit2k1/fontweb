@@ -29,7 +29,7 @@ const ProductFont = ({ type }) => {
 							</div>
 
 							<input type='checkbox' id='my-modal-3' class='modal-toggle' />
-							<div class='modal rounded-none'>
+							<div class='modal rounded'>
 								<div class='modal-box relative'>
 									<label
 										htmlFor='my-modal-3'

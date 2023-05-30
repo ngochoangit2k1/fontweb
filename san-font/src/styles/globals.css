@@ -2,143 +2,149 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("./reset.css");
-@import url("./font.css");
+@import url('./reset.css');
+@import url('./font.css');
 
 header {
-  border-bottom: 1px solid #eee;
+	border-bottom: 1px solid #eee;
 }
 
 .demo {
-  top: 0!important;
-  left: 0!important;
+	top: 0 !important;
+	left: 0 !important;
 }
 .demo1 {
-  top: 0!important;
-  right: 0!important;
+	top: 0 !important;
+	right: 0 !important;
 }
 
 .test {
-  font: small-caption;
-  font-weight: 400 !important;
-  font-size: 17px !important;
-  color: black;
- 
+	font: small-caption;
+	font-weight: 400 !important;
+	font-size: 17px !important;
+	color: black;
 }
-
-
 
 .test-demo::before {
-  content: '';
-  top:23px;
-  right: 0;
-  position: absolute;
-  left: 0;
-  height: 25px;
-  width: 100%;
-  background-color: transparent;
+	content: '';
+	top: 23px;
+	right: 0;
+	position: absolute;
+	left: 0;
+	height: 25px;
+	width: 100%;
+	background-color: transparent;
 }
-
-
-
 
 .messenger::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: 100%;
-  animation: ping 2s linear infinite;
-  border: 1px solid #1197f6;
-  transition: all 1s;
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: 56px;
+	height: 56px;
+	border-radius: 100%;
+	animation: ping 2s linear infinite;
+	border: 1px solid #1197f6;
+	transition: all 1s;
 }
 
-
 @keyframes ping {
-  from {
-    transform: scale(1);
-    opacity: 1;
-    border: 1px solid #1197f6;
-  }
+	from {
+		transform: scale(1);
+		opacity: 1;
+		border: 1px solid #1197f6;
+	}
 
-  16.5% {
-    transform: scale(1.20);
-    opacity: 1;
-    border: 1px solid #1197f6;
+	16.5% {
+		transform: scale(1.2);
+		opacity: 1;
+		border: 1px solid #1197f6;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  33% {
-    transform: scale(1.20);
-    opacity: 1;
-    border: 1px solid transparent;
+	33% {
+		transform: scale(1.2);
+		opacity: 1;
+		border: 1px solid transparent;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  49.5% {
-    transform: scale(1.35);
-    opacity: 1;
-    border: 1px solid #1197f6;
+	49.5% {
+		transform: scale(1.35);
+		opacity: 1;
+		border: 1px solid #1197f6;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  66% {
-    transform: scale(1.35);
-    opacity: 1;
-    border: 1px solid white;
+	66% {
+		transform: scale(1.35);
+		opacity: 1;
+		border: 1px solid white;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  88.5% {
-    transform: scale(1.50);
-    opacity: 1;
-    border: 1px solid #1197f6;
+	88.5% {
+		transform: scale(1.5);
+		opacity: 1;
+		border: 1px solid #1197f6;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  100% {
-    transform: scale(1.50);
-    opacity: 1;
-    border: 1px solid white;
+	100% {
+		transform: scale(1.5);
+		opacity: 1;
+		border: 1px solid white;
 
-    transition-timing-function: ease-in-out;
-  }
+		transition-timing-function: ease-in-out;
+	}
 
-  87.5% {
-    transform: scale(1.65);
-    opacity: 1;
-    border: 1px solid #1197f6;
-    transition-timing-function: ease-in-out;
-  }
+	87.5% {
+		transform: scale(1.65);
+		opacity: 1;
+		border: 1px solid #1197f6;
+		transition-timing-function: ease-in-out;
+	}
 }
 
 .modal-box {
-  padding: 0 !important;
+	padding: 0 !important;
+}
+	
+.react-tabs__tab--selected {
+	background: #fff;
+	border-color: #aaa;
+	color: black;
+	border-radius: 0 !important ;
 }
 
-/* .react-tabs__tab--selected {
-
-   background: none !important; 
-  border-color: none !important; 
-  color: none !important; 
-  border-radius: none !important; 
+.react-tabs__tab--selected:focus {
+	color: #014d8b;
+	
 }
 
-.react-tabs__tab {
-  display: flex;
-  border: none !important;
-  border-bottom: none;
-  bottom: 0 !important;
-  position: relative;
-  list-style: none;
-  padding: 0 !important;
-  cursor: pointer;
-} */
+.react-tabs__tab-list {
+	font-size: 14px;
+  
+}
+
+.react-tabs__tab:focus {
+  border: 2px solid #2270b0;
+
+} 
+
+
+input[type="file"] {
+  display: none;
+}
+
+.box-check-lick {
+	max-height: 200px;
+ overflow: auto;
+}

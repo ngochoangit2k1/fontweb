@@ -152,11 +152,11 @@ function Home({ Data }) {
 										</label>
 										<div>
 											<Image
-												src={item.image}
+												src={item.id.image}
 												alt='img'
 												width={800}
 												height={800}
-												className='w-[99%]  object-cover  '
+												className='w-[99%] object-cover  '
 											></Image>
 										</div>
 									</div>
