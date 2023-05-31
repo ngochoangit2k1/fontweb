@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
-
 import { BiError } from 'react-icons/bi'
 const Login = () => {
 	const {

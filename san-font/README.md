@@ -9,19 +9,15 @@ npm: 8.7.0
 
 Install project dependencies: `npm install`
 
-## Development (For Developer)
-
-Run: npm run dev
-Open browser at: http://localhost:3000
-
-## Development Build
-
-Run: npm start
-
-## Install Json
+## Install Json-server
 
 Install json-server: npm i json-server
 
 ## Run Server
 
 Run: npm run serve-json
+
+## Development (For Developer)
+
+Run: npm run dev
+Open browser at: http://localhost:3000
