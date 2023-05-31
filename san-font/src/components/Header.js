@@ -37,7 +37,7 @@ const Header = () => {
 							</button>
 						</Link>
 
-						<Link href={'/register'}>
+						<Link href={'/Auth/register'}>
 							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
 								<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 								Đăng ký

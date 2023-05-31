@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { useForm } from 'react-hook-form'
 
+import { BiError } from 'react-icons/bi'
 const Login = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm()
+	const onSubmit = data => console.log(data)
+
 	const [open, setOpen] = useState(false)
 
 	const toggle = () => {
@@ -33,7 +41,10 @@ const Login = () => {
 				</div>
 			</div>
 
-			<form className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'>
+			<form
+				onSubmit={handleSubmit(onSubmit)}
+				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'
+			>
 				<div className='w-[85%] mx-auto pt-8'>
 					{' '}
 					<h1 className='font-medium text-2xl'>Đăng Nhập</h1>
@@ -43,9 +54,26 @@ const Login = () => {
 							Tên người dùng hoặc Địa chỉ Email
 						</label>
 						<input
+							id='email'
 							type='text'
-							className='bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
+							placeholder='Email'
+							className={`bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3
+							${
+								errors.email
+									? 'border border-red-600 ring-2 ring-red-100'
+									: 'border border-gray-300'
+							}`}
+							{...register('email', {
+								required: true,
+								// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+							})}
 						/>
+						{errors.email && (
+							<p className='mt-1 gap-1 text-sm flex text-red-600'>
+								<BiError className='mt-[3px]' />{' '}
+								<span>This field is required</span>
+							</p>
+						)}
 					</div>
 					<div className=' mt-4 relative '>
 						<div className=''>
@@ -53,9 +81,22 @@ const Login = () => {
 								Mật khẩu
 							</label>
 							<input
+								id='password'
 								type={open === false ? 'password' : 'text'}
-								className='test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3'
+								placeholder='password'
+								className={`test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3			${
+									errors.password
+										? 'border border-red-600 ring-2 ring-red-100'
+										: 'border border-gray-300'
+								}`}
+								{...register('password', { required: true, minLength: 8 })}
 							/>
+							{errors.password && (
+								<p className='mt-1 gap-1 text-sm flex text-red-600'>
+									<BiError className='mt-[3px]' />{' '}
+									<span>This field is required</span>
+								</p>
+							)}
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-9 right-2'>
 							{open === false ? (
@@ -81,13 +122,16 @@ const Login = () => {
 						</label>
 					</div>
 					<div className='text-center text-base'>
-						<Link href={'/reset-pass'}>
+						<Link href={'/Auth/resetpass'}>
 							<span className='font-normal'>Quên tài khoản đăng nhập ?</span>
 						</Link>
 					</div>
 					<div className='w-[30%] mx-auto'>
 						{' '}
-						<button className='flex mt-5   max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-white'>
+						<button
+							type='submit'
+							className='flex mt-5   max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-white'
+						>
 							<a className='ml-2 max-md:text-[13px] text-base font-normal'>
 								Đăng Nhập
 							</a>
@@ -95,7 +139,7 @@ const Login = () => {
 					</div>
 					<div className='text-center text-xl py-8'>
 						Bạn chưa có tài khoản ?{' '}
-						<Link href={'/register'}>
+						<Link href={'/Auth/register'}>
 							<span className='font-bold'>Đăng ký ngay</span>
 						</Link>
 					</div>
