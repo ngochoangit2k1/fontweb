@@ -152,7 +152,7 @@ function Home({ Data }) {
 										</label>
 										<div>
 											<Image
-												src={item.id.image}
+												src={item.image}
 												alt='img'
 												width={800}
 												height={800}
