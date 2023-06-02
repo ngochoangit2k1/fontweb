@@ -1,14 +1,23 @@
-import NextAuth from 'next-auth/next'
+import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
+import FacebookProvider from 'next-auth/providers/facebook'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import dbConnect from '../../../../config/dbConnect'
 import bcrypt from 'bcryptjs'
 import User from '../../../../model/user'
-
+import dbConnect from '../../../../config/dbConnect'
 export default NextAuth({
-	session: {
-		strategy: 'jwt',
-	},
 	providers: [
+		// Google providers
+		GoogleProvider({
+			clientId: process.env.GOOGLE_ID,
+			clientSecret: process.env.GOOGLE_SECRET,
+		}),
+		// facebook providers
+		FacebookProvider({
+			clientId: process.env.FACEBOOK_ID,
+			clientSecret: process.env.FACEBOOK_SECRET,
+		}),
+
 		CredentialsProvider({
 			async authorize(credentials, req) {
 				dbConnect()
@@ -28,8 +37,4 @@ export default NextAuth({
 			},
 		}),
 	],
-	pages: {
-		signIn: 'Auth/login',
-	},
-	secret: process.env.NEXTAUTH_SECRET,
 })

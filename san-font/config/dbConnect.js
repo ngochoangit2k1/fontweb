@@ -1,9 +1,9 @@
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 
-const dbConnext = () => {
-	if (mongoose.connection.readyState >= 1) return
+// const dbConnext = () => {
+// 	if (mongoose.connection.readyState >= 1) return
 
-	mongoose.connect('mongodb://0.0.0.0:27017/san-font')
-}
+// 	mongoose.connect('process.env.DB_URI')
+// }
 
-export default dbConnext
+// export default dbConnext

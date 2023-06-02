@@ -1,47 +1,43 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-// import { useForm } from 'react-hook-form'
-// import { BiError } from 'react-icons/bi'
+import { useSession, signIn, signOut } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc'
-// import { useSession, signIn, signOut } from 'next-auth/react'
-import { signIn } from 'next-auth/react'
+import { FaFacebook } from 'react-icons/fa'
+import { useFormik } from 'formik'
+import login_validate from '../../../../lib/validate'
+import { BiError } from 'react-icons/bi'
 
 const Login = () => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
+	//formik hook
+	const formik = useFormik({
+		initialValues: {
+			email: '',
+			password: '',
+		},
+		validate: login_validate,
+		onSubmit,
+	})
 
-	const submitHandler = async e => {
-		e.preventDefault()
-
-		try {
-			const data = await signIn('credentials', {
-				redirect: false,
-				email,
-				password,
-			})
-			console.log(data)
-		} catch (error) {
-			console.log(error)
-		}
+	async function onSubmit(values) {
+		console.log(values)
 	}
-	// const {
-	// 	register,
-	// 	handleSubmit,
-	// 	formState: { errors },
-	// } = useForm()
-	// const onSubmit = data => console.log(data)
 
-	const [open, setOpen] = useState(false)
-
+	//eye password
+	const [eye, setEye] = useState(false)
 	const toggle = () => {
-		setOpen(!open)
+		setEye(!eye)
+	}
+	// google handle function
+	async function handleGoogleSignIn() {
+		signIn()
 	}
 
-	// handleGoogleSignIn
-	async function handleGoogleSignIn() {
-		signIn('google', { callbackUrl: 'http://localhost:3000' })
+	// Facebook handle function
+	async function handleFacebookSignIn() {
+		signIn()
 	}
+
 	return (
 		<>
 			<div className='w-full  flex mt-10'>
@@ -67,8 +63,7 @@ const Login = () => {
 			</div>
 
 			<form
-				// onSubmit={handleSubmit(onSubmit)}
-				onSubmit={submitHandler}
+				onSubmit={formik.handleSubmit}
 				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
@@ -84,26 +79,16 @@ const Login = () => {
 							type='text'
 							placeholder='Email'
 							className='bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
-							value={email}
-							onChange={e => setEmail(e.target.value)}
-							required
-							// className={`bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3
-							// ${
-							// 	errors.email
-							// 		? 'border border-red-600 ring-2 ring-red-100'
-							// 		: 'border border-gray-300'
-							// }`}
-							// {...register('email', {
-							// 	required: true,
-							// 	// pattern: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
-							// })}
+							{...formik.getFieldProps('email')}
 						/>
-						{/* {errors.email && (
-							<p className='mt-1 gap-1 text-sm flex text-red-600'>
-								<BiError className='mt-[3px]' />{' '}
-								<span>This field is required</span>
-							</p>
-						)} */}
+						{formik.errors.email && formik.touched.email ? (
+							<span className='flex gap-1 font-normal text-sm text-red-600 '>
+								{' '}
+								<BiError className='mt-[3px]' /> {formik.errors.email}
+							</span>
+						) : (
+							<></>
+						)}
 					</div>
 					<div className=' mt-4 relative '>
 						<div className=''>
@@ -112,29 +97,22 @@ const Login = () => {
 							</label>
 							<input
 								id='password'
-								type={open === false ? 'password' : 'text'}
+								type={eye === false ? 'password' : 'text'}
 								placeholder='password'
 								className='test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3	'
-								value={password}
-								onChange={e => setPassword(e.target.value)}
-								required
-								// className={`test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3
-								// ${
-								// 	errors.password
-								// 		? 'border border-red-600 ring-2 ring-red-100'
-								// 		: 'border border-gray-300'
-								// }`}
-								// {...register('password', { required: true, minLength: 8 })}
+								{...formik.getFieldProps('password')}
 							/>
-							{/* {errors.password && (
-								<p className='mt-1 gap-1 text-sm flex text-red-600'>
-									<BiError className='mt-[3px]' />{' '}
-									<span>This field is required</span>
-								</p>
-							)} */}
+							{formik.errors.password && formik.touched.password ? (
+								<span className='flex gap-1 font-normal text-sm text-red-600 '>
+									{' '}
+									<BiError className='mt-[3px]' /> {formik.errors.password}
+								</span>
+							) : (
+								<></>
+							)}
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-9 right-2'>
-							{open === false ? (
+							{eye === false ? (
 								<AiOutlineEye onClick={toggle} />
 							) : (
 								<AiOutlineEyeInvisible onClick={toggle} />
@@ -181,6 +159,18 @@ const Login = () => {
 						>
 							<a className='flex gap-2 text-sm font-normal'>
 								Sign in with Google <FcGoogle className='text-lg' />
+							</a>
+						</button>
+					</div>
+					<div className=''>
+						{' '}
+						<button
+							onClick={handleFacebookSignIn}
+							className='border pl-[35%] border-gray-300 mt-5 px-auto w-full  h-12 bg-white rounded   text-black'
+						>
+							<a className='flex gap-2 text-sm font-normal'>
+								Sign in with Facebook{' '}
+								<FaFacebook className='text-lg text-[#1876f2]' />
 							</a>
 						</button>
 					</div>

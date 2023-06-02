@@ -6,13 +6,10 @@ export default function App({
 	pageProps: { session, ...pageProps },
 }) {
 	return (
-		<>
-			<SessionProvider session={session}>
-				{' '}
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</SessionProvider>
-		</>
+		<SessionProvider session={session}>
+			<Layout>
+				<Component {...pageProps} />
+			</Layout>
+		</SessionProvider>
 	)
 }
