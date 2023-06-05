@@ -6,9 +6,11 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 import { useFormik } from 'formik'
 import login_validate from '../../../../lib/validate'
+import { useRouter } from 'next/router'
 import { BiError } from 'react-icons/bi'
 
 const Login = () => {
+	const router = useRouter()
 	//formik hook
 	const formik = useFormik({
 		initialValues: {
@@ -20,6 +22,14 @@ const Login = () => {
 	})
 
 	async function onSubmit(values) {
+		const status = await signIn('credentials', {
+			// redirect: false,
+			email: values.email,
+			password: values.password,
+			// callbackUrl: '/',
+		})
+		if (status.ok) router.push(status.url)
+
 		console.log(values)
 	}
 
@@ -30,12 +40,12 @@ const Login = () => {
 	}
 	// google handle function
 	async function handleGoogleSignIn() {
-		signIn()
+		signIn('google', { callbackUrl: 'http://localhost:3000' })
 	}
 
 	// Facebook handle function
 	async function handleFacebookSignIn() {
-		signIn()
+		signIn('facebook', { callbackUrl: 'http://localhost:3000' })
 	}
 
 	return (
@@ -78,7 +88,12 @@ const Login = () => {
 							id='email'
 							type='text'
 							placeholder='Email'
-							className='bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
+							className={`${'bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'}
+							${
+								formik.errors.email && formik.touched.email
+									? 'border-red-600 ring-2 ring-red-200'
+									: ''
+							}`}
 							{...formik.getFieldProps('email')}
 						/>
 						{formik.errors.email && formik.touched.email ? (
@@ -99,7 +114,12 @@ const Login = () => {
 								id='password'
 								type={eye === false ? 'password' : 'text'}
 								placeholder='password'
-								className='test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3	'
+								className={`${'test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3'}
+								${
+									formik.errors.password && formik.touched.password
+										? 'border-red-600 ring-2 ring-red-200'
+										: ''
+								} `}
 								{...formik.getFieldProps('password')}
 							/>
 							{formik.errors.password && formik.touched.password ? (
@@ -166,7 +186,7 @@ const Login = () => {
 						{' '}
 						<button
 							onClick={handleFacebookSignIn}
-							className='border pl-[35%] border-gray-300 mt-5 px-auto w-full  h-12 bg-white rounded   text-black'
+							className='border pl-[35%] border-gray-300 mt-3 px-auto w-full  h-12 bg-white rounded   text-black'
 						>
 							<a className='flex gap-2 text-sm font-normal'>
 								Sign in with Facebook{' '}

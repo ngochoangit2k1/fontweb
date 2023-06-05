@@ -9,13 +9,10 @@ export default async function handler(req, res) {
 
 		// check email đã đăng ký
 		const duplicateEmail = await Users.findOne({ email })
-		if (duplicateEmail)
-			return res.status(401).json({ messge: 'email đã được sử dụng!' })
-
-		const body = { name, email, password }
-
-		const user = await Users.create(body)
-
-		res.status(201).json({ user })
+		if (duplicateEmail) {
+			const test = { ...duplicateEmail.toJSON() }
+			console.log(test)
+			return test
+		}
 	}
 }

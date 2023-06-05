@@ -2,10 +2,14 @@ import NextAuth from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import FacebookProvider from 'next-auth/providers/facebook'
 import CredentialsProvider from 'next-auth/providers/credentials'
-import bcrypt from 'bcryptjs'
-import User from '../../../../model/user'
-import dbConnect from '../../../../config/dbConnect'
+import connectMongo from '../../../../database/conn'
+import Users from '../../../../model/Schema'
+import { compare } from 'bcryptjs'
+
 export default NextAuth({
+	session: {
+		strategy: 'jwt',
+	},
 	providers: [
 		// Google providers
 		GoogleProvider({
@@ -17,13 +21,12 @@ export default NextAuth({
 			clientId: process.env.FACEBOOK_ID,
 			clientSecret: process.env.FACEBOOK_SECRET,
 		}),
-
 		CredentialsProvider({
 			async authorize(credentials, req) {
-				dbConnect()
+				connectMongo()
 				const { email, password } = credentials
 
-				const user = await User.findOne({ email })
+				const user = await Users.findOne({ email })
 
 				if (!user) {
 					throw new Error('email hoặc password không hợp lệ')
