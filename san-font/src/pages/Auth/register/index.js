@@ -1,26 +1,37 @@
+'use client'
+
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FiUser } from 'react-icons/fi'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { useFormik } from 'formik'
-import { registerValidate } from '../../../../lib/validate'
-import { BiError } from 'react-icons/bi'
+import axios from 'axios'
+import { BiError, BiLeftArrowCircle } from 'react-icons/bi'
+
+import { useRouter } from 'next/router'
 
 const Register = () => {
-	const formik = useFormik({
-		initialValues: {
-			name: '',
-			email: '',
-			password: '',
-			confirmPassword: '',
-		},
-		validate: registerValidate,
-		onSubmit,
-	})
-	async function onSubmit(values) {
-		console.log(values)
-	}
+	const router = useRouter()
+	const [name, setName] = useState('')
+	const [email, setEmail] = useState('')
+	const [password, setPassword] = useState('')
 
+	const submitHandler = async e => {
+		e.preventDefault()
+
+		try {
+			const { data } = await axios.post('/api/register', {
+				name,
+				email,
+				password,
+			})
+			console.log(data)
+			if (data.user.email) {
+				router.push('/Auth/login')
+			}
+		} catch (error) {
+			console.log(error)
+		}
+	}
 	//eye password
 	const [eyeOne, setEyeOne] = useState(false)
 	const [eye, setEye] = useState(false)
@@ -35,28 +46,15 @@ const Register = () => {
 		<>
 			<div className='w-full  flex mt-10'>
 				<div className='w-[80%] mx-auto '>
-					<Link className='flex font-normal text-base' href={'/'}>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							fill='none'
-							viewBox='0 0 24 24'
-							strokeWidth='1.5'
-							stroke='currentColor'
-							className='mr-1 w-6 h-6'
-						>
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								d='M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-							/>
-						</svg>
+					<Link className='gap-1 flex font-normal text-base' href={'/'}>
+						<BiLeftArrowCircle className='text-xl mt-[3px]' />
 						Về trang chủ
 					</Link>
 				</div>
 			</div>
 
 			<form
-				onSubmit={formik.handleSubmit}
+				onSubmit={submitHandler}
 				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
@@ -68,43 +66,51 @@ const Register = () => {
 							type='text'
 							id='name'
 							placeholder='Họ tên'
-							className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
-							${
-								formik.errors.name && formik.touched.name
-									? 'border-red-600 ring-2 ring-red-200'
-									: ''
-							}`}
-							{...formik.getFieldProps('name')}
+							className='bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
+							required
+							value={name}
+							onChange={e => setName(e.target.value)}
+							// className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
+							// ${
+							// 	formik.errors.name && formik.touched.name
+							// 		? 'border-red-600 ring-2 ring-red-200'
+							// 		: ''
+							// }`}
+							// {...formik.getFieldProps('name')}
 						/>
-						{formik.errors.name && formik.touched.name ? (
+						{/* {formik.errors.name && formik.touched.name ? (
 							<span className='flex gap-1 font-normal text-sm text-red-600 '>
 								{' '}
 								<BiError className='mt-[3px]' /> {formik.errors.name}
 							</span>
 						) : (
 							<> </>
-						)}
+						)} */}
 					</div>
 					<div className='mt-4'>
 						<input
 							type='Email'
 							id='email'
 							placeholder='Email'
-							className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
-							${
-								formik.errors.email && formik.touched.email
-									? 'border-red-600 ring-2 ring-red-200'
-									: ''
-							}`}
-							{...formik.getFieldProps('email')}
+							className='bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
+							required
+							value={email}
+							onChange={e => setEmail(e.target.value)}
+							// className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
+							// ${
+							// 	formik.errors.email && formik.touched.email
+							// 		? 'border-red-600 ring-2 ring-red-200'
+							// 		: ''
+							// }`}
+							// {...formik.getFieldProps('email')}
 						/>
-						{formik.errors.email && formik.touched.email ? (
+						{/* {formik.errors.email && formik.touched.email ? (
 							<span className='flex gap-1 font-normal text-sm text-red-600 '>
 								<BiError className='mt-[3px]' /> {formik.errors.email}
 							</span>
 						) : (
 							<></>
-						)}
+						)} */}
 					</div>
 					<p className='mt-4 font-normal text-xs text-[#8d9399]'>
 						* Không sử dụng email Yahoo, email trường CĐ, ĐH khi đăng ký
@@ -115,22 +121,26 @@ const Register = () => {
 								type={eyeOne === false ? 'password' : 'text'}
 								placeholder='Mật khẩu'
 								id='password'
-								className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
-								${
-									formik.errors.password && formik.touched.password
-										? 'border-red-600 ring-2 ring-red-200'
-										: ''
-								}`}
-								{...formik.getFieldProps('password')}
+								className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
+								required
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+								// className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
+								// ${
+								// 	formik.errors.password && formik.touched.password
+								// 		? 'border-red-600 ring-2 ring-red-200'
+								// 		: ''
+								// }`}
+								// {...formik.getFieldProps('password')}
 							/>
-							{formik.errors.password && formik.touched.password ? (
+							{/* {formik.errors.password && formik.touched.password ? (
 								<span className='flex gap-1 font-normal text-sm text-red-600 '>
 									{' '}
 									<BiError className='mt-[3px]' /> {formik.errors.password}
 								</span>
 							) : (
 								<></>
-							)}
+							)} */}
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2'>
 							{eyeOne === false ? (
@@ -146,16 +156,19 @@ const Register = () => {
 								type={eye === false ? 'password' : 'text'}
 								id='confirmPassword'
 								placeholder='Nhập lại mật khẩu'
-								className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
-								${
-									formik.errors.confirmPassword &&
-									formik.touched.confirmPassword
-										? 'border-red-600 ring-2 ring-red-200'
-										: ''
-								}`}
-								{...formik.getFieldProps('confirmPassword')}
+								className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
+								required
+
+								// className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
+								// ${
+								// 	formik.errors.confirmPassword &&
+								// 	formik.touched.confirmPassword
+								// 		? 'border-red-600 ring-2 ring-red-200'
+								// 		: ''
+								// }`}
+								// {...formik.getFieldProps('confirmPassword')}
 							/>
-							{formik.errors.confirmPassword &&
+							{/* {formik.errors.confirmPassword &&
 							formik.touched.confirmPassword ? (
 								<span className='flex gap-1 font-normal text-sm text-red-600 '>
 									{' '}
@@ -164,7 +177,7 @@ const Register = () => {
 								</span>
 							) : (
 								<></>
-							)}
+							)} */}
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2'>
 							{eye === false ? (

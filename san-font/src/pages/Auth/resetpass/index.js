@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { FiUser } from 'react-icons/fi'
 import * as Yup from 'yup'
-import { BiError } from 'react-icons/bi'
+import { BiError, BiLeftArrowCircle } from 'react-icons/bi'
 import { useFormik } from 'formik'
 
 const ResetPass = () => {
@@ -25,21 +25,8 @@ const ResetPass = () => {
 		<>
 			<div className='w-full  flex mt-10'>
 				<div className='w-[80%] mx-auto '>
-					<Link className='flex font-normal text-base' href={'/'}>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							fill='none'
-							viewBox='0 0 24 24'
-							strokeWidth='1.5'
-							stroke='currentColor'
-							className='mr-1 w-6 h-6'
-						>
-							<path
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								d='M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z'
-							/>
-						</svg>
+					<Link className='gap-1 flex font-normal text-base' href={'/'}>
+						<BiLeftArrowCircle className='text-xl mt-[3px]' />
 						Về trang chủ
 					</Link>
 				</div>
@@ -85,7 +72,7 @@ const ResetPass = () => {
 						</button>
 					</div>
 					<div className='text-center text-xl py-6'>
-						<Link href={'/register'}>
+						<Link href={'/Auth/register'}>
 							<span className='font-bold'>Đăng ký ngay</span>
 						</Link>
 					</div>

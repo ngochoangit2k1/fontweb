@@ -5,8 +5,12 @@ import React, { useEffect, useState } from 'react'
 import { FiUser } from 'react-icons/fi'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { useRouter } from 'next/router'
+import { useSession, signOut } from 'next-auth/react'
+import { FaSignOutAlt } from 'react-icons/fa'
 
 const Header = () => {
+	const { data } = useSession()
+
 	const [pathName, setPathName] = useState('')
 	const router = useRouter()
 	const [toggleMenu, setToggleMenu] = useState(true)
@@ -37,12 +41,34 @@ const Header = () => {
 							</button>
 						</Link>
 
-						<Link href={'/Auth/register'}>
-							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
-								<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
-								Đăng ký
-							</button>
-						</Link>
+						{data?.user ? (
+							<div className='flex'>
+								<Link href={''}>
+									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white'>
+										<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />
+										{data?.user?.name}
+									</button>
+								</Link>
+
+								<Link href={''}>
+									<button
+										onClick={() => signOut()}
+										className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'
+									>
+										<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
+										Đăng xuất
+									</button>
+								</Link>
+							</div>
+						) : (
+							<Link href={'/Auth/login'}>
+								<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
+									<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
+									Đăng nhập
+								</button>
+							</Link>
+						)}
+
 						<button
 							onClick={() => setToggleMenu(!toggleMenu)}
 							data-collapse-toggle='mobile-menu-2'

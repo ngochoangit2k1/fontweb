@@ -26,10 +26,10 @@ const Footer = () => {
 							{' '}
 							<h1 className='text-2xl font-medium'>HỖ TRỢ</h1>
 							<div className='font-normal text-base mt-4'>
-								<Link href={'support/instruct'}>
+								<Link href={'/support/instruct'}>
 									<li> Hướng dẫn cài font chữ cho máy tính</li>
 								</Link>
-								<Link href={'support/donate'}>
+								<Link href={'/support/donate'}>
 									<li> Donate </li>
 								</Link>
 								<Link href={'/top-download'}>

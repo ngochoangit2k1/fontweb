@@ -1,3 +1,4 @@
+import ProductFont from '@/components/ProductFont'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaFacebook } from 'react-icons/fa'
@@ -64,8 +65,6 @@ const Detail = ({ data }) => {
 				</div>
 				<div className='w-[50%] bg-yellow-200 h-[1000px] px-3'>
 					<h1 className='text-2xl font-bold mt-2'> Font liên quan </h1>
-
-					<div></div>
 				</div>
 			</div>
 		</>

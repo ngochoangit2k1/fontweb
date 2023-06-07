@@ -6,6 +6,7 @@ import BL5 from '/public/images/BL5.jpg'
 import BL6 from '/public/images/BL6.jpg'
 import BL7 from '/public/images/BL7.jpg'
 import BL8 from '/public/images/BL8.jpg'
+import HD from '/public/images/HD.jpg'
 import Logo from '/public/images/Logo.png'
 const imgGlobal = {
 	Logo,
@@ -17,6 +18,7 @@ const imgGlobal = {
 	BL6,
 	BL7,
 	BL8,
+	HD,
 }
 
 export default imgGlobal
