@@ -1,11 +1,9 @@
-'use client'
-
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { FiUser } from 'react-icons/fi'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import axios from 'axios'
-import { BiError, BiLeftArrowCircle } from 'react-icons/bi'
+import { BiLeftArrowCircle } from 'react-icons/bi'
 
 import { useRouter } from 'next/router'
 
@@ -34,11 +32,12 @@ const Register = () => {
 	}
 	//eye password
 	const [eyeOne, setEyeOne] = useState(false)
-	const [eye, setEye] = useState(false)
-	//eye confirmPassword
 	const toggle = () => {
 		setEyeOne(!eyeOne)
 	}
+
+	//eye confirmPassword
+	const [eye, setEye] = useState(false)
 	const toggleOne = () => {
 		setEye(!eye)
 	}
@@ -70,22 +69,7 @@ const Register = () => {
 							required
 							value={name}
 							onChange={e => setName(e.target.value)}
-							// className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
-							// ${
-							// 	formik.errors.name && formik.touched.name
-							// 		? 'border-red-600 ring-2 ring-red-200'
-							// 		: ''
-							// }`}
-							// {...formik.getFieldProps('name')}
 						/>
-						{/* {formik.errors.name && formik.touched.name ? (
-							<span className='flex gap-1 font-normal text-sm text-red-600 '>
-								{' '}
-								<BiError className='mt-[3px]' /> {formik.errors.name}
-							</span>
-						) : (
-							<> </>
-						)} */}
 					</div>
 					<div className='mt-4'>
 						<input
@@ -96,21 +80,7 @@ const Register = () => {
 							required
 							value={email}
 							onChange={e => setEmail(e.target.value)}
-							// className={`${'bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'}
-							// ${
-							// 	formik.errors.email && formik.touched.email
-							// 		? 'border-red-600 ring-2 ring-red-200'
-							// 		: ''
-							// }`}
-							// {...formik.getFieldProps('email')}
 						/>
-						{/* {formik.errors.email && formik.touched.email ? (
-							<span className='flex gap-1 font-normal text-sm text-red-600 '>
-								<BiError className='mt-[3px]' /> {formik.errors.email}
-							</span>
-						) : (
-							<></>
-						)} */}
 					</div>
 					<p className='mt-4 font-normal text-xs text-[#8d9399]'>
 						* Không sử dụng email Yahoo, email trường CĐ, ĐH khi đăng ký
@@ -125,22 +95,7 @@ const Register = () => {
 								required
 								value={password}
 								onChange={e => setPassword(e.target.value)}
-								// className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
-								// ${
-								// 	formik.errors.password && formik.touched.password
-								// 		? 'border-red-600 ring-2 ring-red-200'
-								// 		: ''
-								// }`}
-								// {...formik.getFieldProps('password')}
 							/>
-							{/* {formik.errors.password && formik.touched.password ? (
-								<span className='flex gap-1 font-normal text-sm text-red-600 '>
-									{' '}
-									<BiError className='mt-[3px]' /> {formik.errors.password}
-								</span>
-							) : (
-								<></>
-							)} */}
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2'>
 							{eyeOne === false ? (

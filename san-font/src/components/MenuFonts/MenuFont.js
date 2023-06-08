@@ -7,7 +7,7 @@ const MenuFont = ({ Data, setHomeData }) => {
 	}
 	return (
 		<>
-			<div className='w-[65%] mx-auto mt-10 '>
+			<div className='w-[65%] mx-auto mt-10 max-lg:w-[90%]'>
 				<ul className=' flex flex-wrap w-full gap-5 justify-center max-2xl:w-[100%]'>
 					<NameFont onClick={() => setHomeData(Data)} test={'All font'} />
 					<NameFont
@@ -86,7 +86,6 @@ const MenuFont = ({ Data, setHomeData }) => {
 					/>
 					<NameFont
 						onClick={() => funcFilter('Font chọn lọc')}
-						className={'bg-[#ffa800]'}
 						test={'Font chọn lọc'}
 					/>
 					<NameFont

@@ -31,7 +31,7 @@ const Header = () => {
 						></Image>
 					</Link>
 
-					<div className='flex items-center gap-1 xl:order-2'>
+					{/* <div className='flex items-center gap-1 xl:order-2'>
 						<Link href={'/upFont'}>
 							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
 								<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
@@ -102,7 +102,41 @@ const Header = () => {
 								/>
 							</svg>
 						</button>
-					</div>
+					</div> */}
+
+					<button
+						onClick={() => setToggleMenu(!toggleMenu)}
+						data-collapse-toggle='mobile-menu-2'
+						type='button'
+						className='inline-flex max-lg:mr-3 items-center p-2 ml-1 text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
+						aria-controls='mobile-menu-2'
+						aria-expanded='false'
+					>
+						<svg
+							className='w-6 h-6'
+							fill='currentColor'
+							viewBox='0 0 20 20'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								fillRule='evenodd'
+								d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
+								clipRule='evenodd'
+							/>
+						</svg>
+						<svg
+							className='hidden w-6 h-6'
+							fill='currentColor'
+							viewBox='0 0 20 20'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								fillRule='evenodd'
+								d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+								clipRule='evenodd'
+							/>
+						</svg>
+					</button>
 					<div
 						className={`${
 							toggleMenu ? 'hidden' : ''
@@ -231,6 +265,45 @@ const Header = () => {
 								)}
 							</li>
 						</ul>
+
+						<div className='flex ml-10 items-center gap-1 xl:order-2'>
+							<Link href={'/upFont'}>
+								<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
+									<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
+									<span className='ml-2 max-md:text-[13px] text-[15px]'>
+										Upload font
+									</span>
+								</button>
+							</Link>
+
+							{data?.user ? (
+								<div className='flex'>
+									<Link href={'/profiles/profile'}>
+										<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white'>
+											<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />
+											{data?.user?.name}
+										</button>
+									</Link>
+
+									<Link href={''}>
+										<button
+											onClick={() => signOut()}
+											className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'
+										>
+											<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
+											Đăng xuất
+										</button>
+									</Link>
+								</div>
+							) : (
+								<Link href={'/Auth/login'}>
+									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
+										<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
+										Đăng nhập
+									</button>
+								</Link>
+							)}
+						</div>
 					</div>
 				</div>
 			</nav>

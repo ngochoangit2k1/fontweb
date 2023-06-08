@@ -1,4 +1,3 @@
-import ProductFont from '@/components/ProductFont'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FaFacebook } from 'react-icons/fa'

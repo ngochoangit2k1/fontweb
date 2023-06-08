@@ -58,7 +58,7 @@ const UpFont = () => {
 					<hr className='mt-14' />
 
 					{/* Ảnh đại diện */}
-					<h3 className='text-black font-bold mt-3 '>
+					<h3 className='text-black font-bold mt-5 '>
 						Ảnh đại diện <span className='text-[#ff0808]'>*</span>
 					</h3>
 

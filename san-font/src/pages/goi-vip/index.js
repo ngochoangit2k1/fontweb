@@ -43,7 +43,7 @@ const Vip = () => {
 						</div>
 
 						<div className='w-[48%] mx-auto '>
-							<button className=' mt-16  w-full cursor-no-drop hover:bg-[#ff0000] h-10 bg-oranges  text-white'>
+							<button className=' mt-16  w-full cursor-no-drop  h-10 bg-oranges  text-white'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
 						</div>

@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
 
-const ProductFont = ({ type }) => {
+const ProductFont = ({ categoryFont }) => {
 	return (
 		<>
-			{type.map(item => {
+			{categoryFont.map(item => {
 				return (
 					<div className='bg-white shadow-md' key={item.id}>
 						<div className='relative'>
@@ -68,7 +67,7 @@ const ProductFont = ({ type }) => {
 								{item.user}
 							</p>
 							<p>
-								<span className='font-bold'>Việt hóa :</span>
+								<span className='font-bold'>Việt hóa:</span>
 								{item.translate}
 							</p>
 							<p>

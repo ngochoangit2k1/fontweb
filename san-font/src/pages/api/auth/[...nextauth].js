@@ -5,6 +5,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
 import User from '../../../../models/user'
 import Connect from '../../../../config/connect'
+
 export default NextAuth({
 	providers: [],
 	providers: [
@@ -13,10 +14,13 @@ export default NextAuth({
 			clientId: process.env.GOOGLE_ID,
 			clientSecret: process.env.GOOGLE_SECRET,
 		}),
+		//facebook
 		FacebookProvider({
 			clientId: process.env.FACEBOOK_ID,
 			clientSecret: process.env.FACEBOOK_SECRET,
 		}),
+
+		//signIn
 		CredentialsProvider({
 			async authorize(credentials, req) {
 				Connect()

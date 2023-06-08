@@ -8,6 +8,8 @@ import BL7 from '/public/images/BL7.jpg'
 import BL8 from '/public/images/BL8.jpg'
 import HD from '/public/images/HD.jpg'
 import Logo from '/public/images/Logo.png'
+import AVT from '/public/images/AVT.png'
+
 const imgGlobal = {
 	Logo,
 	BL1,
@@ -19,6 +21,7 @@ const imgGlobal = {
 	BL7,
 	BL8,
 	HD,
+	AVT,
 }
 
 export default imgGlobal

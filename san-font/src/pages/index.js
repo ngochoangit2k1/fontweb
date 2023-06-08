@@ -2,12 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React from 'react'
 import Link from 'next/link'
-import NameFont from '@/components/MenuFonts/NameFont'
-
 import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
 import MenuFont from '@/components/MenuFonts/MenuFont'
-import ProductFont from '@/components/ProductFont'
 
 function Home({ Data }) {
 	const [HomeData, setHomeData] = useState(Data)
@@ -116,14 +113,14 @@ function Home({ Data }) {
 						// 		</Link>
 						// 	</div>
 						// </div>
-						<div className='bg-white shadow-md' key={id}>
+						<div className='bg-white shadow-md' key={item.id}>
 							<div className='relative'>
 								<div className=' group overflow-hidden'>
 									<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
 										<label htmlFor='my-modal-3' className=' '>
 											<Image
 												src={item.image}
-												alt='logo'
+												alt='img'
 												width={300}
 												height={250}
 												className=' w-full h-44 object-cover '

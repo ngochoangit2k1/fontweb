@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const fontQC = ({ categoryFont }) => {
+	console.log(categoryFont)
 	return (
 		<>
 			<Head>
@@ -19,28 +20,6 @@ const fontQC = ({ categoryFont }) => {
 					return (
 						<>
 							<div className='bg-[#ffffff] shadow-lg' key={id}>
-								{/* <div className='overflow-hidden relative '>
-									<Link href={'productDetail'}>
-										<Image
-											src={item.image}
-											alt='logo'
-											width={308}
-											height={183}
-											className=' w-full h-44 object-cover duration-500 hover:scale-[1.1]'
-										></Image>
-									</Link>
-									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-30'>
-										<Link className='' href='' legacyBehavior>
-											<a className='font-bold '>Lưu</a>
-										</Link>
-									</button>
-									<button className='demo1 absolute bg-[#34A853] py-[3px] px-[6px] text-white text-xs rounded-bl-lg  z-30'>
-										<Link className='' href='' legacyBehavior>
-											<a className='font-bold '>Lưu</a>
-										</Link>
-									</button>
-								</div> */}
-
 								<div className='relative'>
 									<div className=' group overflow-hidden'>
 										<div className=' cursor-pointer duration-500 hover:scale-[1.1]  relative'>
@@ -130,16 +109,15 @@ const fontQC = ({ categoryFont }) => {
 
 export default fontQC
 
-export async function getServerSideProps(context) {
-	const { query } = context
-	const { category } = query
-	const queryString = category ? 'category=FontVH' : ''
-	const response = await fetch(`http://localhost:4000/HomeData/${queryString}`)
+export async function getStaticProps() {
+	const response = await fetch(`http://localhost:4000/HomeData`)
 	const data = await response.json()
+
+	const datas = data.filter(e => e.category === 'FontQC')
 
 	return {
 		props: {
-			categoryFont: data,
+			categoryFont: datas,
 		},
 	}
 }
