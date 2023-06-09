@@ -4,7 +4,6 @@ import { FiUser } from 'react-icons/fi'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import axios from 'axios'
 import { BiLeftArrowCircle } from 'react-icons/bi'
-
 import { useRouter } from 'next/router'
 
 const Register = () => {

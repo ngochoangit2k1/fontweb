@@ -1,25 +1,25 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const ProductFont = ({ categoryFont }) => {
+const ProductHome = ({ showMore }) => {
 	return (
 		<>
-			{categoryFont.map(item => {
+			{showMore.map((item, id) => {
 				return (
 					<div className='bg-white shadow-md' key={item.id}>
 						<div className='relative'>
 							<div className=' group overflow-hidden'>
-								<div className=' cursor-pointer duration-500 hover:scale-[1.1]  relative'>
-									<label htmlFor='my-modal-3' className=''>
+								<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
+									<label htmlFor='my-modal-3' className=' '>
 										<Image
 											src={item.image}
-											alt='logo'
+											alt='img'
 											width={300}
 											height={250}
-											className=' w-full h-44 object-cover  '
+											className=' w-full h-44 object-cover '
 										></Image>
-										<div className='w-full h-44 absolute top-0 bg-black/60  duration-500  opacity-0 group-hover:opacity-100 '>
-											<h2 className='text-white text-center text-lg font-semibold mt-[25%] '>
+										<div className='w-full h-44 absolute top-0 bg-black/60 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
+											<h2 className='text-white text-center text-sm font-semibold mt-[26%] '>
 												XEM DEMO
 											</h2>
 										</div>
@@ -27,22 +27,28 @@ const ProductFont = ({ categoryFont }) => {
 								</div>
 							</div>
 
-							<input type='checkbox' id='my-modal-3' class='modal-toggle' />
-							<div class='modal rounded'>
-								<div class='modal-box relative'>
+							<input
+								type='checkbox'
+								id='my-modal-3'
+								className=' modal-toggle'
+							/>
+							<div className='modal rounded-none'>
+								<div className='modal-box max-w-[60%] h-[70%] relative '>
 									<label
 										htmlFor='my-modal-3'
-										class='btn btn-sm btn-circle absolute right-2 top-2'
+										className='btn btn-sm btn-circle absolute right-2 top-2'
 									>
 										✕
 									</label>
-									<Image
-										src={item.image}
-										alt='img'
-										width={300}
-										height={250}
-										className=' w-full h-full object-cover  '
-									></Image>
+									<div>
+										<Image
+											src={item.image}
+											alt='img'
+											width={800}
+											height={800}
+											className='w-[99%] object-cover  '
+										></Image>
+									</div>
 								</div>
 							</div>
 
@@ -67,7 +73,7 @@ const ProductFont = ({ categoryFont }) => {
 								{item.user}
 							</p>
 							<p>
-								<span className='font-bold'>Việt hóa:</span>
+								<span className='font-bold'>Việt hóa :</span>
 								{item.translate}
 							</p>
 							<p>
@@ -91,4 +97,4 @@ const ProductFont = ({ categoryFont }) => {
 	)
 }
 
-export default ProductFont
+export default ProductHome

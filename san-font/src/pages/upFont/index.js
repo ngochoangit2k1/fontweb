@@ -2,9 +2,18 @@ import SelectFont from '@/components/SelectFonts/SelectFont'
 import SelectImage from '@/components/SelectImages/SelectImage'
 import Media from '@/components/SelectMedia/Media'
 import TextEditor from '@/components/textEditor'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 import { BsFillCameraFill } from 'react-icons/bs'
 
 const UpFont = () => {
+	const router = useRouter()
+	const { data: session } = useSession()
+
+	if (session === null) {
+		router.push('/Auth/login')
+	}
+
 	return (
 		<>
 			<div className='mt-14 py-12 bg-[#ffff] w-[85%]  rounded-3xl mx-auto shadow-md'>

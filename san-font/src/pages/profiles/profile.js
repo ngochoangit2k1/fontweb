@@ -7,10 +7,16 @@ import imgGlobal from '@/data/images'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { useRouter } from 'next/router'
 
 const Profile = () => {
 	const { data } = useSession()
+	const router = useRouter()
+	const { data: session } = useSession()
 
+	if (session === null) {
+		router.push('/Auth/login')
+	}
 	//eye input1
 	const [eye1, setEye1] = useState(false)
 	const toggle1 = () => {

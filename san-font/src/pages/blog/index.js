@@ -25,8 +25,8 @@ const Blog = () => {
 									<Image
 										src={item.image}
 										alt='logo'
-										width={300}
-										height={250}
+										width={500}
+										height={400}
 										className='w-full h-60 object-cover  duration-500 hover:scale-[1.1]'
 									></Image>
 								</div>

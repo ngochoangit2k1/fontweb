@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const fontQC = ({ categoryFont }) => {
-	console.log(categoryFont)
 	return (
 		<>
 			<Head>
@@ -31,8 +30,8 @@ const fontQC = ({ categoryFont }) => {
 													height={250}
 													className=' w-full h-44 object-cover  '
 												></Image>
-												<div className='w-full h-44 absolute top-0 bg-black/60  duration-500  opacity-0 group-hover:opacity-100 '>
-													<h2 className='text-white text-center text-lg font-semibold mt-[25%] '>
+												<div className='w-full h-44 absolute top-0 bg-black/60  duration-500  opacity-0 cursor-pointer group-hover:opacity-100 '>
+													<h2 className='text-white text-center text-sm font-semibold mt-[26%] '>
 														XEM DEMO
 													</h2>
 												</div>
