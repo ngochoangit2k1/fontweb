@@ -53,7 +53,7 @@ const Register = () => {
 
 			<form
 				onSubmit={submitHandler}
-				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'
+				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
 					{' '}
@@ -96,7 +96,7 @@ const Register = () => {
 								onChange={e => setPassword(e.target.value)}
 							/>
 						</div>
-						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2'>
+						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
 							{eyeOne === false ? (
 								<AiOutlineEye onClick={toggle} />
 							) : (
@@ -112,28 +112,9 @@ const Register = () => {
 								placeholder='Nhập lại mật khẩu'
 								className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
 								required
-
-								// className={`${'test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'}
-								// ${
-								// 	formik.errors.confirmPassword &&
-								// 	formik.touched.confirmPassword
-								// 		? 'border-red-600 ring-2 ring-red-200'
-								// 		: ''
-								// }`}
-								// {...formik.getFieldProps('confirmPassword')}
 							/>
-							{/* {formik.errors.confirmPassword &&
-							formik.touched.confirmPassword ? (
-								<span className='flex gap-1 font-normal text-sm text-red-600 '>
-									{' '}
-									<BiError className='mt-[3px]' />{' '}
-									{formik.errors.confirmPassword}
-								</span>
-							) : (
-								<></>
-							)} */}
 						</div>
-						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2'>
+						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
 							{eye === false ? (
 								<AiOutlineEye onClick={toggleOne} />
 							) : (
@@ -141,19 +122,16 @@ const Register = () => {
 							)}
 						</div>
 					</div>
-					<div className='w-[30%] mx-auto'>
-						{' '}
+					<div className='w-full  '>
 						<button
 							type='submit'
-							className='flex mt-5   max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-white'
+							className='flex mt-5 mx-auto px-5 h-10 bg-oranges  items-center justify-center text-white  hover:bg-opacity-80 rounded-[30px]'
 						>
-							<FiUser className='font-extrabold text-[20px] max-md:text-sm' />
-							<a className='ml-2 max-md:text-[13px] text-base font-normal'>
-								Đăng ký
-							</a>
+							<FiUser className='font-extrabold text-[20px]' />
+							<a className='ml-2 text-base font-normal'>Đăng ký</a>
 						</button>
 					</div>
-					<div className='text-center text-xl py-8'>
+					<div className='text-center text-lg py-8 '>
 						Bạn đã có tài khoản ?{' '}
 						<Link href={'/Auth/login'}>
 							<span className='font-bold'>Đăng nhập ngay</span>

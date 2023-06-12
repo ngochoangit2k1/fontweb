@@ -17,8 +17,8 @@ const TextEditor = () => {
 
 	console.log(value, 'this is quill editor')
 	return (
-		<div className='mt-1'>
-			<div className='w-[100%] h-60'>
+		<div className='mt-1 '>
+			<div className='w-[100%] h-60 max-md:h-52'>
 				<div ref={quillRef} />
 			</div>
 		</div>

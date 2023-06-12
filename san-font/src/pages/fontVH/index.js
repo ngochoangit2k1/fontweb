@@ -43,12 +43,16 @@ const fontVH = ({ categoryFont }) => {
 									</div>
 								</div>
 
-								<input type='checkbox' id='my-modal-3' class='modal-toggle' />
-								<div class='modal rounded'>
-									<div class='modal-box relative'>
+								<input
+									type='checkbox'
+									id='my-modal-3'
+									className='modal-toggle'
+								/>
+								<div className='modal rounded'>
+									<div className='modal-box relative'>
 										<label
 											htmlFor='my-modal-3'
-											class='btn btn-sm btn-circle absolute right-2 top-2'
+											className='btn btn-sm btn-circle absolute right-2 top-2'
 										>
 											✕
 										</label>
@@ -106,7 +110,7 @@ const fontVH = ({ categoryFont }) => {
 			</div>
 
 			<div className='text-center justify-center mt-6'>
-				<ul class='inline-flex items-center -space-x-px gap-2 '>
+				<ul className='inline-flex items-center -space-x-px gap-2 '>
 					<li className='p-3 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
 						<FaLongArrowAltLeft />
 					</li>

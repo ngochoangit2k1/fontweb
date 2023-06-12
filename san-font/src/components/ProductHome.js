@@ -6,7 +6,7 @@ const ProductHome = ({ showMore }) => {
 		<>
 			{showMore.map((item, id) => {
 				return (
-					<div className='bg-white shadow-md' key={item.id}>
+					<div className='bg-white shadow-md ' key={id}>
 						<div className='relative'>
 							<div className=' group overflow-hidden'>
 								<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>

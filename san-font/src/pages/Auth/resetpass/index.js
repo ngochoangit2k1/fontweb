@@ -34,10 +34,9 @@ const ResetPass = () => {
 
 			<form
 				onSubmit={handleSubmit}
-				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10'
+				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
-					{' '}
 					<h1 className='font-medium text-2xl'>Quên mật khẩu</h1>
 					<div className=' mt-4 relative '>
 						<input
@@ -60,15 +59,13 @@ const ResetPass = () => {
 							</p>
 						)}
 					</div>
-					<div className=' mx-auto'>
+					<div className='w-full'>
 						<button
 							type='submit'
-							className='flex mt-5 w-[200px] mx-auto max-sm:mx-3 items-center max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center text-white'
+							className='flex mx-auto mt-5 px-5  h-10 bg-oranges items-center justify-center text-white hover:bg-opacity-80 rounded-[30px]  '
 						>
-							<FiUser className='font-extrabold text-[20px] max-md:text-sm' />
-							<a className='ml-2 max-md:text-[13px] text-base font-normal'>
-								Lấy lại mật khẩu
-							</a>
+							<FiUser className='font-extrabold text-[20px] ' />
+							<a className='ml-2 text-base font-normal'>Lấy lại mật khẩu</a>
 						</button>
 					</div>
 					<div className='text-center text-xl py-6'>

@@ -58,7 +58,7 @@ function Home({ Data }) {
 				</h2>
 			</div>
 
-			<div className='w-[85%]	 mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
+			<div className='w-[85%]	 mx-auto mt-6 grid grid-cols-4 gap-6 max-xl:w-[90%] max-lg:grid-cols-2 max-xl:grid-cols-3 max-sm:grid-cols-1'>
 				<ProductHome showMore={showMore} />
 			</div>
 

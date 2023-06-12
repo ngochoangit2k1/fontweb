@@ -22,7 +22,7 @@ const Header = () => {
 	return (
 		<header>
 			<nav className='bg-white shadow-xl  py-3.5'>
-				<div className='w-[95%] flex flex-wrap justify-between items-center mx-auto lg:px-12 xl:px-20'>
+				<div className='w-[85%] flex flex-wrap justify-between items-center mx-auto max-xl:w-[90%]'>
 					<Link href={'/'} className='max-lg:ml-3'>
 						<Image
 							src={imgGlobal.Logo}
@@ -266,11 +266,11 @@ const Header = () => {
 							</li>
 						</ul>
 
-						<div className='flex ml-10 items-center gap-1 xl:order-2'>
+						<div className='flex ml-10 items-center gap-1 xl:order-2 max-lg:justify-center max-lg:mx-auto max-lg:mt-5'>
 							<Link href={'/upFont'}>
-								<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
+								<button className='flex items-center h-10 bg-oranges rounded justify-center btn-gradient text-white px-2 max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
 									<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
-									<span className='ml-2 max-md:text-[13px] text-[15px]'>
+									<span className='ml-2 text-[15px]  max-md:text-[13px]'>
 										Upload font
 									</span>
 								</button>
@@ -278,14 +278,17 @@ const Header = () => {
 
 							{data?.user ? (
 								<div className='flex'>
-									<Link href={'/profiles/profile'}>
-										<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white'>
-											<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />
-											{data?.user?.name}
+									<Link href={'/profiles'}>
+										<button className='flex items-center h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white px-2  max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
+											<FiUser className='text-[24px] font-bold mr-1 max-md:text-sm' />
+											<span className='ml-2 text-[15px]  max-md:text-[13px]'>
+												{' '}
+												{data?.user?.name}
+											</span>
 										</button>
 									</Link>
 
-									<Link href={''}>
+									{/* <Link href={''}>
 										<button
 											onClick={() => signOut()}
 											className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'
@@ -293,7 +296,7 @@ const Header = () => {
 											<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 											Đăng xuất
 										</button>
-									</Link>
+									</Link> */}
 								</div>
 							) : (
 								<Link href={'/Auth/login'}>

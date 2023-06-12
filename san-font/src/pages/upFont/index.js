@@ -16,7 +16,7 @@ const UpFont = () => {
 
 	return (
 		<>
-			<div className='mt-14 py-12 bg-[#ffff] w-[85%]  rounded-3xl mx-auto shadow-md'>
+			<div className='mt-14 py-12 bg-[#ffff] w-[85%]  rounded-3xl mx-auto shadow-md max-xl:w-[90%]'>
 				<div className='px-12'>
 					<h2 className='text-black font-bold text-2xl'>ĐĂNG TẢI FONT</h2>
 					<hr className='mt-4' />
@@ -67,16 +67,16 @@ const UpFont = () => {
 					<hr className='mt-14' />
 
 					{/* Ảnh đại diện */}
-					<h3 className='text-black font-bold mt-5 '>
+					<h3 className='text-black font-bold mt-5 max-md:mt-32 max-sm:mt-20'>
 						Ảnh đại diện <span className='text-[#ff0808]'>*</span>
 					</h3>
 
 					<div className='flex mt-3'>
-						<p className=' text-[15px] font-medium text-black'>
+						<p className=' text-[15px] font-medium text-black max-lg:text-xs'>
 							Chưa có ảnh nào được chọn.
 						</p>
 						<label htmlFor='my-modal'>
-							<div className='font-medium text-[15px] text-[#0d6efd] cursor-pointer hover:text-[#014d8b]'>
+							<div className='font-medium text-[15px] text-[#0d6efd] cursor-pointer hover:text-[#014d8b] max-lg:text-xs'>
 								Thêm ảnh
 							</div>
 						</label>
@@ -561,13 +561,13 @@ const UpFont = () => {
 					</p>
 
 					<div className='flex mt-3'>
-						<p className=' text-[15px] font-normal text-black'>
+						<p className=' text-[15px] font-normal text-black max-lg:text-xs'>
 							Chưa có font nào được chọn.
 						</p>
 						<label htmlFor='my-modal-2'>
-							<div className='cursor-pointer font-medium text-[15px] text-[#0d6efd] hover:text-[#014d8b]'>
+							<p className='cursor-pointer font-medium text-[15px] text-[#0d6efd] hover:text-[#014d8b] max-lg:text-xs'>
 								Thêm font
-							</div>
+							</p>
 						</label>
 
 						{/* Put this part before </body> tag */}

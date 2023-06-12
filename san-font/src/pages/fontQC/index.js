@@ -39,12 +39,16 @@ const fontQC = ({ categoryFont }) => {
 										</div>
 									</div>
 
-									<input type='checkbox' id='my-modal-3' class='modal-toggle' />
-									<div class='modal rounded-none'>
-										<div class='modal-box relative'>
+									<input
+										type='checkbox'
+										id='my-modal-3'
+										className='modal-toggle'
+									/>
+									<div className='modal rounded-none'>
+										<div className='modal-box relative'>
 											<label
 												htmlFor='my-modal-3'
-												class='btn btn-sm btn-circle absolute right-2 top-2'
+												className='btn btn-sm btn-circle absolute right-2 top-2'
 											>
 												✕
 											</label>
