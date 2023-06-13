@@ -69,7 +69,7 @@ const fontQC = ({ categoryFont }) => {
 									</button>
 								</div>
 
-								<Link href={`/fontVH/${item.id}`}>
+								<Link href={`font-quang-cao/${item.id}`}>
 									<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
 										{item.title}
 									</h2>

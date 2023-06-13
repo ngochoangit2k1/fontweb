@@ -31,79 +31,6 @@ const Header = () => {
 						></Image>
 					</Link>
 
-					{/* <div className='flex items-center gap-1 xl:order-2'>
-						<Link href={'/upFont'}>
-							<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges rounded justify-center btn-gradient text-white'>
-								<AiOutlineCloudUpload className='font-extrabold text-[28px] max-md:text-sm' />
-								<span className='ml-2 max-md:text-[13px] text-[15px]'>
-									Upload font
-								</span>
-							</button>
-						</Link>
-
-						{data?.user ? (
-							<div className='flex'>
-								<Link href={''}>
-									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white'>
-										<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />
-										{data?.user?.name}
-									</button>
-								</Link>
-
-								<Link href={''}>
-									<button
-										onClick={() => signOut()}
-										className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'
-									>
-										<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
-										Đăng xuất
-									</button>
-								</Link>
-							</div>
-						) : (
-							<Link href={'/Auth/login'}>
-								<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
-									<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
-									Đăng nhập
-								</button>
-							</Link>
-						)}
-
-						<button
-							onClick={() => setToggleMenu(!toggleMenu)}
-							data-collapse-toggle='mobile-menu-2'
-							type='button'
-							className='inline-flex max-lg:mr-3 items-center p-2 ml-1 text-sm text-gray-500 rounded-lg xl:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
-							aria-controls='mobile-menu-2'
-							aria-expanded='false'
-						>
-							<svg
-								className='w-6 h-6'
-								fill='currentColor'
-								viewBox='0 0 20 20'
-								xmlns='http://www.w3.org/2000/svg'
-							>
-								<path
-									fillRule='evenodd'
-									d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-									clipRule='evenodd'
-								/>
-							</svg>
-							<svg
-								className='hidden w-6 h-6'
-								fill='currentColor'
-								viewBox='0 0 20 20'
-								xmlns='http://www.w3.org/2000/svg'
-							>
-								<path
-									fillRule='evenodd'
-									d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-									clipRule='evenodd'
-								/>
-							</svg>
-						</button>
-					</div> */}
-
 					<button
 						onClick={() => setToggleMenu(!toggleMenu)}
 						data-collapse-toggle='mobile-menu-2'
@@ -164,7 +91,7 @@ const Header = () => {
 									pathName === '/fontVH' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link tabIndex={0} href={'/fontVH'}>
+								<Link tabIndex={0} href={'/font-viet-hoa'}>
 									Font việt hóa
 								</Link>
 								{pathName === '/fontVH' ? (
@@ -175,35 +102,84 @@ const Header = () => {
 									''
 								)}
 
-								{/* <ul
+								<ul
 									tabIndex={0}
 									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
 								>
 									<li>
-										<a>Font 1FTV</a>
+										<Link href={'/font-viet-hoa/font-1FTV'} legacyBehavior>
+											<a>Font 1FTV</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font trang trí</a>
+										<Link href={'/font-viet-hoa/font-trang-tri'} legacyBehavior>
+											<a>Font trang trí</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font viết tay</a>
+										<Link href={'/font-viet-hoa/font-viet-tay'} legacyBehavior>
+											<a>Font viết tay</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font có chân</a>
+										<Link href={'/font-viet-hoa/font-co-chan'} legacyBehavior>
+											<a>Font có chân</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font không chân</a>
+										<Link
+											href={'/font-viet-hoa/font-khong-chan'}
+											legacyBehavior
+										>
+											<a>Font không chân</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font ICIEL</a>
+										<Link href={'/font-viet-hoa/font-ICIEL'} legacyBehavior>
+											<a>Font ICIEL</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font MTD</a>
+										<Link href={'/font-viet-hoa/font-MTD'} legacyBehavior>
+											<a>Font MTD</a>
+										</Link>
 									</li>
 									<li>
-										<a>Font SVN</a>
+										<Link href={'/font-viet-hoa/font-SVN'} legacyBehavior>
+											<a>Font SVN</a>
+										</Link>
 									</li>
-								</ul> */}
+									<li>
+										<Link href={'/font-viet-hoa/font-viet-linh'} legacyBehavior>
+											<a>Font Việt Linh</a>
+										</Link>
+									</li>
+									<li>
+										<Link href={'/font-viet-hoa/font-LNTH'} legacyBehavior>
+											<a>Font LNTH</a>
+										</Link>
+									</li>
+									<li>
+										<Link href={'/font-viet-hoa/font-FS'} legacyBehavior>
+											<a>Font FS</a>
+										</Link>
+									</li>
+									<li>
+										<Link href={'/font-viet-hoa/font-vintage'} legacyBehavior>
+											<a>Font vintage</a>
+										</Link>
+									</li>
+									<li>
+										<Link href={'/font-viet-hoa/UTM-font'} legacyBehavior>
+											<a>Font thư pháp</a>
+										</Link>
+									</li>
+									<li>
+										<Link href={'/font-viet-hoa/UTM-font'} legacyBehavior>
+											<a>UTM Font </a>
+										</Link>
+									</li>
+								</ul>
 							</li>
 
 							<li
@@ -211,7 +187,7 @@ const Header = () => {
 									pathName === '/fontQC' ? 'xl:relative' : ''
 								}`}
 							>
-								<Link tabIndex={0} href={'/fontQC'}>
+								<Link tabIndex={0} href={'/font-quang-cao'}>
 									Font quảng cáo
 								</Link>
 								{pathName === '/fontQC' ? (
@@ -221,20 +197,29 @@ const Header = () => {
 								) : (
 									''
 								)}
-								{/* <ul
+								<ul
 									tabIndex={0}
 									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
 								>
 									<li>
-										<a>Font bất động sản</a>
+										<Link
+											href={'/font-quang-cao/font-bat-dong-san'}
+											legacyBehavior
+										>
+											<a>UTM bất động sản </a>
+										</Link>
 									</li>
 									<li>
-										<a>Font ẩm thực</a>
+										<Link href={'/font-quang-cao/font-am-thuc'} legacyBehavior>
+											<a>UTM ẩm thực </a>
+										</Link>
 									</li>
 									<li>
-										<a>Font mỹ phẩm - Spa</a>
+										<Link href={'/font-quang-cao/font-my-pham'} legacyBehavior>
+											<a>Font mỹ phẩm - Spa </a>
+										</Link>
 									</li>
-								</ul> */}
+								</ul>
 							</li>
 							<li
 								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${

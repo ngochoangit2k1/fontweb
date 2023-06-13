@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { FaFacebook } from 'react-icons/fa'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 const Detail = ({ dataDetail }) => {
 	const { data } = useSession()
 	return (
@@ -98,18 +98,15 @@ const Detail = ({ dataDetail }) => {
 							<div>
 								<p className='mt-2'>
 									Đăng nhập với tên {data?.user?.name}.
-									<Link href={''}>
-										{' '}
+									<Link href={'/profiles'}>
 										<span className='text-[#2270b0]'>
-											{' '}
 											Chỉnh sửa hồ sơ của bạn
 										</span>
 										.
 									</Link>
 									<Link onClick={() => signOut()} href={''}>
-										{' '}
 										<span className='text-[#2270b0]'>Đăng xuất? </span>
-									</Link>{' '}
+									</Link>
 									Các trường bắt buộc được đánh dấu *
 								</p>
 
@@ -127,17 +124,17 @@ const Detail = ({ dataDetail }) => {
 						) : (
 							<div>
 								<p className='flex'>
-									Bạn phải{' '}
+									Bạn phải
 									<Link href={'/Auth/login'} legacyBehavior>
 										<a className='px-1 text-[#2270b0]'>đăng nhập</a>
-									</Link>{' '}
+									</Link>
 									để gửi phản hồi.
 								</p>
 							</div>
 						)}
 					</div>
 				</div>
-				{/* <ProductDetail dataDetail={dataDetail} /> */}
+
 				<div className='w-[50%] bg-yellow-200 h-[1000px] px-3'>
 					<h1 className='text-2xl font-bold mt-2'> Font liên quan </h1>
 				</div>

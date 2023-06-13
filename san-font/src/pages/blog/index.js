@@ -16,7 +16,7 @@ const Blog = () => {
 				<button className='text-base font-normal'>Design</button>
 			</div>
 
-			<div className='w-[85%] mx-auto mt-10 grid grid-cols-3 gap-6'>
+			<div className='w-[85%] mx-auto mt-10 grid grid-cols-3 gap-6 max-xl:w-[90%]  max-xl:grid-cols-2 max-sm:grid-cols-1'>
 				{BlogData.map((item, index) => {
 					return (
 						<>

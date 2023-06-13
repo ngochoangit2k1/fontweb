@@ -14,8 +14,8 @@ const Vip = () => {
 					GÓI THÀNH VIÊN
 				</h1>
 
-				<div className='w-[65%] h-[600px] mx-auto grid grid-cols-3 gap-14 pt-14 max-xl:w-[90%] max-lg:grid-cols-1 max-lg:w-[60%] max-lg:h-full '>
-					<div className='bg-white mt-10 h-[79%] max-lg:h-full'>
+				<div className='w-[65%]  mx-auto grid grid-cols-3 gap-14 pt-14 max-xl:w-[90%] max-lg:grid-cols-1 max-lg:w-[60%]  '>
+					<div className='bg-white my-7'>
 						<div className='bg-[#c4c4c4] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-4'>
 							Gói bắt đầu
@@ -49,7 +49,7 @@ const Vip = () => {
 						</div>
 					</div>
 
-					<div className='bg-white h-[92%] max-lg:h-[100%]'>
+					<div className='bg-white  '>
 						<div className='bg-[#eb4335] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-14	'>
 							Gói 12 tháng
@@ -87,14 +87,14 @@ const Vip = () => {
 							</ul>
 						</div>
 
-						<div className='w-[48%] mx-auto '>
+						<div className='w-[48%] mx-auto pb-14'>
 							<button className=' mt-6  w-full cursor-pointer hover:bg-[#ff0000] h-10 bg-oranges  text-white'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
 						</div>
 					</div>
 
-					<div className='bg-white mt-10 h-[79%] max-lg:h-full'>
+					<div className='bg-white my-7 '>
 						<div className='bg-[#00a3ff] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-4'>
 							Gói 6 tháng
@@ -128,7 +128,7 @@ const Vip = () => {
 							</ul>
 						</div>
 
-						<div className='w-[48%] mx-auto '>
+						<div className='w-[48%] mx-auto'>
 							<button className=' mt-11  w-full cursor-pointer hover:bg-[#ff0000] h-10 bg-oranges  text-white'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
