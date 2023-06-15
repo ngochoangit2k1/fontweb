@@ -9,6 +9,12 @@ header {
 	border-bottom: 1px solid #eee;
 }
 
+.Toastify__toast--success {
+	margin-top: 50px;
+	background: #0000 !important;
+	color: rgb(29, 173, 10) !important;
+	
+}
 
 .demo {
 	top: 0 !important;

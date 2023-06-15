@@ -6,7 +6,6 @@ import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
 import { BiLeftArrowCircle } from 'react-icons/bi'
 import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
 
 const Login = () => {
 	const [email, setEmail] = useState('')
@@ -22,7 +21,7 @@ const Login = () => {
 				email,
 				password,
 			})
-			toast.success('Đăng nhập thanh công')
+
 			router.push('/')
 		} catch (error) {
 			error

@@ -88,13 +88,13 @@ const Header = () => {
 
 							<li
 								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
-									pathName === '/fontVH' ? 'xl:relative' : ''
+									pathName === '/font-viet-hoa' ? 'xl:relative' : ''
 								}`}
 							>
 								<Link tabIndex={0} href={'/font-viet-hoa'}>
 									Font việt hóa
 								</Link>
-								{pathName === '/fontVH' ? (
+								{pathName === '/font-viet-hoa' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>
@@ -104,7 +104,7 @@ const Header = () => {
 
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
+									className=' dropdown-content mt-6 py-2 text-black menu font-normal shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link href={'/font-viet-hoa/font-1FTV'} legacyBehavior>
@@ -184,13 +184,13 @@ const Header = () => {
 
 							<li
 								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
-									pathName === '/fontQC' ? 'xl:relative' : ''
+									pathName === '/font-quang-cao' ? 'xl:relative' : ''
 								}`}
 							>
 								<Link tabIndex={0} href={'/font-quang-cao'}>
 									Font quảng cáo
 								</Link>
-								{pathName === '/fontQC' ? (
+								{pathName === '/font-quang-cao' ? (
 									<div
 										className={`xl:absolute top-[45px] left-0 xl:h-[3px] bg-oranges xl:w-[calc(100%)]`}
 									></div>
@@ -199,7 +199,7 @@ const Header = () => {
 								)}
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-6 py-2 text-black menu shadow-xl bg-base-100 w-52'
+									className=' dropdown-content mt-6 py-2 text-black menu font-normal shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link
@@ -266,8 +266,7 @@ const Header = () => {
 									<Link href={'/profiles'}>
 										<button className='flex items-center h-10 bg-[#1876f2] rounded  justify-center btn-gradient text-white px-2  max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
 											<FiUser className='text-[24px] font-bold mr-1 max-md:text-sm' />
-											<span className='ml-2 text-[15px]  max-md:text-[13px]'>
-												{' '}
+											<span className='ml-1 text-[15px]  max-md:text-[13px]'>
 												{data?.user?.name}
 											</span>
 										</button>

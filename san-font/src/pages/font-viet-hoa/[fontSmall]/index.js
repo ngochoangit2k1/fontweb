@@ -2,11 +2,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const FontFS = ({ NameFont }) => {
+const FontAmThuc = ({ NameFont }) => {
 	return (
 		<div>
 			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
-				( {NameFont.length} font){' '}
+				( {NameFont.length} font)
 			</h2>
 
 			<div className='w-[85%]	 mx-auto mt-10 grid grid-cols-4 gap-6  max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
@@ -61,8 +61,23 @@ const FontFS = ({ NameFont }) => {
 										<a className='font-bold '>Lưu</a>
 									</Link>
 								</button>
+								{item.special && (
+									<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-vip'} legacyBehavior>
+											<a className='font-bold '>VIP</a>
+										</Link>
+									</button>
+								)}
+
+								{item.selective ? (
+									<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-chon-loc'} legacyBehavior>
+											<a className='font-bold '>Font chọn lọc</a>
+										</Link>
+									</button>
+								) : null}
 							</div>
-							<Link href={`/fontVH/${item.id}`}>
+							<Link href={`/font-viet-hoa/${item.nameFont}/${item.id}`}>
 								<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
 									{item.title}
 								</h2>
@@ -102,17 +117,33 @@ const FontFS = ({ NameFont }) => {
 	)
 }
 
-export default FontFS
+export default FontAmThuc
 
-export async function getStaticProps() {
+export async function getStaticPaths() {
 	const response = await fetch(`http://localhost:4000/HomeData`)
 	const data = await response.json()
-
-	const datas = data.filter(e => e.nameFont === 'Font FS')
+	const allPaths = data.map(ev => {
+		return {
+			params: {
+				fontSmall: ev.nameFont,
+			},
+		}
+	})
+	return {
+		paths: allPaths,
+		fallback: false,
+	}
+}
+export async function getStaticProps(context) {
+	const nameFont = context.params.fontSmall
+	const response = await fetch(
+		`http://localhost:4000/HomeData?nameFont=${nameFont}`
+	)
+	const data = await response.json()
 
 	return {
 		props: {
-			NameFont: datas,
+			NameFont: data,
 		},
 	}
 }

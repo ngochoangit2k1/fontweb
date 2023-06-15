@@ -1,7 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { addToCart, removeFromCart } from '../../redux/cart.slice'
+import { useDispatch } from 'react-redux'
+import { toast } from 'react-toastify'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 const ProductHome = ({ showMore }) => {
+	const dispatch = useDispatch()
+	const { data } = useSession()
+	const router = useRouter()
+
 	return (
 		<>
 			{showMore.map((item, id) => {
@@ -52,13 +61,54 @@ const ProductHome = ({ showMore }) => {
 								</div>
 							</div>
 
-							<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-1'>
-								<Link className='' href='' legacyBehavior>
-									<a className='font-bold '>Lưu</a>
+							<div>
+								<button
+									onClick={() => {
+										if (data?.user) {
+											dispatch(addToCart(item))
+											toast.success('Font đã được lưu vào tài khoản')
+										} else {
+											router.push('/Auth/login')
+										}
+									}}
+									className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-whit text-white  text-xs shadow-xxl rounded-br-lg  z-1'
+								>
+									<span className='font-bold '>Lưu</span>
+								</button>
+
+								{/* <button
+									onClick={() => {
+										dispatch(removeFromCart(item))
+										toast.success('Font đã được xóa khỏi tài khoản')
+									}}
+									className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs shadow-BShadow  rounded-br-lg  z-1'
+								>
+									<span className='font-bold'>Đã lưu</span>
+								</button> */}
+
+								{item.special && (
+									<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-vip'} legacyBehavior>
+											<a className='font-bold '>VIP</a>
+										</Link>
+									</button>
+								)}
+
+								{item.selective ? (
+									<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-chon-loc'} legacyBehavior>
+											<a className='font-bold '>Font chọn lọc</a>
+										</Link>
+									</button>
+								) : null}
+							</div>
+							{/* <button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white shadow-orange-400 text-xs rounded-bl-lg  z-1'>
+								<Link href={'/font-vip'} legacyBehavior>
+									<a className='font-bold text-white'>VIP</a>
 								</Link>
-							</button>
+							</button> */}
 						</div>
-						<Link href={`/fontVH/${item.id}`}>
+						<Link href={`font-viet-hoa/${item.nameFont}/${item.id}`}>
 							<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
 								{item.title}
 							</h2>

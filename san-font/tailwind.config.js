@@ -10,6 +10,9 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			boxShadow: {
+				xxl: '1px 4px 4px rgba(0, 0, 0, 0.4);',
+			},
 			colors: {
 				oranges: '#ff5d38',
 			},

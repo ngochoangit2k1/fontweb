@@ -6,6 +6,8 @@ import { FaLongArrowAltLeft } from 'react-icons/fa'
 import { FaLongArrowAltRight } from 'react-icons/fa'
 
 const fontVH = ({ categoryFont }) => {
+	const [posts, setPosts] = useState([{ count: 0, name: null }])
+
 	return (
 		<>
 			<Head>
@@ -71,6 +73,21 @@ const fontVH = ({ categoryFont }) => {
 										<a className='font-bold '>Lưu</a>
 									</Link>
 								</button>
+								{item.special && (
+									<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-vip'} legacyBehavior>
+											<a className='font-bold '>VIP</a>
+										</Link>
+									</button>
+								)}
+
+								{item.selective ? (
+									<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<Link href={'/font-chon-loc'} legacyBehavior>
+											<a className='font-bold '>Font chọn lọc</a>
+										</Link>
+									</button>
+								) : null}
 							</div>
 							<Link href={`/font-viet-hoa/${item.id}`}>
 								<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
@@ -110,7 +127,7 @@ const fontVH = ({ categoryFont }) => {
 			</div>
 
 			<div className='text-center justify-center mt-6'>
-				<ul className='inline-flex items-center -space-x-px gap-2 '>
+				{/* <ul className='inline-flex items-center -space-x-px gap-2 '>
 					<li className='p-3 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
 						<FaLongArrowAltLeft />
 					</li>
@@ -136,7 +153,7 @@ const fontVH = ({ categoryFont }) => {
 					<li className='p-3 rounded-sm cursor-pointer bg-white text-black hover:bg-[#c4c4c4] focus:bg-[#c4c4c4]'>
 						<FaLongArrowAltRight />
 					</li>
-				</ul>
+				</ul> */}
 			</div>
 		</>
 	)
