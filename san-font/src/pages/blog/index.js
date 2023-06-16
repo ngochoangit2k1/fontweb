@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { BlogData } from '@/data/products'
+import Link from 'next/link'
 
-const Blog = () => {
+const BlogPage = ({ DataBlog }) => {
 	return (
 		<>
 			<Head>
@@ -11,29 +11,32 @@ const Blog = () => {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<h1 className='text-4xl font-bold text-center mt-20'>Blog</h1>
+			<h1 className='text-4xl font-bold text-center mt-32'>Blog</h1>
 			<div className='w-20 rounded-[30px] bg-white text-center py-2 mx-auto mt-5'>
 				<button className='text-base font-normal'>Design</button>
 			</div>
 
 			<div className='w-[85%] mx-auto mt-10 grid grid-cols-3 gap-6 max-xl:w-[90%]  max-xl:grid-cols-2 max-sm:grid-cols-1'>
-				{BlogData.map((item, index) => {
+				{DataBlog.map((item, id) => {
 					return (
 						<>
-							<div className='bg-white shadow-md' key={index}>
+							<div className='bg-white shadow-md' key={id}>
 								<div className=' overflow-hidden relative w-full '>
-									<Image
-										src={item.image}
-										alt='logo'
-										width={500}
-										height={400}
-										className='w-full h-60 object-cover  duration-500 hover:scale-[1.1]'
-									></Image>
+									<Link href={`/blog/${item.id}`}>
+										<Image
+											src={item.image}
+											alt='logo'
+											width={500}
+											height={400}
+											className='w-full h-60 object-cover  duration-500 hover:scale-[1.1]'
+										></Image>
+									</Link>
 								</div>
-
-								<h2 className='text-black ml-4 mt-4 font-extrabold text-xl'>
-									{item.title}
-								</h2>
+								<Link href={`/blog/${item.id}`}>
+									<h2 className='text-black ml-4 mt-4 font-extrabold text-xl'>
+										{item.title}
+									</h2>
+								</Link>
 								<div className='text-black ml-4 py-4 font-medium text-base'>
 									<p>{item.text}</p>
 								</div>
@@ -46,4 +49,15 @@ const Blog = () => {
 	)
 }
 
-export default Blog
+export default BlogPage
+
+export async function getStaticProps() {
+	const response = await fetch('http://localhost:4000/Blog')
+	const data = await response.json()
+
+	return {
+		props: {
+			DataBlog: data,
+		},
+	}
+}

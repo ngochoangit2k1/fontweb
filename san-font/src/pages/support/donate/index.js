@@ -3,11 +3,11 @@ import React from 'react'
 const Donate = () => {
 	return (
 		<>
-			<div className='w-[55%] mx-auto bg-white mt-10 '>
-				<div className='w-full py-7 font-bold text-3xl text-black text-center'>
+			<div className='w-[55%] mx-auto bg-white mt-32 py-6'>
+				<div className='w-full font-bold text-3xl text-black text-center'>
 					Donate
 				</div>
-				<hr className='bg-gray-500 h-[1px]' />
+				<hr className='bg-gray-500 mt-10 h-[1px]' />
 
 				<div className='w-full pl-10 mt-8'>
 					<div className='text-base font-normal text-black mt-4'>

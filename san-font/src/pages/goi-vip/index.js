@@ -9,7 +9,7 @@ const Vip = () => {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<div>
+			<div className='mt-32'>
 				<h1 className='text-[40px] font-semibold text-center mt-14'>
 					GÓI THÀNH VIÊN
 				</h1>

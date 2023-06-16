@@ -4,8 +4,8 @@ import Link from 'next/link'
 const FontChonLoc = ({ fontSeLec }) => {
 	return (
 		<>
-			<h2 className='font-medium text-3xl ml-[10%] mt-16'>
-				Font vip ( {fontSeLec.length} font)
+			<h2 className='font-bold text-3xl ml-[8%] mt-32'>
+				Font chọn lọc ( {fontSeLec.length} font)
 			</h2>
 			<div className='w-[85%] mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
 				{fontSeLec.map((item, id) => {

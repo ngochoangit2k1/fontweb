@@ -12,7 +12,7 @@ Install project dependencies: `npm install`
 ## Install Json-server
 
 Install json-server: npm i json-server
-Open browser at: http://localhost:4000/HomeData
+Open browser at: http://localhost:4000/HomeData and http://localhost:4000/Blog
 
 ## Run Server
 

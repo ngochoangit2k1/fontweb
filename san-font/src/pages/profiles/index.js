@@ -19,7 +19,7 @@ const Profile = () => {
 	const dispatch = useDispatch()
 
 	const cart = useSelector(state => state.cart)
-	console.log(cart)
+
 	const { data } = useSession()
 
 	const { data: session } = useSession()
@@ -47,7 +47,7 @@ const Profile = () => {
 	}
 
 	return (
-		<div className=''>
+		<div className='mt-28'>
 			<Tabs className='flex gap-5  w-[85%] mx-auto  max-xl:w-[90%] max-lg:flex-col'>
 				<div className='mt-12 w-[25%] max-lg:w-full   '>
 					<Image
@@ -80,7 +80,7 @@ const Profile = () => {
 							onClick={() => signOut()}
 							className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '
 						>
-							Thoát
+							Đăng xuất
 						</Tab>
 					</TabList>
 				</div>

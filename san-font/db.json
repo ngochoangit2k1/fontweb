@@ -14,6 +14,8 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font 1FTV",
+
       "category": "FontVH"
       },
       {
@@ -29,6 +31,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font 1FTV",
       "category": "FontVH",
       "selective": "chon-loc"
 
@@ -45,6 +48,8 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font trang trí",
+    
       "category": "FontVH"
       },
       {
@@ -59,6 +64,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font trang trí",
       "category": "FontVH",
       "special": "vip"
       },
@@ -74,8 +80,8 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
-      "selective": "chon-loc"
- ,
+      "name" :"Font viết tay",
+      "selective": "chon-loc" ,
 "category": "FontVH"     },
       {
         "id": 6,
@@ -87,6 +93,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font viết tay",
 "category": "FontVH",
 "selective": "chon-loc"    
  },
@@ -100,6 +107,8 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font có chân",
+
 "category": "FontVH",
 "special": "vip"     },
       {
@@ -111,8 +120,9 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126"
- ,
+      "quantity": "126",
+      "name" :"Font có chân",
+
 "category": "FontVH"     },
       {
         "id": 9,
@@ -125,6 +135,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font không chân",
       "category": "FontVH"
       },	{
         "id": 10,
@@ -137,6 +148,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font không chân",
       "category": "FontVH"
       },	{
         "id": 11,
@@ -148,6 +160,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font ICIEL",
       "category": "FontVH"
       },	{
         "id": 12,
@@ -159,6 +172,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font ICIEL",
       "category": "FontVH",
       "special": "vip"
       },	{
@@ -171,6 +185,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font MTD",
       "category": "FontVH"
       },	{
         "id": 14,
@@ -182,6 +197,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font MTD",
       "category": "FontVH",
       "special": "vip"
       },	{
@@ -194,6 +210,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font SVN",
       "category": "FontVH",
       "selective": "chon-loc"   
       },	{
@@ -206,6 +223,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font SVN",
       "category": "FontVH"
       },	{
         "id": 17,
@@ -217,6 +235,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font việt linh",
       "category": "FontVH"
       },	{
         "id": 18,
@@ -228,6 +247,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font việt linh",
       "category": "FontVH",
       "special": "vip"
       },	{
@@ -240,6 +260,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font LNTH",
       "category": "FontVH"
       },	{
         "id": 20,
@@ -251,6 +272,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font LNTH",
       "category": "FontVH",
       "special": "vip"
       },
@@ -264,6 +286,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font FS",
       "category": "FontVH"
       },
       {
@@ -276,6 +299,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font FS",
       "category": "FontVH",
       "selective": "chon-loc"
       },
@@ -289,6 +313,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font vintage",
       "category": "FontVH"
       },
       {
@@ -301,6 +326,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font vintage",
       "category": "FontVH"
       },
       {
@@ -313,6 +339,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font thư pháp",
       "category": "FontVH",
       "special": "vip"    
      },
@@ -326,6 +353,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font thư pháp",
     "category": "FontVH" ,
     "selective": "chon-loc"    },
       {
@@ -338,6 +366,8 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126" ,
+      "name" :"UTM Font",
+
       "category": "FontVH"     },
       {
         "id": 28,
@@ -349,6 +379,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"UTM Font",
       "category": "FontVH",
       "selective": "chon-loc"
          },
@@ -363,6 +394,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font mỹ phẩm - Spa",
       "category": "FontQC",
       "special": "vip"
       },
@@ -376,6 +408,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font mỹ phẩm - Spa",
       "category": "FontQC",
       "selective": "chon-loc"
       },
@@ -389,6 +422,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font bất động sản",
       "category": "FontQC",
       "special": "vip"
       },
@@ -402,6 +436,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font bất động sản",
       "category": "FontQC",
       "special": "vip"
       },
@@ -415,6 +450,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font ẩm thực",
       "category": "FontQC",
       "selective": "chon-loc"
       },
@@ -428,6 +464,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font ẩm thực",
       "category": "FontQC",
       "special": "vip"
       },
@@ -441,6 +478,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font MJ",
       "category": "FontVH"
       },
       {
@@ -453,6 +491,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font MJ",
       "category": "FontVH"
       },
       {
@@ -465,6 +504,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font KS",
       "category": "FontVH",
       "special": "vip"
       },
@@ -478,6 +518,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font KS",
       "category": "FontVH",
       "selective": "chon-loc"
       },
@@ -492,6 +533,7 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font Google",
       "category": "FontVH"
       },
       {
@@ -504,9 +546,72 @@
       "translate": "Không rõ",
         "date": "12/04/2023",
       "quantity": "126",
+      "name" :"Font Google",
       "category": "FontVH"
       }
-      
+
+ 
+    ],
+
+    "Blog": [
+          
+ {
+  "id": 39,
+  "image": "https://fonttiengviet.com/wp-content/uploads/2022/04/font-viet-hoa-MTD-Creaky-Frank-1.jpg",
+  "title": "Font việt hoá google Brostone",
+
+"text": "Font chữ có rất nhiều hình dạng khác nhau, bài này sanfont.com sẽ giới thiệu bạn những font việt hóa mà đội ngũ admin thấy…"
+},
+{
+"id": 40,
+"image": "https://fonttiengviet.com/wp-content/uploads/2023/02/font-viet-hoa-font-tieng-viet-kingston-01.jpg",
+"title": "Top font brush việt hóa được yêu thích nhất",
+
+"text": "Font chữ việt hóa font brush đẹp được sanfont.com tổng hợp cho các bạn Font việt hóa tiếng việt SVN Kingston Font việt hóa SVN…"
+},
+{
+"id": 41,
+"image": "https://fonttiengviet.com/wp-content/uploads/2022/07/1FTV-VIP-Ettlora-font-viet-hoa-tieng-viet-1.jpg",
+"title": "Tổng hợp font viết tay việt hóa tuyệt đẹp ( phần 2 )",
+
+"text": "Phần 2 các font viết tay việt hóa đẹp nhất dành cho thiết kế Font việt hóa MTD Houstoner Script Font việt hóa 1FTV The…"
+},
+{
+"id": 42,
+"image": "https://fonttiengviet.com/wp-content/uploads/2022/12/Font-viet-hoa-SVN-Modisframe-01.jpg",
+"title": "Tổng hợp font viết tay việt hóa đẹp nhất ( phần 1 )",
+
+"text": "Tổng hợp font viết tay việt hóa tuyệt đẹp có thể dùng trong nhiều thiết kế khác nhau: Thiết kế quảng cáo, thiết kế thiệp…"
+},
+{
+"id":43,
+"image": "https://fonttiengviet.com/wp-content/uploads/2022/10/Font-tieng-viet-LC-Sac-Display-Nguyen-Quang-Duy-4.jpg",
+"title": "Top font tiếng việt đẹp do người Việt thiết kế ( phần 2 )",
+
+"text": "Fonttiengviet.com tiếp tục giới thiệu đến các bạn phần 2 các font tiếng việt tuyệt đẹp do người việt thiết kế. Font việt hoá Bong…"
+},
+{
+"id": 44,
+"image": "https://fonttiengviet.com/wp-content/uploads/2023/02/BEAUTIQUE-DISPLAY-font-free.jpg",
+"title": "Top font tiếng việt đẹp do người Việt thiết kế ( phần 1 )",
+
+"text": "Người Việt Nam rất tài năng và có rất nhiều nhà thiết kế font thiết kế nên nhiều font chữ tuyệt đẹp. Các bạn có…"
+},
+{
+"id": 45,
+"image": "https://fonttiengviet.com/wp-content/uploads/2022/04/Font-viet-hoa-1FTV-Akisa-3-1.jpg",
+"title": "Tổng hợp font việt hóa nhật bản đẹp cho thiết kế",
+
+"text": "Nếu bạn cần những font việt hóa phong cách nhật bản thì đây sẽ là các font dành cho bạn Font việt hóa 1FTV Hirosaki…"
+},
+{
+"id":46,
+"image": "https://fonttiengviet.com/wp-content/uploads/2022/04/Font-Thu-Phap-Quang-Ninh.jpg",
+"title": "Top 4 font thư pháp nổi tiếng cho dịp tết",
+
+"text": "Font chữ thư pháp được sử dụng rất nhiều trong các dịp lễ tết năm mới. sanfont.com đã sưu tầm và gửi đến các bạn…"
+}
+
     ]
   
 }

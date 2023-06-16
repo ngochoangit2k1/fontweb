@@ -42,7 +42,7 @@ const Register = () => {
 	}
 	return (
 		<>
-			<div className='w-full  flex mt-10'>
+			<div className='w-full  flex mt-28'>
 				<div className='w-[80%] mx-auto '>
 					<Link className='gap-1 flex font-normal text-base' href={'/'}>
 						<BiLeftArrowCircle className='text-xl mt-[3px]' />

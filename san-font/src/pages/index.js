@@ -1,11 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import React from 'react'
-import Link from 'next/link'
 import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
 import MenuFont from '@/components/MenuFonts/MenuFont'
-import ProductHome from '@/components/ProductHome'
+import ProductHome from '@/components/products/ProductHome'
 
 function Home({ Data }) {
 	const [HomeData, setHomeData] = useState(Data)
@@ -32,7 +30,7 @@ function Home({ Data }) {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			{/* search */}
-			<div className=' w-full mt-12'>
+			<div className=' w-full mt-32'>
 				<div className='relative mx-auto w-[70%] max-lg:w-[80%]'>
 					<input
 						type='text'

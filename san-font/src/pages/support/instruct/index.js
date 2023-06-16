@@ -3,7 +3,7 @@ import Image from 'next/image'
 const instruct = () => {
 	return (
 		<>
-			<div className='w-[55%] mx-auto bg-white mt-10 '>
+			<div className='w-[55%] mx-auto bg-white mt-32 '>
 				<div className='w-full py-7 font-bold text-3xl text-black text-center'>
 					Hướng dẫn cài font chữ cho máy tính
 				</div>

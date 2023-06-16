@@ -10,10 +10,9 @@ header {
 }
 
 .Toastify__toast--success {
-	margin-top: 50px;
-	background: #0000 !important;
-	color: rgb(29, 173, 10) !important;
-	
+	margin-top: 75px;
+	background: black !important;
+	color: white !important;
 }
 
 .demo {
@@ -38,7 +37,7 @@ header {
 	right: 0;
 	position: absolute;
 	left: 0;
-	height: 25px;
+	height: 35px;
 	width: 100%;
 	background-color: transparent;
 }
