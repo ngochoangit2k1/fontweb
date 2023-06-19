@@ -1,7 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
+import { addToCart } from '../../../redux/cart.slice'
+import { toast } from 'react-toastify'
+
 const FontChonLoc = ({ fontSeLec }) => {
+	const dispatch = useDispatch()
+	const { data } = useSession()
+	const router = useRouter()
 	return (
 		<>
 			<h2 className='font-bold text-3xl ml-[8%] mt-32'>
@@ -11,7 +20,7 @@ const FontChonLoc = ({ fontSeLec }) => {
 				{fontSeLec.map((item, id) => {
 					return (
 						<>
-							<div className='bg-[#ffffff] shadow-lg' key={id}>
+							<div className='bg-whites shadow-lg' key={id}>
 								<div className='relative'>
 									<div className=' group overflow-hidden'>
 										<div className=' cursor-pointer duration-500 hover:scale-[1.1]  relative'>
@@ -23,8 +32,8 @@ const FontChonLoc = ({ fontSeLec }) => {
 													height={250}
 													className=' w-full h-44 object-cover  '
 												></Image>
-												<div className='w-full h-44 absolute top-0 bg-black/60  duration-500  opacity-0 cursor-pointer group-hover:opacity-100 '>
-													<h2 className='text-white text-center text-sm font-semibold mt-[26%] '>
+												<div className='w-full h-44 absolute top-0 bg-blacks/60  duration-500  opacity-0 cursor-pointer group-hover:opacity-100 '>
+													<h2 className='text-whites text-center text-sm font-semibold mt-[26%] '>
 														XEM DEMO
 													</h2>
 												</div>
@@ -55,11 +64,31 @@ const FontChonLoc = ({ fontSeLec }) => {
 										</div>
 									</div>
 
-									<button className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-br-lg  z-1'>
+									<button
+										onClick={() => {
+											if (data?.user) {
+												dispatch(addToCart(item))
+												toast.success('Font đã được lưu vào tài khoản')
+											} else {
+												router.push('/Auth/login')
+											}
+										}}
+										className='btn-save absolute bg-reds py-[3px] px-[6px] text-whit text-whites  text-xs shadow-xxl rounded-br-lg  z-1'
+									>
 										<span className='font-bold '>Lưu</span>
 									</button>
 
-									<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+									{/* <button
+									onClick={() => {
+										dispatch(removeFromCart(item))
+										toast.success('Font đã được xóa khỏi tài khoản')
+									}}
+									className='btn-save absolute bg-reds py-[3px] px-[6px] text-whites text-xs shadow-BShadow  rounded-br-lg  z-1'
+								>
+									<span className='font-bold'>Đã lưu</span>
+								</button> */}
+
+									<button className='btn-vip absolute bg-[#ffa800] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 										<span className='font-bold '>Font chọn lọc</span>
 									</button>
 								</div>
@@ -91,7 +120,7 @@ const FontChonLoc = ({ fontSeLec }) => {
 										{item.quantity}
 									</p>
 								</div>
-								<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+								<div className=' text-sm text-center bg-oranges hover:bg-reds cursor-pointer py-3 text-whites'>
 									<Link href='/' legacyBehavior>
 										<a className='font-medium'>TẢI FONT NÀY NGAY</a>
 									</Link>

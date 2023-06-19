@@ -34,7 +34,7 @@ const ResetPass = () => {
 
 			<form
 				onSubmit={handleSubmit}
-				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
+				className='w-[35%]  mx-auto bg-whites rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
 					<h1 className='font-medium text-2xl'>Quên mật khẩu</h1>
@@ -46,11 +46,11 @@ const ResetPass = () => {
 							onChange={handleChange}
 							value={values.email}
 							onBlur={handleBlur}
-							className={`relative bg-white border-gray-300  rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-[16px] placeholder:text-[#6d767e] w-full p-3				
+							className={`relative bg-whites border-gray-300  rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-[16px] placeholder:text-[#6d767e] w-full p-3				
 							${
 								errors.email
 									? 'border border-red-600 ring-2 ring-red-100'
-									: 'border border-gray-300 bg-white'
+									: 'border border-gray-300 bg-whites'
 							}`}
 						/>
 						{errors.email && touched.email && (
@@ -62,7 +62,7 @@ const ResetPass = () => {
 					<div className='w-full'>
 						<button
 							type='submit'
-							className='flex mx-auto mt-5 px-5  h-10 bg-oranges items-center justify-center text-white hover:bg-opacity-80 rounded-[30px]  '
+							className='flex mx-auto mt-5 px-5  h-10 bg-oranges items-center justify-center text-whites hover:bg-opacity-80 rounded-[30px]  '
 						>
 							<FiUser className='font-extrabold text-[20px] ' />
 							<a className='ml-2 text-base font-normal'>Lấy lại mật khẩu</a>

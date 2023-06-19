@@ -4,7 +4,7 @@ import 'react-tabs/style/react-tabs.css'
 const TabChild = () => {
 	return (
 		<>
-			<Tabs className='text-black font-medium mt-2'>
+			<Tabs className='text-blacks font-medium mt-2'>
 				<TabList>
 					<Tab>Tải file </Tab>
 					<Tab>Media</Tab>
@@ -16,15 +16,15 @@ const TabChild = () => {
 							Thả các tập tin để tải lên
 						</h2>
 						<h4 className=' text-xs font-normal mt-2'>hoặc</h4>
-						<button className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-[#2270b0]  font-normal py-3  border border-[#2270b0] hover:border-[#014d8b] rounded'>
+						<button className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-blues  font-normal py-3  border border-blues hover:border-blueHover rounded'>
 							<input type='file' id='file' accept='image/png, image/jpeg' />
-							<label className='py-3 px-9 hover:text-[#014d8b]' htmlFor='file'>
+							<label className='py-3 px-9 hover:text-blueHover' htmlFor='file'>
 								Chọn tập tin
 							</label>
 						</button>
 						{/* <input
 							type='file'
-							className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-[#014d8b] font-normal  py-3 px-8 border border-blue-500  rounded'
+							className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-blueHover font-normal  py-3 px-8 border border-blue-500  rounded'
 						>
 							Chọn tập tin
 						/> */}
@@ -38,14 +38,14 @@ const TabChild = () => {
 						{' '}
 						<div className=' h-full w-[75%]'>
 							{' '}
-							<p className='text-black text-xs font-semibold ml-3 mt-2'>
+							<p className='text-blacks text-xs font-semibold ml-3 mt-2'>
 								Lọc media
 							</p>
 							<div className='flex'>
 								{' '}
 								<select
 									id='countries'
-									className='ml-3 h-8 w-44 mt-2  focus:outline-none border border-gray-600 bg-white text-gray-600 text-xs rounded focus:border-2 focus:ring-oranges focus:border-oranges block px-2 '
+									className='ml-3 h-8 w-44 mt-2  focus:outline-none border border-gray-600 bg-whites text-gray-600 text-xs rounded focus:border-2 focus:ring-oranges focus:border-oranges block px-2 '
 								>
 									<option selected>Hình ảnh</option>
 									<option value='US'>Đã tải lên từ bài này</option>
@@ -54,7 +54,7 @@ const TabChild = () => {
 								</select>
 								<select
 									id='countries'
-									className='ml-3 h-8 w-44 mt-2  focus:outline-none border border-gray-600 bg-white text-gray-600 text-xs rounded focus:border-2 focus:ring-oranges focus:border-oranges block px-2 '
+									className='ml-3 h-8 w-44 mt-2  focus:outline-none border border-gray-600 bg-whites text-gray-600 text-xs rounded focus:border-2 focus:ring-oranges focus:border-oranges block px-2 '
 								>
 									<option selected>Tất cả các ngày</option>
 									<option value='US'>Tháng Năm 2023</option>
@@ -68,7 +68,7 @@ const TabChild = () => {
 									<option value='DE'>Tháng Chín 2022</option>
 								</select>
 								<div className='ml-80'>
-									<p className='text-black text-xs font-semibold ml-3 -mt-4'>
+									<p className='text-blacks text-xs font-semibold ml-3 -mt-4'>
 										Tìm kiếm
 									</p>
 									<input
@@ -82,10 +82,10 @@ const TabChild = () => {
 									Thả các tập tin để tải lên
 								</h2>
 								<h4 className=' text-xs font-normal mt-2'>hoặc</h4>
-								<button className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-[#2270b0]  font-normal py-3  border border-[#2270b0] hover:border-[#014d8b] rounded'>
+								<button className='mt-1 text-sm bg-gray-100 hover:bg-gray-200 text-blues  font-normal py-3  border border-blues hover:border-blueHover rounded'>
 									<input type='file' id='file' accept='image/png, image/jpeg' />
 									<label
-										className='py-3 px-9 hover:text-[#014d8b]'
+										className='py-3 px-9 hover:text-blueHover'
 										htmlFor='file'
 									>
 										Chọn tập tin

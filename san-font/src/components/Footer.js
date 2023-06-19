@@ -5,7 +5,7 @@ const Footer = () => {
 	return (
 		<>
 			<footer>
-				<div className='w-full bg-white '>
+				<div className='w-full bg-whites '>
 					<div className='grid grid-cols-3 w-[80%] mx-auto gap-24 mt-10 py-12 max-lg:grid-cols-1 max-lg:gap-10'>
 						<div>
 							<h1 className='text-2xl font-medium'>GIỚI THIỆU</h1>
@@ -39,7 +39,7 @@ const Footer = () => {
 						</div>
 					</div>
 					<div className=' w-[100%]  bg-[#ededed] mx-auto mt-10 py-4'>
-						<div className='flex justify-center text-black text-sm'>
+						<div className='flex justify-center text-blacks text-sm'>
 							<span>© 2023 by sanfont.com</span>
 						</div>
 					</div>

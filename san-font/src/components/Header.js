@@ -21,7 +21,7 @@ const Header = () => {
 
 	return (
 		<header>
-			<nav className='bg-white shadow-lg  py-6 fixed top-0 left-0 right-0 z-[99]'>
+			<nav className='bg-whites shadow-lg  py-6 fixed top-0 left-0 right-0 z-[99]'>
 				<div className='w-[85%] flex flex-wrap justify-between items-center mx-auto max-xl:w-[90%]'>
 					<Link href={'/'} className='max-lg:ml-3'>
 						<Image
@@ -70,9 +70,9 @@ const Header = () => {
 						} justify-between items-center w-full xl:flex xl:w-auto xl:order-1`}
 						id='mobile-menu-2'
 					>
-						<ul className='flex flex-col mt-4 gap-5 font-bold xl:flex-row xl:space-x-8 xl:mt-0'>
+						<ul className='flex flex-col font-bold xl:flex-row max-xl:text-center xl:space-x-8 xl:mt-0'>
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2  hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/' ? 'lg:relative' : ' '
 								}`}
 							>
@@ -104,7 +104,7 @@ const Header = () => {
 
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-[35px] py-2 text-black  menu font-normal leading-3 shadow-xl bg-base-100 w-52'
+									className=' dropdown-content mt-[35px] py-2 text-blacks  menu font-medium leading-4 shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link href={'/font-viet-hoa/font-1FTV'} legacyBehavior>
@@ -199,7 +199,7 @@ const Header = () => {
 								)}
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-[35px] py-2 text-black menu font-normal leading-3 shadow-xl bg-base-100 w-52'
+									className=' dropdown-content mt-[35px] py-2 text-blacks menu font-medium leading-3 shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link
@@ -253,7 +253,7 @@ const Header = () => {
 
 						<div className='flex ml-10 items-center gap-3 xl:order-2 max-lg:justify-center max-lg:mx-auto max-lg:mt-5'>
 							<Link href={'/upFont'}>
-								<button className='flex items-center py-2.5 bg-oranges rounded justify-center btn-gradient text-white px-2 max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
+								<button className='flex items-center py-2.5 bg-oranges rounded justify-center btn-gradient text-whites px-2 max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
 									<AiOutlineCloudUpload className='font-extrabold text-[24px] max-md:text-sm' />
 									<span className='ml-2 text-[15px]  max-md:text-[13px]'>
 										Up font
@@ -264,7 +264,7 @@ const Header = () => {
 							{data?.user ? (
 								<div className='flex'>
 									<Link href={'/profiles'}>
-										<button className='flex items-center py-2.5 bg-[#1876f2] rounded  justify-center btn-gradient text-white px-2  max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
+										<button className='flex items-center py-2.5 bg-[#1876f2] rounded  justify-center btn-gradient text-whites px-2  max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
 											<FiUser className='text-[24px] font-bold mr-1 max-md:text-sm' />
 											<span className='ml-1 text-[15px]  max-md:text-[13px]'>
 												{data?.user?.name}
@@ -275,7 +275,7 @@ const Header = () => {
 									{/* <Link href={''}>
 										<button
 											onClick={() => signOut()}
-											className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'
+											className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'
 										>
 											<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 											Đăng xuất
@@ -284,7 +284,7 @@ const Header = () => {
 								</div>
 							) : (
 								<Link href={'/Auth/login'}>
-									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-white'>
+									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'>
 										<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 										Đăng nhập
 									</button>

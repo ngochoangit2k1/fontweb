@@ -1,7 +1,32 @@
 import ProductCategory from '@/components/Products/ProductCategory'
 import Head from 'next/head'
+import { useState } from 'react'
+import ReactPaginate from 'react-paginate'
 
 const fontQC = ({ categoryFont }) => {
+	const [users, setUsers] = useState(categoryFont)
+
+	const [pageNumber, setPageNumber] = useState(0)
+
+	const usersPerPage = 8
+	const pagesVisited = pageNumber * usersPerPage
+
+	const displayUsers = users
+		.slice(pagesVisited, pagesVisited + usersPerPage)
+		.map((item, id) => {
+			return (
+				<>
+					<ProductCategory item={item} id={id} />
+				</>
+			)
+		})
+
+	const pageCount = Math.ceil(users.length / usersPerPage)
+
+	const changePage = ({ selected }) => {
+		setPageNumber(selected)
+	}
+
 	return (
 		<>
 			<Head>
@@ -15,7 +40,20 @@ const fontQC = ({ categoryFont }) => {
 					Font Quảng cáo ( {categoryFont.length} font)
 				</h2>
 				<div className='w-[85%] mx-auto mt-6 grid grid-cols-4 gap-6 max-2xl:w-[95%] max-lg:grid-cols-2 max-sm:grid-cols-1'>
-					<ProductCategory categoryFont={categoryFont} />
+					{displayUsers}
+				</div>
+				<div className='mt-10  w-[30%] mx-auto '>
+					<ReactPaginate
+						previousLabel={'Previous'}
+						nextLabel={'Next'}
+						pageCount={pageCount}
+						onPageChange={changePage}
+						containerClassName={'paginationBttns'}
+						previousLinkClassName={'previousBttn'}
+						nextLinkClassName={'nextBttn'}
+						disabledClassName={'paginationDisabled'}
+						activeClassName={'paginationActive'}
+					/>
 				</div>
 			</div>
 		</>

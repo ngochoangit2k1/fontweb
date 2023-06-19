@@ -15,7 +15,7 @@ const ProductHome = ({ showMore }) => {
 		<>
 			{showMore.map((item, id) => {
 				return (
-					<div className='bg-white shadow-md ' key={id}>
+					<div className='bg-whites shadow-md ' key={id}>
 						<div className='relative'>
 							<div className=' group overflow-hidden'>
 								<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
@@ -28,7 +28,7 @@ const ProductHome = ({ showMore }) => {
 											className=' w-full h-44 object-cover '
 										></Image>
 										<div className='w-full h-44 absolute top-0 bg-black/60 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
-											<h2 className='text-white text-center text-sm font-semibold mt-[26%] '>
+											<h2 className='text-whites text-center text-sm font-semibold mt-[26%] '>
 												XEM DEMO
 											</h2>
 										</div>
@@ -71,7 +71,7 @@ const ProductHome = ({ showMore }) => {
 											router.push('/Auth/login')
 										}
 									}}
-									className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-whit text-white  text-xs shadow-xxl rounded-br-lg  z-1'
+									className='btn-save absolute bg-reds py-[3px] px-[6px] text-whit text-whites  text-xs shadow-xxl rounded-br-lg  z-1'
 								>
 									<span className='font-bold '>Lưu</span>
 								</button>
@@ -81,13 +81,13 @@ const ProductHome = ({ showMore }) => {
 										dispatch(removeFromCart(item))
 										toast.success('Font đã được xóa khỏi tài khoản')
 									}}
-									className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs shadow-BShadow  rounded-br-lg  z-1'
+									className='btn-save absolute bg-reds py-[3px] px-[6px] text-whites text-xs shadow-BShadow  rounded-br-lg  z-1'
 								>
 									<span className='font-bold'>Đã lưu</span>
 								</button> */}
 
 								{item.special && (
-									<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+									<button className='btn-vip absolute bg-[#028623] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 										<Link href={'/font-vip'} legacyBehavior>
 											<a className='font-bold '>VIP</a>
 										</Link>
@@ -95,21 +95,21 @@ const ProductHome = ({ showMore }) => {
 								)}
 
 								{item.selective ? (
-									<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+									<button className='btn-vip absolute bg-[#ffa800] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 										<Link href={'/font-chon-loc'} legacyBehavior>
 											<a className='font-bold '>Font chọn lọc</a>
 										</Link>
 									</button>
 								) : null}
 							</div>
-							{/* <button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white shadow-orange-400 text-xs rounded-bl-lg  z-1'>
+							{/* <button className='btn-vip absolute bg-[#028623] py-[3px] px-[6px] text-whites shadow-orange-400 text-xs rounded-bl-lg  z-1'>
 								<Link href={'/font-vip'} legacyBehavior>
-									<a className='font-bold text-white'>VIP</a>
+									<a className='font-bold text-whites'>VIP</a>
 								</Link>
 							</button> */}
 						</div>
 						<Link href={`font-viet-hoa/${item.nameFont}/${item.id}`}>
-							<h2 className='ml-3 mt-4 font-semibold text-base text-[#000000]'>
+							<h2 className='ml-3 mt-4 font-semibold text-base text-blacks'>
 								{item.title}
 							</h2>
 						</Link>
@@ -135,7 +135,7 @@ const ProductHome = ({ showMore }) => {
 								{item.quantity}
 							</p>
 						</div>
-						<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+						<div className=' text-sm text-center bg-oranges hover:bg-reds cursor-pointer py-3 text-whites'>
 							<Link href='/' legacyBehavior>
 								<a className='font-medium'>TẢI FONT NÀY NGAY</a>
 							</Link>

@@ -53,7 +53,7 @@ const Register = () => {
 
 			<form
 				onSubmit={submitHandler}
-				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
+				className='w-[35%]  mx-auto bg-whites rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
 					{' '}
@@ -64,7 +64,7 @@ const Register = () => {
 							type='text'
 							id='name'
 							placeholder='Họ tên'
-							className='bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
+							className='bg-whites  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
 							required
 							value={name}
 							onChange={e => setName(e.target.value)}
@@ -75,7 +75,7 @@ const Register = () => {
 							type='Email'
 							id='email'
 							placeholder='Email'
-							className='bg-white  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
+							className='bg-whites  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
 							required
 							value={email}
 							onChange={e => setEmail(e.target.value)}
@@ -90,7 +90,7 @@ const Register = () => {
 								type={eyeOne === false ? 'password' : 'text'}
 								placeholder='Mật khẩu'
 								id='password'
-								className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
+								className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
 								required
 								value={password}
 								onChange={e => setPassword(e.target.value)}
@@ -110,7 +110,7 @@ const Register = () => {
 								type={eye === false ? 'password' : 'text'}
 								id='confirmPassword'
 								placeholder='Nhập lại mật khẩu'
-								className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
+								className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
 								required
 							/>
 						</div>
@@ -125,7 +125,7 @@ const Register = () => {
 					<div className='w-full  '>
 						<button
 							type='submit'
-							className='flex mt-5 mx-auto px-5 h-10 bg-oranges  items-center justify-center text-white  hover:bg-opacity-80 rounded-[30px]'
+							className='flex mt-5 mx-auto px-5 h-10 bg-oranges  items-center justify-center text-whites  hover:bg-opacity-80 rounded-[30px]'
 						>
 							<FiUser className='font-extrabold text-[20px]' />
 							<a className='ml-2 text-base font-normal'>Đăng ký</a>

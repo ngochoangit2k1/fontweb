@@ -6,24 +6,24 @@ const Media = () => {
 	return (
 		<>
 			<Tabs className='flex '>
-				<div className='w-[17%] h-[683px] border-black border-r-4  bg-gray-100 focus:bg-gray-100'>
+				<div className='w-[17%] h-[683px] border-blacks border-r-4  bg-gray-100 focus:bg-gray-100'>
 					<h1 className='ml-6 pt-4 font-semibold text-sm'>Hành động</h1>
-					<TabList className='text-sm mt-2  text-[#2270b0] font-medium'>
-						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100  focus:text-[#014d8b] focus:border-solid focus:border-[#2270b0] focus:border-[1px] focus:font-semibold focus:ring-[#add7f9]  focus:ring-[1px]  focus:rounded-none'>
+					<TabList className='text-sm mt-2  text-blues font-medium'>
+						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100  focus:text-blueHover focus:border-solid focus:border-blueHover focus:border-[1px] focus:font-semibold focus:ring-rings  focus:ring-[1px]  focus:rounded-none'>
 							Thêm media
 						</Tab>
 
-						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-[#014d8b] focus:border-solid focus:border-[#2270b0] focus:border-[1px] focus:font-semibold focus:ring-[#add7f9]  focus:ring-[1px] focus:rounded-none'>
+						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-blueHover focus:border-solid focus:border-blueHover focus:border-[1px] focus:font-semibold focus:ring-rings  focus:ring-[1px] focus:rounded-none'>
 							Tạo gallery
 						</Tab>
-						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-[#014d8b] focus:border-solid focus:border-[#2270b0] focus:border-[1px] focus:font-semibold focus:ring-[#add7f9]  focus:ring-[1px] focus:rounded-none'>
+						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-blueHover focus:border-solid focus:border-blueHover focus:border-[1px] focus:font-semibold focus:ring-rings  focus:ring-[1px] focus:rounded-none'>
 							Tạo danh sách Audio
 						</Tab>
-						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-[#014d8b] focus:border-solid focus:border-[#2270b0] focus:border-[1px] focus:font-semibold focus:ring-[#add7f9]  focus:ring-[1px] focus:rounded-none'>
+						<Tab className='flex pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-blueHover focus:border-solid focus:border-blueHover focus:border-[1px] focus:font-semibold focus:ring-rings  focus:ring-[1px] focus:rounded-none'>
 							Tạo danh sách phát video
 						</Tab>
 						<div className='mt-3 w-[80%] h-[1px] mx-auto bg-gray-300 focus:bg-gray-100'></div>
-						<Tab className='flex mt-3 pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-[#014d8b] focus:border-solid focus:border-[#2270b0] focus:border-[1px] focus:font-semibold focus:ring-[#add7f9]  focus:ring-[1px] focus:rounded-none'>
+						<Tab className='flex mt-3 pl-6 cursor-pointer items-center w-full h-9 hover:bg-gray-200 focus:bg-gray-100 focus:text-blueHover focus:border-solid focus:border-blueHover focus:border-[1px] focus:font-semibold focus:ring-rings  focus:ring-[1px] focus:rounded-none'>
 							Chèn từ URL
 						</Tab>
 					</TabList>

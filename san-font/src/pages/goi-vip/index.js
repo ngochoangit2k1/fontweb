@@ -15,7 +15,7 @@ const Vip = () => {
 				</h1>
 
 				<div className='w-[65%]  mx-auto grid grid-cols-3 gap-14 pt-14 max-xl:w-[90%] max-lg:grid-cols-1 max-lg:w-[60%]  '>
-					<div className='bg-white my-7'>
+					<div className='bg-whites my-7'>
 						<div className='bg-[#c4c4c4] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-4'>
 							Gói bắt đầu
@@ -43,13 +43,13 @@ const Vip = () => {
 						</div>
 
 						<div className='w-[48%] mx-auto '>
-							<button className=' mt-16  w-full cursor-no-drop  h-10 bg-oranges  text-white'>
+							<button className=' mt-16  w-full cursor-no-drop  h-10 bg-oranges  text-whites'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
 						</div>
 					</div>
 
-					<div className='bg-white  '>
+					<div className='bg-whites  '>
 						<div className='bg-[#eb4335] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-14	'>
 							Gói 12 tháng
@@ -73,11 +73,11 @@ const Vip = () => {
 									Truy cập không giới hạn
 								</li>
 								<li className=' flex font-extrabold text-sm  text-[#05A150]'>
-									<MdCheck className='text-[20px] text-black mr-2' />
+									<MdCheck className='text-[20px] text-blacks mr-2' />
 									Tải font ngay lập tức
 								</li>
-								<li className=' flex font-extrabold text-sm text-[#ED0505]'>
-									<MdCheck className='text-[20px] text-black mr-2' />
+								<li className=' flex font-extrabold text-sm text-reds'>
+									<MdCheck className='text-[20px] text-blacks mr-2' />
 									TẢI VIP
 								</li>
 								<li className='flex'>
@@ -88,13 +88,13 @@ const Vip = () => {
 						</div>
 
 						<div className='w-[48%] mx-auto pb-14'>
-							<button className=' mt-6  w-full cursor-pointer hover:bg-[#ff0000] h-10 bg-oranges  text-white'>
+							<button className=' mt-6  w-full cursor-pointer hover:bg-reds h-10 bg-oranges  text-whites'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
 						</div>
 					</div>
 
-					<div className='bg-white my-7 '>
+					<div className='bg-whites my-7 '>
 						<div className='bg-[#00a3ff] w-full h-2'></div>
 						<h1 className='font-semibold text-2xl text-center mt-4'>
 							Gói 6 tháng
@@ -121,7 +121,7 @@ const Vip = () => {
 									<MdCheck className='text-[20px] mr-2' />
 									Tải font ngay lập tức
 								</li>
-								<li className='flex text-sm font-bold text-black'>
+								<li className='flex text-sm font-bold text-blacks'>
 									<MdCheck className='text-[20px] mr-2' />
 									Ủng hộ duy trì website
 								</li>
@@ -129,7 +129,7 @@ const Vip = () => {
 						</div>
 
 						<div className='w-[48%] mx-auto'>
-							<button className=' mt-11  w-full cursor-pointer hover:bg-[#ff0000] h-10 bg-oranges  text-white'>
+							<button className=' mt-11  w-full cursor-pointer hover:bg-reds h-10 bg-oranges  text-whites'>
 								<span className=' max-md:text-[13px] text-[15px]'>Đăng ký</span>
 							</button>
 						</div>

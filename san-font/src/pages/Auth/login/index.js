@@ -54,20 +54,23 @@ const Login = () => {
 
 			<form
 				onSubmit={submitHandler}
-				className='w-[35%]  mx-auto bg-white rounded-xl shadow-xl mt-10 max-xl:w-[90%]'
+				className='w-[35%]  mx-auto bg-whites rounded-xl shadow-xl mt-10 max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
 					<h1 className='font-medium text-2xl'>Đăng Nhập</h1>
 					<hr className='mt-4  border-[#cccccc]' />
 					<div className='mt-5  '>
-						<label className='text-base font-medium text-black ' htmlFor='text'>
+						<label
+							className='text-base font-medium text-blacks '
+							htmlFor='text'
+						>
 							Địa chỉ Email
 						</label>
 						<input
 							id='email'
 							type='text'
 							placeholder='Email'
-							className='bg-white  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
+							className='bg-whites  border-gray-300 text-gray-900 rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full p-3'
 							required
 							value={email}
 							onChange={e => setEmail(e.target.value)}
@@ -75,14 +78,14 @@ const Login = () => {
 					</div>
 					<div className=' mt-4 relative '>
 						<div className=''>
-							<label className='text-base font-medium text-black '>
+							<label className='text-base font-medium text-blacks '>
 								Mật khẩu
 							</label>
 							<input
 								id='password'
 								type={eye === false ? 'password' : 'text'}
 								placeholder='password'
-								className='test relative bg-white border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3'
+								className='test relative bg-whites border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3'
 								value={password}
 								onChange={e => setPassword(e.target.value)}
 							/>
@@ -118,7 +121,7 @@ const Login = () => {
 					<div className='text-center mt-4'>
 						<button
 							type='submit'
-							className=' bg-oranges hover:bg-opacity-80 rounded-[30px] px-5 py-2 text-white   '
+							className=' bg-oranges hover:bg-opacity-80 rounded-[30px] px-5 py-2 text-whites   '
 						>
 							Đăng Nhập
 						</button>

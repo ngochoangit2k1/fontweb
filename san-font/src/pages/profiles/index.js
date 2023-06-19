@@ -55,30 +55,30 @@ const Profile = () => {
 						className='w-52 h-52 mx-auto object-cover'
 						alt='avt'
 					></Image>
-					<p className='mt-4 text-center text-black font-bold text-md'>
+					<p className='mt-4 text-center text-blacks font-bold text-md'>
 						Xin chào <span className='font-extrabold'>{data?.user?.name}</span>
 					</p>
 
-					<TabList className='w-[100%] mt-12 mx-auto bg-white gap-y-[2px] cursor-pointer  text-black font-medium text-[16px]'>
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '>
+					<TabList className='w-[100%] mt-12 mx-auto bg-whites gap-y-[2px] cursor-pointer  text-blacks font-medium text-[16px]'>
+						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Thông tin tài khoản{' '}
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Quản lý tài khoản
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Quản lý font yêu thích
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Font bạn đã tải lên
 						</Tab>
 						<hr />
 						<Tab
 							onClick={() => signOut()}
-							className=' focus:bg-oranges hover:bg-oranges hover:text-white focus:text-white  py-3 pl-2 '
+							className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '
 						>
 							Đăng xuất
 						</Tab>
@@ -86,18 +86,18 @@ const Profile = () => {
 				</div>
 				<div className='w-[75%] mt-12 max-lg:w-[100%] '>
 					<TabPanel>
-						<div className=' w-full  bg-white rounded-3xl shadow-md py-8  px-10'>
+						<div className=' w-full  bg-whites rounded-3xl shadow-md py-8  px-10'>
 							<h1 className='text-2xl font-medium '>Thông tin tài khoản</h1>
 							<div className='flex justify-between mt-7 max-lg:flex-col max-lg:justify-start'>
 								<div className='flex py-1'>
 									{' '}
 									<HiOutlineUser className='mr-2 font-medium text-xl mt-[2px]' />
-									<p className='text-[16px] text-black font-extrabold max-xl:text-sm'>
+									<p className='text-[16px] text-blacks font-extrabold max-xl:text-sm'>
 										Loại tài khoản:
 									</p>{' '}
 									<span className='text-gray-400 max-xl:text-sm'>Free</span>
 								</div>
-								<div className='flex py-1 text-[16px] text-black font-extrabold max-xl:text-sm'>
+								<div className='flex py-1 text-[16px] text-blacks font-extrabold max-xl:text-sm'>
 									<HiOutlineCircleStack className='mr-2 text-lg mt-[2px] ' />
 									Trạng thái tài khoản:
 									<span className='text-[#85f00c] max-xl:text-sm'>
@@ -107,7 +107,7 @@ const Profile = () => {
 								<div className='flex py-1'>
 									{' '}
 									<IoMdTime className='mr-2 text-lg mt-[2px] ' />
-									<p className='text-[16px] text-black font-extrabold max-xl:text-sm'>
+									<p className='text-[16px] text-blacks font-extrabold max-xl:text-sm'>
 										Hạn dùng:
 									</p>{' '}
 									<span className='text-gray-400 max-xl:text-sm'>
@@ -116,7 +116,7 @@ const Profile = () => {
 								</div>
 							</div>
 							<div className=' mt-4 w-full h-[1px] bg-slate-300'></div>
-							<p className='font-normal text-lg text-black mt-4 max-lg:text-sm'>
+							<p className='font-normal text-lg text-blacks mt-4 max-lg:text-sm'>
 								Nếu bạn chưa thanh toán, vui lòng đặt lại gói thành viên để lấy
 								mã thanh toán.
 								<Link href={'/goi-vip'} className='text-[#0d6efd] ml-1'>
@@ -127,11 +127,11 @@ const Profile = () => {
 					</TabPanel>
 
 					<TabPanel>
-						<div className=' w-full  bg-white rounded-3xl shadow-md py-8  px-10 '>
+						<div className=' w-full  bg-whites rounded-3xl shadow-md py-8  px-10 '>
 							<div className=''>
 								{' '}
 								<label
-									className='text-base font-medium text-black'
+									className='text-base font-medium text-blacks'
 									htmlFor='text'
 								>
 									Họ tên
@@ -140,13 +140,13 @@ const Profile = () => {
 									defaultValue={data?.user?.name}
 									id='text'
 									type='text'
-									className='bg-white font-medium border-gray-300 text-black rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full py-1.5 px-3'
+									className='bg-whites font-medium border-gray-300 text-blacks rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e] w-full py-1.5 px-3'
 								/>
 							</div>
 
 							<div className='mt-6'>
 								<label
-									className='mt-10 text-base font-medium text-black'
+									className='mt-10 text-base font-medium text-blacks'
 									htmlFor='text'
 								>
 									Địa chỉ email
@@ -156,7 +156,7 @@ const Profile = () => {
 									defaultValue={data?.user?.email}
 									id='email'
 									type='email'
-									className='bg-[#e9ecef]  font-medium border-gray-300 text-black rounded border   w-full py-1.5 px-3'
+									className='bg-[#e9ecef]  font-medium border-gray-300 text-blacks rounded border   w-full py-1.5 px-3'
 								/>
 							</div>
 
@@ -165,7 +165,7 @@ const Profile = () => {
 							<div className=' mt-4 relative '>
 								<div>
 									<label
-										className='mt-10 text-base font-medium text-black'
+										className='mt-10 text-base font-medium text-blacks'
 										htmlFor='text'
 									>
 										Mật khẩu hiện tại (bỏ trống nếu không đổi)
@@ -173,7 +173,7 @@ const Profile = () => {
 									<input
 										type={eye1 === false ? 'password' : 'text'}
 										id='confirmPassword'
-										className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 p-3'
+										className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 p-3'
 									/>
 								</div>
 								<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-8 right-2 max-md:top-14 max-md:text-lg'>
@@ -188,7 +188,7 @@ const Profile = () => {
 							<div className=' mt-4 relative '>
 								<div>
 									<label
-										className='mt-10 text-base font-medium text-black'
+										className='mt-10 text-base font-medium text-blacks'
 										htmlFor='text'
 									>
 										Mật khẩu mới (bỏ trống nếu không đổi)
@@ -196,7 +196,7 @@ const Profile = () => {
 									<input
 										type={eye2 === false ? 'password' : 'text'}
 										id='confirmPassword'
-										className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 p-3'
+										className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 p-3'
 									/>
 								</div>
 								<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-8 right-2 max-md:top-14 max-md:text-lg'>
@@ -211,7 +211,7 @@ const Profile = () => {
 							<div className=' mt-4 relative '>
 								<div>
 									<label
-										className='mt-10 text-base font-medium text-black'
+										className='mt-10 text-base font-medium text-blacks'
 										htmlFor='text'
 									>
 										Xác nhận mật khẩu mới
@@ -219,7 +219,7 @@ const Profile = () => {
 									<input
 										type={eye3 === false ? 'password' : 'text'}
 										id='confirmPassword'
-										className='test relative bg-white  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 px-3'
+										className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none  focus:border-oranges focus:ring-4 focus:ring-red-200  placeholder:text-[#6d767e]  block w-full py-1.5 px-3'
 									/>
 								</div>
 								<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-8 right-2 max-md:text-lg'>
@@ -232,7 +232,7 @@ const Profile = () => {
 							</div>
 							<button
 								type='submit'
-								className='flex mt-5 mx-auto  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-white'
+								className='flex mt-5 mx-auto  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-whites'
 							>
 								<a className='ml-2 max-md:text-[13px] text-base font-normal'>
 									Lưu thay đổi
@@ -252,7 +252,7 @@ const Profile = () => {
 								{cart.map(item => {
 									return (
 										<>
-											<div className='bg-white shadow-md ' key={item.id}>
+											<div className='bg-whites shadow-md ' key={item.id}>
 												<div className='relative'>
 													<div className=' group overflow-hidden'>
 														<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
@@ -264,8 +264,8 @@ const Profile = () => {
 																	height={250}
 																	className=' w-full h-44 object-cover '
 																></Image>
-																<div className='w-full h-44 absolute top-0 bg-black/60 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
-																	<h2 className='text-white text-center text-sm font-semibold mt-[26%] '>
+																<div className='w-full h-44 absolute top-0 bg-blacks/60 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
+																	<h2 className='text-whites text-center text-sm font-semibold mt-[26%] '>
 																		XEM DEMO
 																	</h2>
 																</div>
@@ -303,13 +303,13 @@ const Profile = () => {
 															dispatch(removeFromCart(item.id))
 															toast.success('Font đã được xóa khỏi tài khoản')
 														}}
-														className='demo absolute bg-[#ff0000] py-[3px] px-[6px] text-white text-xs rounded-br-lg  z-1'
+														className='demo absolute bg-reds py-[3px] px-[6px] text-whites text-xs rounded-br-lg  z-1'
 													>
 														<span className='font-bold '> Bỏ lưu</span>
 													</button>
 
 													{item.special && (
-														<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+														<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 															<Link href={'/font-vip'} legacyBehavior>
 																<a className='font-bold '>VIP</a>
 															</Link>
@@ -317,7 +317,7 @@ const Profile = () => {
 													)}
 
 													{item.selective ? (
-														<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-white text-xs shadow-xxl rounded-bl-lg  z-1'>
+														<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 															<Link href={'/font-chon-loc'} legacyBehavior>
 																<a className='font-bold '>Font chọn lọc</a>
 															</Link>
@@ -353,7 +353,7 @@ const Profile = () => {
 														{item.quantity}
 													</p>
 												</div>
-												<div className=' text-sm text-center bg-oranges hover:bg-[#ff0000] cursor-pointer py-3 text-white'>
+												<div className=' text-sm text-center bg-oranges hover:bg-reds cursor-pointer py-3 text-whites'>
 													<Link href='/' legacyBehavior>
 														<a className='font-medium'>TẢI FONT NÀY NGAY</a>
 													</Link>

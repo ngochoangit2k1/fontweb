@@ -12,15 +12,15 @@ const BlogPage = ({ DataBlog }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			<h1 className='text-4xl font-bold text-center mt-32'>Blog</h1>
-			<div className='w-20 rounded-[30px] bg-white text-center py-2 mx-auto mt-5'>
+			<div className='w-20 rounded-[30px] bg-whites text-center py-2 mx-auto mt-5'>
 				<button className='text-base font-normal'>Design</button>
 			</div>
 
 			<div className='w-[85%] mx-auto mt-10 grid grid-cols-3 gap-6 max-xl:w-[90%]  max-xl:grid-cols-2 max-sm:grid-cols-1'>
-				{DataBlog.map((item, id) => {
+				{DataBlog.map(item => {
 					return (
 						<>
-							<div className='bg-white shadow-md' key={id}>
+							<div className='bg-whites shadow-md' key={item.id}>
 								<div className=' overflow-hidden relative w-full '>
 									<Link href={`/blog/${item.id}`}>
 										<Image
@@ -33,11 +33,11 @@ const BlogPage = ({ DataBlog }) => {
 									</Link>
 								</div>
 								<Link href={`/blog/${item.id}`}>
-									<h2 className='text-black ml-4 mt-4 font-extrabold text-xl'>
+									<h2 className='text-blacks ml-4 mt-4 font-extrabold text-xl'>
 										{item.title}
 									</h2>
 								</Link>
-								<div className='text-black ml-4 py-4 font-medium text-base'>
+								<div className='text-blacks ml-4 py-4 font-medium text-base'>
 									<p>{item.text}</p>
 								</div>
 							</div>

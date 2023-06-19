@@ -1,11 +1,33 @@
 import ProductCategory from '@/components/Products/ProductCategory'
 import Head from 'next/head'
-import React, { useState } from 'react'
-import { FaLongArrowAltLeft } from 'react-icons/fa'
-import { FaLongArrowAltRight } from 'react-icons/fa'
+import React, { useEffect, useState } from 'react'
+import ReactPaginate from 'react-paginate'
 
 const fontVH = ({ categoryFont }) => {
-	const [posts, setPosts] = useState([{ count: 0, name: null }])
+	// useEffect(() => {
+	// 	window.scroll(0, 0)
+	// }, [])
+	const [users, setUsers] = useState(categoryFont)
+	const [pageNumber, setPageNumber] = useState(0)
+
+	const usersPerPage = 8
+	const pagesVisited = pageNumber * usersPerPage
+
+	const displayUsers = users
+		.slice(pagesVisited, pagesVisited + usersPerPage)
+		.map((item, id) => {
+			return (
+				<>
+					<ProductCategory item={item} id={id} />
+				</>
+			)
+		})
+
+	const pageCount = Math.ceil(users.length / usersPerPage)
+
+	const changePage = ({ selected }) => {
+		setPageNumber(selected)
+	}
 
 	return (
 		<>
@@ -22,10 +44,22 @@ const fontVH = ({ categoryFont }) => {
 				</h2>
 
 				<div className='w-[85%]	 mx-auto mt-8 grid grid-cols-4 gap-6 max-xl:w-[90%] max-lg:grid-cols-2 max-xl:grid-cols-3 max-sm:grid-cols-1'>
-					<ProductCategory categoryFont={categoryFont} />
+					{displayUsers}
 				</div>
-
-				<div className='text-center justify-center mt-6'></div>
+				<div className='mt-10  w-[30%] mx-auto '>
+					<ReactPaginate
+						previousLabel={'Previous'}
+						nextLabel={'Next'}
+						pageCount={pageCount}
+						onPageChange={changePage}
+						containerClassName={'paginationBttns'}
+						previousLinkClassName={'previousBttn'}
+						nextLinkClassName={'nextBttn'}
+						disabledClassName={'paginationDisabled'}
+						activeClassName={'paginationActive'}
+						onClick={() => window.scroll(0, 0)}
+					/>
+				</div>
 			</div>
 		</>
 	)

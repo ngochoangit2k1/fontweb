@@ -5,13 +5,13 @@ import React from 'react'
 const BlogDetail = ({ dataDetail }) => {
 	return (
 		<>
-			<div className='w-[55%]	bg-white mx-auto mt-32'>
+			<div className='w-[55%]	bg-whites mx-auto mt-32'>
 				{dataDetail.map((item, id) => {
 					return (
 						<>
 							<div className='w-full px-8 py-8'>
 								<div className='w-[75%] mx-auto'>
-									<h1 className='text-3xl text-center text-black font-bold'>
+									<h1 className='text-3xl text-center text-blacks font-bold'>
 										{item.title}
 									</h1>
 								</div>
@@ -21,7 +21,7 @@ const BlogDetail = ({ dataDetail }) => {
 									</Link>
 								</div>
 								<hr className='mt-3' />
-								<p className='font-normal text-base text-black mt-6'>
+								<p className='font-normal text-base text-blacks mt-6'>
 									{item.text}
 								</p>
 								<div className='w-full h-[1px] bg-gray-300 mt-3'></div>

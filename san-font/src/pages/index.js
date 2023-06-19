@@ -36,7 +36,7 @@ function Home({ Data }) {
 						type='text'
 						id='small-input'
 						placeholder='Tìm font tại đây'
-						className='pl-4 font-normal w-full py-3 border border-white hover:border-oranges rounded-[30px] focus:outline-none focus:border-oranges text-base '
+						className='pl-4 font-normal w-full py-3 border border-whites hover:border-oranges rounded-[30px] focus:outline-none focus:border-oranges text-base '
 					/>
 
 					<div className='absolute top-3 right-6'>
@@ -64,13 +64,13 @@ function Home({ Data }) {
 			<div className='w-full text-center mt-6'>
 				<button
 					onClick={loadMore}
-					className='bg-oranges  hover:bg-[#ff0000] py-2 px-6 font-normal text-base text-white rounded-[8px]'
+					className='bg-oranges  hover:bg-reds py-2 px-6 font-normal text-base text-whites rounded-[8px]'
 				>
 					Xem thêm
 				</button>
 			</div>
 
-			<div className='w-[85%] h-96 bg-white mx-auto mt-12'></div>
+			<div className='w-[85%] h-96 bg-whites mx-auto mt-12'></div>
 		</>
 	)
 }

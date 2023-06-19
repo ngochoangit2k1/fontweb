@@ -463,8 +463,64 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "127",
       "name" :"Font ẩm thực",
+      "category": "FontQC",
+      "special": "vip"
+      },
+      {
+        "id": 49,
+        "image": "https://fonttiengviet.com/wp-content/uploads/2023/03/font-viet-hoa-svn-Mangoberry.jpg",
+        "title": "Font việt hóa 1FTV thiết kế ẩm thực 1",
+        "nameFont": "font-am-thuc",
+      "author": "Không rõ ràng",
+        "user": "Phượng Huỳnh",
+      "translate": "Không rõ",
+        "date": "12/04/2023",
+      "quantity": "127",
+      "name" :"Font ẩm thực",
+      "category": "FontQC"
+      
+      },
+      {
+        "id": 50,
+        "image": "https://fonttiengviet.com/wp-content/uploads/2023/02/font-viet-hoa-UTM-Sharnay.jpg",
+        "title": "Font việt hóa 1FTV thiết kế ẩm thực 1",
+        "nameFont": "font-am-thuc",
+      "author": "Không rõ ràng",
+        "user": "Phượng Huỳnh",
+      "translate": "Không rõ",
+        "date": "12/04/2023",
+      "quantity": "127",
+      "name" :"Font ẩm thực",
+      "category": "FontQC"
+      
+      },
+      {
+        "id": 51,
+        "image": "https://fonttiengviet.com/wp-content/uploads/2022/04/file-combo-chu-my-pham-1.jpg",
+        "title": "Font việt hóa MJ Blauer",
+        "nameFont": "font-my-pham",
+      "author": "Không rõ ràng",
+        "user": "Phượng Huỳnh",
+      "translate": "Không rõ",
+        "date": "12/04/2023",
+      "quantity": "126",
+      "name" :"Font mỹ phẩm - Spa",
+      "category": "FontQC"
+     
+      },
+      {
+        "id": 52,
+        "image": "https://fonttiengviet.com/wp-content/uploads/2022/04/combo-chu-mypham-4.jpg",
+        "title": "Font việt hóa MJ Blauer",
+        "nameFont": "font-my-pham",
+      "author": "Không rõ ràng",
+        "user": "Phượng Huỳnh",
+      "translate": "Không rõ",
+        "date": "12/04/2023",
+      "quantity": "126",
+      "name" :"Font mỹ phẩm - Spa",
       "category": "FontQC",
       "special": "vip"
       },
@@ -477,7 +533,7 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "129",
       "name" :"Font MJ",
       "category": "FontVH"
       },
@@ -490,7 +546,7 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "526",
       "name" :"Font MJ",
       "category": "FontVH"
       },
@@ -503,7 +559,7 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "1296",
       "name" :"Font KS",
       "category": "FontVH",
       "special": "vip"
@@ -517,7 +573,7 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "1296",
       "name" :"Font KS",
       "category": "FontVH",
       "selective": "chon-loc"
@@ -532,7 +588,7 @@
         "user": "Phượng Huỳnh",
       "translate": "Không rõ",
         "date": "12/04/2023",
-      "quantity": "126",
+      "quantity": "726",
       "name" :"Font Google",
       "category": "FontVH"
       },
