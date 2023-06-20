@@ -1,3 +1,4 @@
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -17,10 +18,10 @@ const BlogPage = ({ DataBlog }) => {
 			</div>
 
 			<div className='w-[85%] mx-auto mt-10 grid grid-cols-3 gap-6 max-xl:w-[90%]  max-xl:grid-cols-2 max-sm:grid-cols-1'>
-				{DataBlog.map(item => {
+				{DataBlog.map((item, id) => {
 					return (
 						<>
-							<div className='bg-whites shadow-md' key={item.id}>
+							<div className='bg-whites shadow-md' key={id}>
 								<div className=' overflow-hidden relative w-full '>
 									<Link href={`/blog/${item.id}`}>
 										<Image

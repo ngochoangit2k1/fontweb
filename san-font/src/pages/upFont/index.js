@@ -534,26 +534,26 @@ const UpFont = () => {
 									</div>
 								</div>
 							</div>
-							<button className='flex mt-4 max-sm:mx-3 items-center w-[120px] max-sm:w-28 max-sm:h-8 h-11 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-whites'>
-								<a className=' max-md:text-[13px] text-base font-normal'>
-									Đăng bài
-								</a>
+							<button className='flex mt-4 max-sm:mx-3 items-center w-[120px] max-sm:w-28 max-sm:h-8 h-11 bg-oranges hover:bg-opacity-80 rounded-[30px]  justify-center btn-gradient text-whites  max-md:text-[13px] text-base font-normal'>
+								Đăng bài
 							</button>
 						</div>
 					</div>
 				</div>
 			) : (
-				<div className='mt-32 py-12 bg-[#ffff] w-[85%]  rounded-3xl mx-auto shadow-md max-xl:w-[90%]'>
+				<div className='mt-32 py-12 bg-whites w-[85%]  rounded-3xl mx-auto shadow-md max-xl:w-[90%]'>
 					<div className='px-12'>
 						<h2 className='text-blacks font-bold text-2xl'>ĐĂNG TẢI FONT</h2>
 						<hr className='mt-4' />
 
 						<p className='mt-6 font-medium text-blacks'>
-							Vui lòng{' '}
-							<Link href={'/Auth/login'}>
-								{' '}
-								<a className='text-[#2270b0]'>đăng nhập</a>
-							</Link>{' '}
+							Vui lòng
+							<Link
+								className='text-blues hover:text-blueHover px-1'
+								href={'/Auth/login'}
+							>
+								đăng nhập
+							</Link>
 							để đăng tải font.
 						</p>
 					</div>

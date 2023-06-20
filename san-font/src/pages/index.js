@@ -4,6 +4,7 @@ import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
 import MenuFont from '@/components/MenuFonts/MenuFont'
 import ProductHome from '@/components/products/ProductHome'
+import axios from 'axios'
 
 function Home({ Data }) {
 	const [HomeData, setHomeData] = useState(Data)
@@ -78,12 +79,12 @@ function Home({ Data }) {
 export default Home
 
 export async function getStaticProps() {
-	const response = await fetch('http://localhost:4000/HomeData')
-	const data = await response.json()
+	const response = await axios.get('http://localhost:4000/HomeData')
+	console.log(response)
 
 	return {
 		props: {
-			Data: data,
+			Data: response.data,
 		},
 	}
 }

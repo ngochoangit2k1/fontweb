@@ -11,8 +11,8 @@ header {
 
 .Toastify__toast--success {
 	margin-top: 75px;
-	background: black !important;
-	color: white !important;
+	background: white !important;
+	color: rgb(30, 201, 7) !important;
 	
 }
 

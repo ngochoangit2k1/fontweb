@@ -1,15 +1,27 @@
+import { data } from 'autoprefixer'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BlogDetail = ({ dataDetail }) => {
+	const [datas, setDatas] = useState()
+	async function data1() {
+		const response = await fetch('http://localhost:4000/Blog')
+		const data = await response.json()
+
+		setDatas(data)
+	}
+	useEffect(() => {
+		data1()
+	}, [])
+
 	return (
 		<>
-			<div className='w-[55%]	bg-whites mx-auto mt-32'>
-				{dataDetail.map((item, id) => {
+			<div className='w-[55%]	bg-whites mx-auto mt-32 max-xl:w-90%'>
+				{dataDetail.map(item => {
 					return (
 						<>
-							<div className='w-full px-8 py-8'>
+							<div className='w-full px-8 py-8 max-xl:w-[100%]' key={item.id}>
 								<div className='w-[75%] mx-auto'>
 									<h1 className='text-3xl text-center text-blacks font-bold'>
 										{item.title}
@@ -37,6 +49,37 @@ const BlogDetail = ({ dataDetail }) => {
 						</>
 					)
 				})}
+			</div>
+
+			<div className=''>
+				<h1 className=' mt-10 font-extrabold text-4xl text-center'>
+					BÀI VIẾT LIÊN QUAN
+				</h1>
+				<div className='w-[85%] mt-10 grid grid-cols-3 gap-6 mx-auto max-xl:grid max-xl:grid-cols-1 max-xl:w-[90%]'>
+					{datas?.slice(2, 5).map(item => (
+						<div className='bg-whites shadow-md rounded max-xl:w-full '>
+							<div className=' overflow-hidden relative w-full '>
+								<Link href={`/blog/${item.id}`}>
+									<Image
+										src={item.image}
+										alt='logo'
+										width={500}
+										height={400}
+										className='w-full h-60 object-cover  duration-500 hover:scale-[1.1] max-xl:h-80'
+									></Image>
+								</Link>
+							</div>
+							<Link href={`/blog/${item.id}`}>
+								<h2 className='text-blacks ml-4 mt-4 font-extrabold text-xl '>
+									{item.title}
+								</h2>
+							</Link>
+							<div className='text-blacks ml-4 py-4 font-medium text-base max-xl:px-3'>
+								<p>{item.text}</p>
+							</div>
+						</div>
+					))}
+				</div>
 			</div>
 		</>
 	)
