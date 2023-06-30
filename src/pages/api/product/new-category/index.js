@@ -3,7 +3,6 @@ import db from "../../../../backend/models/index.js";
 import { GLOBAL_STATUS } from "../../../../backend/constants/common.constant";
 import checkToken from "../../../../backend/authentication/auth.authentication.js";
 
-
 export default async function handler(req, res, next) {
   if (req.method == "POST") {
     checkToken(req, res);

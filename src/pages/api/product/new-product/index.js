@@ -1,6 +1,7 @@
 import { createProductValidator } from "../../../../backend/validator/product.validator";
 import db from "../../../../backend/models/index.js";
-
+import {GLOBAL_SWITCH, GLOBAL_STATUS} from "../../../../backend/constants/common.constant"; 
+import {HTTP_ERROR, FIELD_ERROR} from "../../../../backend/errors/error"
 export default async function handle(req, res, next) {
   if (req.method === "POST") {
     await createProductValidator(req.body, res);
@@ -85,7 +86,7 @@ export default async function handle(req, res, next) {
         await db.ProductImage.create(
           {
             productId: product.id,
-            image: subImage.url,
+            image: subImage.url, 
             isMain: GLOBAL_SWITCH.OFF,
             status: GLOBAL_STATUS.ACTIVE,
           },
@@ -98,7 +99,7 @@ export default async function handle(req, res, next) {
       // Commit transaction
       await t.commit();
 
-      return true;
+      return res.status(200).json("success");
     } catch (e) {
       console.log("ERROR_CREATE_PRODUCT: ", e);
       if (t) await t.rollback();

@@ -2,11 +2,13 @@ import checkToken from "../../../backend/authentication/auth.authentication.js";
 import pagingParse from "../../../backend/middleware/paging.middleware.js";
 import db from "../../../backend/models/index.js";
 import { USER_STATUS } from "../../../backend/models/user/user.js";
+import { MODULE } from '../../../backend/constants/common.constant';
+
 const { Op } = db.Sequelize;
 
 export default async function handler(req, res) {
   pagingParse(req, res);
-  checkToken(req, res);
+  checkToken(req, res,[MODULE.USER, MODULE.DASHBOARD]);
 
   if (req.method === "GET") {
     const data = async () => {
