@@ -19,6 +19,7 @@ import OrderItem from "./order/orderItem.js";
 import CommissionConfig from "./commission-config.js";
 import CommissionLevel from "./commission-level.js";
 import OTP from "./otp.js";
+import CommentProduct from "./comment.model.js"
 // import dotenv from "dotenv";
 
 // dotenv.config();
@@ -36,6 +37,7 @@ const sequelize = new Sequelize(
   config
 );
 const models = {
+
   // User
   User: User.init(sequelize),
   UserInformation: UserInformation.init(sequelize),
@@ -50,7 +52,8 @@ const models = {
   ProductImage: ProductImage.init(sequelize),
   ProductCategory: ProductCategory.init(sequelize),
   Discount: Discount.init(sequelize),
-
+// Comment
+  CommentProduct:CommentProduct.init(sequelize),
   // Order
   Order: Order.init(sequelize),
   OrderPayment: OrderPayment.init(sequelize),

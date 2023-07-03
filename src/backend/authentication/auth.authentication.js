@@ -19,9 +19,10 @@ export default async function checkToken  (req, res,moduleId = [], next)  {
   //   next();
   //   return;
   // }
-  console.log("check",moduleId)
+
   const passportJWT = passport.authenticate("jwt", { session: false });
   const token = req.headers?.authorization?.split(" ")[1];
+
   try {
     const jwtObject = jwt.verify(token, process.env.JWTPrivateKey);
     const isExpired = Date.now() >= jwtObject.exp * 1000;
@@ -33,24 +34,8 @@ export default async function checkToken  (req, res,moduleId = [], next)  {
     } else {
       console.log(Date.now());
       req.user = jwtObject;
-      const account = await db.User.findOne({
-        where: {
-          id: req.user.id,
-          email: req.user.email
-        }
-      });
-      if (!account) {
-        return res.status(HTTP_ERROR.NOT_AUTHENTICATE).json({
-          code: FIELD_ERROR.ACCOUNT_NOT_FOUND.message,
-          message: "Account not found"
-        });
-      }
-      if (account.status !== GLOBAL_STATUS.ACTIVE) {
-        return res.status(HTTP_ERROR.ACCESS_DENIED).json({
-          code: FIELD_ERROR.ACCOUNT_NOT_ACTIVE.message,
-          message: "Account not active"
-        });
-      }
+      
+      
       next;
     }
 
