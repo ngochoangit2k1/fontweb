@@ -16,17 +16,17 @@ export default function App({
 					<ToastContainer
 						position='top-right'
 						autoClose={5000}
-						hideProgressBar={false}
+						hideProgressBar
 						newestOnTop={false}
 						closeOnClick
 						rtl={false}
 						pauseOnFocusLoss
 						draggable
 						pauseOnHover
-						theme='light'
+						theme='dark'
 					/>
 					{/* Same as */}
-					<ToastContainer />
+
 					<Component {...pageProps} />
 				</Layout>
 			</SessionProvider>

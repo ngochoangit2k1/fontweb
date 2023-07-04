@@ -70,9 +70,9 @@ const Header = () => {
 						} justify-between items-center w-full xl:flex xl:w-auto xl:order-1`}
 						id='mobile-menu-2'
 					>
-						<ul className='flex flex-col font-bold xl:flex-row max-xl:text-center xl:space-x-8 xl:mt-0'>
+						<ul className='flex flex-col font-bold  xl:flex-row max-xl:text-center xl:space-x-8 xl:mt-0'>
 							<li
-								className={`max-xl:py-2  hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2  hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/' ? 'lg:relative' : ' '
 								}`}
 							>
@@ -87,7 +87,7 @@ const Header = () => {
 							</li>
 
 							<li
-								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/font-viet-hoa' ? 'xl:relative' : ''
 								}`}
 							>
@@ -104,7 +104,7 @@ const Header = () => {
 
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-[35px] py-2 text-blacks  menu font-medium leading-4 shadow-xl bg-base-100 w-52'
+									className='dropdown-content mt-[35px] py-2 text-blacks  menu font-medium leading-4 shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link href={'/font-viet-hoa/font-1FTV'} legacyBehavior>
@@ -183,7 +183,7 @@ const Header = () => {
 							</li>
 
 							<li
-								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/font-quang-cao' ? 'xl:relative' : ''
 								}`}
 							>
@@ -222,7 +222,7 @@ const Header = () => {
 								</ul>
 							</li>
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/goi-vip' ? 'xl:relative' : ''
 								}`}
 							>
@@ -236,7 +236,7 @@ const Header = () => {
 								)}
 							</li>
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/blog' ? 'xl:relative' : ''
 								}`}
 							>

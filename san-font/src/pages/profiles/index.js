@@ -60,25 +60,25 @@ const Profile = () => {
 					</p>
 
 					<TabList className='w-[100%] mt-12 mx-auto bg-whites gap-y-[2px] cursor-pointer  text-blacks font-medium text-[16px]'>
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:duration-500 hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Thông tin tài khoản{' '}
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:duration-500 hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Quản lý tài khoản
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:duration-500 hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Quản lý font yêu thích
 						</Tab>
 						<hr />
-						<Tab className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
+						<Tab className=' focus:bg-oranges hover:duration-500 hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '>
 							Font bạn đã tải lên
 						</Tab>
 						<hr />
 						<Tab
 							onClick={() => signOut()}
-							className=' focus:bg-oranges hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '
+							className=' focus:bg-oranges hover:duration-500 hover:bg-oranges hover:text-whites focus:text-whites  py-3 pl-2 '
 						>
 							Đăng xuất
 						</Tab>

@@ -14,7 +14,9 @@ module.exports = {
 				xxl: '1px 4px 4px rgba(0, 0, 0, 0.4);',
 			},
 			colors: {
-				oranges: '#ff5d38',
+				// oranges: '#ff5d38',
+				oranges: '#ff0000',
+
 				blues: '#0d6bf6',
 				blueHover: '#0d0df6',
 				rings: '#add7f9',
