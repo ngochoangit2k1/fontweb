@@ -2,17 +2,16 @@ import SelectFont from '@/components/SelectFonts/SelectFont'
 import SelectImage from '@/components/SelectImages/SelectImage'
 import Media from '@/components/SelectMedia/Media'
 import TextEditor from '@/components/textEditor'
-import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { BsFillCameraFill } from 'react-icons/bs'
+import { useSelector } from 'react-redux'
 
 const UpFont = () => {
-	const { data } = useSession()
+	const { token } = useSelector(state => state.account)
 
 	return (
 		<>
-			{data?.user ? (
+			{token ? (
 				<div className='mt-32 py-12 bg-whites w-[85%]  rounded-3xl mx-auto shadow-md max-xl:w-[90%]'>
 					<div className='px-12'>
 						<h2 className='text-blacks font-bold text-2xl'>ĐĂNG TẢI FONT</h2>

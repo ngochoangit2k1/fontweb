@@ -13,7 +13,7 @@ function Home({ Data }) {
 		setHomeData(nameFonts)
 	}
 
-	const [seeMore, setSeeMore] = useState(8)
+	const [seeMore, setSeeMore] = useState(12)
 
 	const showMore = HomeData.slice(0, seeMore)
 

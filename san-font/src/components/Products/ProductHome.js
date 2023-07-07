@@ -22,12 +22,12 @@ const ProductHome = ({ showMore }) => {
 									<label htmlFor='my-modal-3' className=' '>
 										<Image
 											src={item.image}
-											alt='img'
-											width={300}
-											height={250}
+											alt=''
+											width={500}
+											height={300}
 											className=' w-full h-44 object-cover '
 										></Image>
-										<div className='w-full h-44 absolute top-0 bg-black/60 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
+										<div className='w-full h-44 absolute top-0 bg-black/70 cursor-pointer  duration-500  opacity-0 group-hover:opacity-80 '>
 											<h2 className='text-whites text-center text-sm font-semibold mt-[26%] '>
 												XEM DEMO
 											</h2>
@@ -109,7 +109,7 @@ const ProductHome = ({ showMore }) => {
 							</button> */}
 						</div>
 						<Link href={`font-viet-hoa/${item.nameFont}/${item.id}`}>
-							<h2 className='ml-3 mt-4 font-semibold text-base text-blacks'>
+							<h2 className='ml-3 mt-1 font-semibold text-base text-blacks'>
 								{item.title}
 							</h2>
 						</Link>

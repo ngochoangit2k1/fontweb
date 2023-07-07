@@ -1,33 +1,94 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { FiUser } from 'react-icons/fi'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import axios from 'axios'
-import { BiLeftArrowCircle } from 'react-icons/bi'
 import { useRouter } from 'next/router'
-
+import { toast } from 'react-toastify'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import { BiLeftArrowCircle } from 'react-icons/bi'
+import { IoWarningOutline } from 'react-icons/io5'
+import { FiUser } from 'react-icons/fi'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import { useMemo } from 'react'
+import * as yup from 'yup'
+import axios from 'axios'
 const Register = () => {
 	const router = useRouter()
-	const [name, setName] = useState('')
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
 
-	const submitHandler = async e => {
-		e.preventDefault()
+	const axiosClient = axios.create({
+		baseURL: `http://localhost:3000`,
+		headers: {
+			'content-type': 'application/json',
+		},
+	})
 
-		try {
-			const { data } = await axios.post('/api/register', {
-				name,
-				email,
-				password,
+	const SignUpSchema = useMemo(
+		() =>
+			yup
+				.object()
+				.shape({
+					username: yup
+						.string()
+						.required('Trường bắt buộc')
+						.min(3, 'Tối thiểu 3 kí tự')
+						.max(50, 'Tối đa 50 kí tự')
+						.trim(),
+					email: yup
+						.string()
+						.email('Email không hợp lệ')
+						.required('Trường bắt buộc')
+						.max(255)
+						.matches(
+							/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+							'Vui lòng nhập email hợp lệ'
+						)
+						.trim(),
+					password: yup
+						.string()
+						.required('Trường bắt buộc')
+						.min(6, 'Tối thiểu 6 kí tự')
+						.max(30, 'Tối đa 30 kí tự')
+						.trim(),
+					confirmPassword: yup
+						.string()
+						.when('password', {
+							is: val => (val && val.length > 0 ? true : false),
+							then: () =>
+								yup
+									.string()
+									.oneOf([yup.ref('password')], 'Mật khẩu không giống nhau'),
+						})
+						.required('Trường bắt buộc')
+						.trim(),
+				})
+				.required(),
+		[]
+	)
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors, isValid },
+	} = useForm({
+		resolver: yupResolver(SignUpSchema),
+		mode: 'onChange',
+	})
+
+	const onSubmit = values => {
+		// setLoading(true);
+		axiosClient
+			.post('/api/auth/sign-up', {
+				username: values.username,
+				email: values.email,
+				password: values.password,
 			})
-			console.log(data)
-			if (data.user.email) {
+			.then(() => {
 				router.push('/Auth/login')
-			}
-		} catch (error) {
-			console.log(error)
-		}
+				toast.success('Đăng ký thành công')
+			})
+			.catch(err => {
+				console.log(err)
+			})
+			.finally(() => {})
 	}
 	//eye password
 	const [eyeOne, setEyeOne] = useState(false)
@@ -52,7 +113,7 @@ const Register = () => {
 			</div>
 
 			<form
-				onSubmit={submitHandler}
+				onSubmit={handleSubmit(onSubmit)}
 				className='w-[35%]  mx-auto bg-whites rounded-xl shadow-xl mt-10  max-xl:w-[90%]'
 			>
 				<div className='w-[85%] mx-auto pt-8'>
@@ -62,24 +123,40 @@ const Register = () => {
 					<div className='mt-5  '>
 						<input
 							type='text'
-							id='name'
+							id='username'
 							placeholder='Họ tên'
-							className='bg-whites  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
-							required
-							value={name}
-							onChange={e => setName(e.target.value)}
+							{...register('username')}
+							className={`bg-whites test  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3 ${
+								errors?.username?.message
+									? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+									: 'border border-slate-300 hover:border hover:border-slate-500'
+							}`}
 						/>
+						<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+							{errors?.username?.message}
+							{errors?.username?.message && (
+								<IoWarningOutline className='mt-[3px]' />
+							)}
+						</span>
 					</div>
 					<div className='mt-4'>
 						<input
 							type='Email'
 							id='email'
 							placeholder='Email'
-							className='bg-whites  border-gray-300 text-gray-900 text-sm rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-base placeholder:text-[#6d767e]  block w-full p-3'
-							required
-							value={email}
-							onChange={e => setEmail(e.target.value)}
+							{...register('email')}
+							className={`test relative bg-whites border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e] w-full p-3 ${
+								errors?.email?.message
+									? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+									: 'border border-slate-300 hover:border hover:border-slate-500'
+							}`}
 						/>
+						<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+							{errors?.email?.message}
+							{errors?.email?.message && (
+								<IoWarningOutline className='mt-[3px]' />
+							)}
+						</span>
 					</div>
 					<p className='mt-4 font-normal text-xs text-[#8d9399]'>
 						* Không sử dụng email Yahoo, email trường CĐ, ĐH khi đăng ký
@@ -90,11 +167,19 @@ const Register = () => {
 								type={eyeOne === false ? 'password' : 'text'}
 								placeholder='Mật khẩu'
 								id='password'
-								className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
-								required
-								value={password}
-								onChange={e => setPassword(e.target.value)}
+								{...register('password')}
+								className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
+									errors?.password?.message
+										? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+										: 'border border-slate-300 hover:border hover:border-slate-500'
+								}`}
 							/>
+							<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+								{errors?.password?.message}
+								{errors?.password?.message && (
+									<IoWarningOutline className='mt-[3px]' />
+								)}
+							</span>
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
 							{eyeOne === false ? (
@@ -110,9 +195,19 @@ const Register = () => {
 								type={eye === false ? 'password' : 'text'}
 								id='confirmPassword'
 								placeholder='Nhập lại mật khẩu'
-								className='test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3'
-								required
+								{...register('confirmPassword')}
+								className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
+									errors?.confirmPassword?.message
+										? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+										: 'border border-slate-300 hover:border hover:border-slate-500'
+								}`}
 							/>
+							<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+								{errors?.confirmPassword?.message}
+								{errors?.confirmPassword?.message && (
+									<IoWarningOutline className='mt-[3px]' />
+								)}
+							</span>
 						</div>
 						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
 							{eye === false ? (

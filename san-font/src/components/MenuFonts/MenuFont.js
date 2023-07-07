@@ -25,6 +25,40 @@ const MenuFont = ({ Data, setHomeData }) => {
 		const fontVHs = Data.filter(item => item.category === 'FontVH')
 		setHomeData(fontVHs)
 	}
+
+	const filterSelect = (type, checked, item) => {
+		if (checked) {
+			switch (type) {
+				case 'CATEGORY':
+					setFilter({
+						...filter,
+						category: [...filter.category, item.categorySlug],
+					})
+					break
+				case 'CAPACITY':
+					setFilter({
+						...filter,
+						capacity: [...filter.capacity, item.capacity],
+					})
+					break
+				default:
+			}
+		} else {
+			switch (type) {
+				case 'CATEGORY':
+					const newCategory = filter.category.filter(
+						e => e !== item.categorySlug
+					)
+					setFilter({ ...filter, category: newCategory })
+					break
+				case 'CAPACITY':
+					const newCapacity = filter.capacity.filter(e => e !== item.capacity)
+					setFilter({ ...filter, capacity: newCapacity })
+					break
+				default:
+			}
+		}
+	}
 	return (
 		<>
 			<div className='w-[65%] mx-auto mt-10 max-xl:w-[90%]'>

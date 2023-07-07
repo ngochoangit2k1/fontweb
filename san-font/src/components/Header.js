@@ -5,20 +5,25 @@ import React, { useEffect, useState } from 'react'
 import { FiUser } from 'react-icons/fi'
 import { AiOutlineCloudUpload } from 'react-icons/ai'
 import { useRouter } from 'next/router'
-import { useSession, signOut } from 'next-auth/react'
 import { FaSignOutAlt } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
+import { logout } from '../../redux/accountSlice'
 
 const Header = () => {
-	const { data } = useSession()
 	const router = useRouter()
-	const currentRoute = router.pathname
+	const dispatch = useDispatch()
 	const [pathName, setPathName] = useState('')
 	const [toggleMenu, setToggleMenu] = useState(true)
+	const { token, info } = useSelector(state => state.account)
 
 	useEffect(() => {
 		setPathName(router.pathname)
 	}, [router.pathname])
 
+	const signOut = () => {
+		dispatch(logout())
+		router.push('/')
+	}
 	return (
 		<header>
 			<nav className='bg-whites shadow-lg  py-6 fixed top-0 left-0 right-0 z-[99]'>
@@ -70,9 +75,9 @@ const Header = () => {
 						} justify-between items-center w-full xl:flex xl:w-auto xl:order-1`}
 						id='mobile-menu-2'
 					>
-						<ul className='flex flex-col font-bold xl:flex-row max-xl:text-center xl:space-x-8 xl:mt-0'>
+						<ul className='flex flex-col font-bold  xl:flex-row max-xl:text-center xl:space-x-8 xl:mt-0'>
 							<li
-								className={`max-xl:py-2  hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2  hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/' ? 'lg:relative' : ' '
 								}`}
 							>
@@ -87,7 +92,7 @@ const Header = () => {
 							</li>
 
 							<li
-								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/font-viet-hoa' ? 'xl:relative' : ''
 								}`}
 							>
@@ -104,7 +109,7 @@ const Header = () => {
 
 								<ul
 									tabIndex={0}
-									className=' dropdown-content mt-[35px] py-2 text-blacks  menu font-medium leading-4 shadow-xl bg-base-100 w-52'
+									className='dropdown-content mt-[35px] py-2 text-blacks  menu font-medium leading-4 shadow-xl bg-base-100 w-52'
 								>
 									<li>
 										<Link href={'/font-viet-hoa/font-1FTV'} legacyBehavior>
@@ -183,7 +188,7 @@ const Header = () => {
 							</li>
 
 							<li
-								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`test-demo dropdown dropdown-hover max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/font-quang-cao' ? 'xl:relative' : ''
 								}`}
 							>
@@ -222,7 +227,7 @@ const Header = () => {
 								</ul>
 							</li>
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/goi-vip' ? 'xl:relative' : ''
 								}`}
 							>
@@ -236,7 +241,7 @@ const Header = () => {
 								)}
 							</li>
 							<li
-								className={`max-xl:py-2 hover:text-oranges max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
+								className={`max-xl:py-2 hover:text-oranges hover:duration-300 max-xl:hover:font-semibold max-xl:bg-[#eee] max-xl:hover:bg-slate-200 max-xl:pl-4 cursor-pointer ${
 									pathName === '/blog' ? 'xl:relative' : ''
 								}`}
 							>
@@ -261,30 +266,30 @@ const Header = () => {
 								</button>
 							</Link>
 
-							{data?.user ? (
-								<div className='flex'>
+							{token ? (
+								<div className='flex gap-2'>
 									<Link href={'/profiles'}>
 										<button className='flex items-center py-2.5 bg-[#1876f2] rounded  justify-center btn-gradient text-whites px-2  max-sm:mx-3 max-sm:w-28 max-sm:h-8'>
 											<FiUser className='text-[24px] font-bold mr-1 max-md:text-sm' />
 											<span className='ml-1 text-[15px]  max-md:text-[13px]'>
-												{data?.user?.name}
+												{info && info.username}
 											</span>
 										</button>
 									</Link>
 
-									{/* <Link href={''}>
+									<Link href={''}>
 										<button
 											onClick={() => signOut()}
-											className='flex ml-1  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'
+											className='flex ml-1  max-sm:mx-3 items-center px-2 py-2.5 max-sm:w-28 max-sm:h-8  bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'
 										>
 											<FaSignOutAlt className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 											Đăng xuất
 										</button>
-									</Link> */}
+									</Link>
 								</div>
 							) : (
 								<Link href={'/Auth/login'}>
-									<button className='flex  max-sm:mx-3 items-center w-[140px] max-sm:w-28 max-sm:h-8 h-10 bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'>
+									<button className='flex ml-1 max-sm:mx-3 items-center px-2 py-2.5 max-sm:w-28 max-sm:h-8  bg-[#ff8d08] rounded  justify-center btn-gradient text-whites'>
 										<FiUser className='text-[24px] font-bold max-md:text-sm mr-1' />{' '}
 										Đăng nhập
 									</button>

@@ -6,6 +6,7 @@ import { useRouter } from 'next/router'
 import { addToCart } from '../../../redux/cart.slice'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
+
 const ProductCategory = ({ item, id }) => {
 	const { data } = useSession()
 	const router = useRouter()

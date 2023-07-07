@@ -6,6 +6,7 @@ import { addToCart } from '../../../redux/cart.slice'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
+
 const FontRelate = ({ relate }) => {
 	const dispatch = useDispatch()
 	const { data } = useSession()

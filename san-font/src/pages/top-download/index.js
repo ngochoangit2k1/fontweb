@@ -65,7 +65,7 @@ const TopDownload = ({ downLoad }) => {
 												router.push('/Auth/login')
 											}
 										}}
-										className='demo absolute bg-reds py-[3px] px-[6px] text-whit text-whites  text-xs shadow-xxl rounded-br-lg  z-1'
+										className='demo absolute top-0 bg-reds py-[3px] px-[6px] text-whit text-whites  text-xs shadow-xxl rounded-br-lg  z-1'
 									>
 										<span className='font-bold '>Lưu</span>
 									</button>
@@ -81,7 +81,7 @@ const TopDownload = ({ downLoad }) => {
 								</button> */}
 
 									{item.special && (
-										<button className='demo1 absolute bg-[#028623] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<button className='demo1 absolute top-0 right-0 bg-[#028623] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 											<Link href={'/font-vip'} legacyBehavior>
 												<a className='font-bold '>VIP</a>
 											</Link>
@@ -89,7 +89,7 @@ const TopDownload = ({ downLoad }) => {
 									)}
 
 									{item.selective ? (
-										<button className='demo1 absolute bg-[#ffa800] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
+										<button className='demo1 absolute top-0 right-0 bg-[#ffa800] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 											<Link href={'/font-chon-loc'} legacyBehavior>
 												<a className='font-bold '>Font chọn lọc</a>
 											</Link>
