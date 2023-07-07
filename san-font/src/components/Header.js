@@ -10,11 +10,13 @@ import { FaSignOutAlt } from 'react-icons/fa'
 
 const Header = () => {
 	const { data } = useSession()
+	// const token = localStorage.getItem('info');
+
 	const router = useRouter()
 	const currentRoute = router.pathname
 	const [pathName, setPathName] = useState('')
 	const [toggleMenu, setToggleMenu] = useState(true)
-
+	console.log("checkkk", data)
 	useEffect(() => {
 		setPathName(router.pathname)
 	}, [router.pathname])
