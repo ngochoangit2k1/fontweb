@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 		const test = { email, type: OTP_CODE_TYPE.FORGOT_PASSWORD, otpCode }
 		await checkOtpCode(test, res)
 		if (password !== rePassword) {
-			res.status(HTTP_ERROR.BAD_REQUEST).json({
+			return	res.status(HTTP_ERROR.BAD_REQUEST).json({
 				name: 'password',
 				code: FIELD_ERROR.PASSWORD_NOT_MATCH,
 				message: 'Password is not match with re password.',
@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 		const user = await db.User.findOne({ where: { email } })
 
 		if (!user) {
-			res.status(HTTP_ERROR.BAD_REQUEST).json({
+			return res.status(HTTP_ERROR.BAD_REQUEST).json({
 				name: 'update-password',
 
 				code: FIELD_ERROR.ACCOUNT_NOT_FOUND,

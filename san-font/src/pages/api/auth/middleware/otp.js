@@ -199,15 +199,15 @@ export async function checkOtpCode(req, res) {
 		})
 
 		if (!getOtpCode) {
-			res.status(HTTP_ERROR.BAD_REQUEST).json({
+			return res.status(HTTP_ERROR.BAD_REQUEST).json({
 				name: 'check-otp-code',
 				code: FIELD_ERROR.OTP_CODE_EXPIRED,
 				message: 'OTP code expired',
 			})
-			return res.status(400).json(new FieldError(name, code, message))
+			
 		}
 		if (otpCode !== getOtpCode.code) {
-			res.status(HTTP_ERROR.BAD_REQUEST).json({
+			return res.status(HTTP_ERROR.BAD_REQUEST).json({
 				name: 'check-otp-code',
 				code: FIELD_ERROR.OTP_CODE_INVALID,
 				message: 'OTP code invalid',

@@ -24,7 +24,7 @@ export default async function handle(req, res, next) {
         });
         // Check create order detail
         if (slugExist) {
-          res.status(HTTP_ERROR.BAD_REQUEST).json({
+          return  res.status(HTTP_ERROR.BAD_REQUEST).json({
             name: "check_slug",
             code: FIELD_ERROR.SLUG_IS_EXISTS,
             message: "Slug is exists",

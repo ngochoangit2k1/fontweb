@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 		if (referralCode) {
 			const refType = referralCode.trim().replace(/\d+/g, '')
 			if (![USER_CODE].includes(refType)) {
-				res.status(HTTP_ERROR.BAD_REQUEST).json({
+				return res.status(HTTP_ERROR.BAD_REQUEST).json({
 					name: 'register-user-email',
 					code: FIELD_ERROR.REFERRAL_CODE_INVALID,
 					message: 'Referral code invalid',
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 			})
 
 			if (!userRef) {
-				res.status(HTTP_ERROR.BAD_REQUEST).json({
+				return res.status(HTTP_ERROR.BAD_REQUEST).json({
 					name: 'register-user-email',
 					code: FIELD_ERROR.REFERRER_NOT_EXIST_OR_NOT_ACTIVE_EMAIL,
 					message: 'Referrer does not exist or has not activated email',

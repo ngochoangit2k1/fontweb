@@ -22,7 +22,7 @@ export default async function (req, res, next) {
         });
         return res.status(200).json(comment);
       } else {
-        res.status(HTTP_ERROR.BAD_REQUEST).json({
+        return  res.status(HTTP_ERROR.BAD_REQUEST).json({
           name: "comment_product",
           code: FIELD_ERROR.PRODUCT_NOT_FOUND,
           message: "Product not found",

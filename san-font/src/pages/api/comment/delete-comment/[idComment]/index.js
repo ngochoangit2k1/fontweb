@@ -13,7 +13,7 @@ export default async function handle(req, res, next) {
     const cmt = await db.CommentProduct.findOne({ where: { id } });
     console.log(cmt);
     if (!cmt) {
-      res.status(HTTP_ERROR.BAD_REQUEST).json({
+      return res.status(HTTP_ERROR.BAD_REQUEST).json({
         name: "find-comment",
 
         code: FIELD_ERROR.USER_NOT_ACTIVE,
@@ -26,7 +26,7 @@ export default async function handle(req, res, next) {
         res.status(200).json("success");
       })
       .catch((err) => {
-        res.status(HTTP_ERROR.BAD_REQUEST).json({
+        return  res.status(HTTP_ERROR.BAD_REQUEST).json({
           name: "delete-comment",
 
           code: FIELD_ERROR.ACCOUNT_NOT_FOUND,

@@ -50,7 +50,7 @@ export default async function handle(req, res, next) {
     });
 
     if (!products) {
-      res.status(HTTP_ERROR.BAD_REQUEST).json({
+      return res.status(HTTP_ERROR.BAD_REQUEST).json({
         name: "get_product",
         code: FIELD_ERROR.PRODUCT_NOT_FOUND,
         message: "Product not found",

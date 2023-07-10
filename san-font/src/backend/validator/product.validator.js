@@ -1,7 +1,16 @@
 import joi from 'joi';
 import { validator, validatorType } from './index.js';
 
+export const createDadCategoryValidator = validator(joi.object().keys({
+  name: joi.string().max(256).required(),
+  categorySlug: joi.string().max(256).allow(null, ''),
+  description: joi.string().allow(null, ''),
+  image: joi.string().allow(null, ''),
+  note: joi.string().allow(null, '')
+}), validatorType.BODY);
+
 export const createCategoryValidator = validator(joi.object().keys({
+  categoryId: joi.number().required(),
   name: joi.string().max(256).required(),
   categorySlug: joi.string().max(256).allow(null, ''),
   description: joi.string().allow(null, ''),

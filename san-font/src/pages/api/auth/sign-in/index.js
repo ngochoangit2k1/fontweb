@@ -56,7 +56,7 @@ export default async function handler(req, res) {
         });
       }
     } else {
-      res.status(HTTP_ERROR.BAD_REQUEST).json({
+       res.status(HTTP_ERROR.BAD_REQUEST).json({
         name: "credential",
         code: FIELD_ERROR.EMAIL_NOT_FOUND,
         message: "EMAIL NOT FOUND",

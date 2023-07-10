@@ -41,7 +41,7 @@ export default async function checkToken  (req, res,moduleId = [], next)  {
 
     debugger;
   } catch (exception) {
-    res.status(HttpStatusCode.BAD_REQUEST).json({
+   return res.status(HttpStatusCode.BAD_REQUEST).json({
       message: "Bạn chưa login",
     });
   }
