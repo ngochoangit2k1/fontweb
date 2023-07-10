@@ -8,6 +8,7 @@ import {
 export async function userInfo(req,res){
     try {
         const user = req.user.data
+        console.log("checkaaaa",user)
       
         const accountInfo = await db.User.findOne({
           where: {
@@ -23,10 +24,7 @@ export async function userInfo(req,res){
               model: db.UserAddress,
               as: "userAddress",
             },
-            {
-              model: db.UserReferral,
-              as: "userReferral",
-            },
+         
           ],
         });
     

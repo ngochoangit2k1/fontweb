@@ -65,17 +65,17 @@ export default async function handler(req, res) {
             as: 'productInventory',
             separate: true
           },
-          {
-            model: db.ProductDetail,
-            as: 'productDetail',
-            separate: true
-          },
+       
           {
             model: db.Discount,
             as: 'discount',
             required: !!discount,
             where: { status: GLOBAL_STATUS.ACTIVE }
+          },
+          {model: db.User,
+          as: 'user'
           }
+          
         ],
         offset,
         limit,

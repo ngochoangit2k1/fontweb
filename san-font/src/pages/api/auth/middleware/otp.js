@@ -183,9 +183,11 @@ export async function sendOtpCode(req, res) {
 //  * @param {*} param0
 //  * @returns
 //  */
-export async function checkOtpCode({ email, phone, type, otpCode }) {
-	return async (req, res) => {
-		console.log('check', res)
+export async function checkOtpCode(req, res) {
+	
+
+		const {email, type, otpCode, phone} = req
+		
 		const key = `${type}_${email || phone}`
 		console.log('test', { email, phone, type, otpCode })
 		console.log('key', key)
@@ -214,7 +216,7 @@ export async function checkOtpCode({ email, phone, type, otpCode }) {
 
 		return getOtpCode.code
 	}
-}
+
 
 /**
  * Delete otp code

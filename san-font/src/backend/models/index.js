@@ -11,7 +11,7 @@ import Product from "./product/product.js";
 import ProductInventory from "./product/product-inventory.js";
 import ProductImage from "./product/product-image.js";
 import ProductCategory from "./product/product-category.js";
-import ProductDetail from "./product/product-detail.js";
+
 import Discount from "./product/discount.js";
 import Order from "./order/order.js";
 import OrderPayment from "./order/orderPayment.js";
@@ -47,7 +47,7 @@ const models = {
   OTP: OTP.init(sequelize),
   // Product
   Product: Product.init(sequelize),
-  ProductDetail: ProductDetail.init(sequelize),
+
   ProductInventory: ProductInventory.init(sequelize),
   ProductImage: ProductImage.init(sequelize),
   ProductCategory: ProductCategory.init(sequelize),

@@ -4,9 +4,10 @@ import { HTTP_ERROR, FIELD_ERROR } from "../../../../../backend/errors/error";
 
 export default async function handle(req, res, next) {
   const id = req.query.id;
+  console.log(id)
   if (req.method === "GET") {
     const products = await db.Product.findOne({
-      where: { id },
+      where: { id  },
       include: [
         {
           model: db.ProductCategory,
@@ -21,16 +22,13 @@ export default async function handle(req, res, next) {
           model: db.ProductInventory,
           as: "productInventory",
         },
-        {
-          model: db.ProductDetail,
-          as: "productDetail",
-        },
+    
         {
           model: db.Discount,
           as: "discount",
         },
       ],
-      order: [["productDetail", "id", "ASC"]],
+      order: [["id", "ASC"]],
     });
 
     if (!products) {
@@ -48,7 +46,7 @@ export default async function handle(req, res, next) {
       await db.Product.destroy({ where: { id } });
       await db.ProductImage.destroy({ where: { productId: id } });
       await db.ProductInventory.destroy({ where: { productId: id } });
-      await db.ProductDetail.destroy({ where: { productId: id } });
+     
       return res.status(200).json( { message : 'True'});
     } catch (e) {
       console.log("ERROR_DELETE_PRODUCT: ", e);

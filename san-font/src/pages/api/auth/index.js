@@ -5,7 +5,8 @@ export default async function handler(req, res) {
    checkToken(req, res)
   if (req.method === "GET") {
    
-    return userInfo(req, res)
+    const data =  await  userInfo(req, res)
+    return res.status(200).json(data)
     
   }
  

@@ -1,147 +1,152 @@
-import fs from 'fs'
+import fs from 'fs';
 // import AWS from 'aws-sdk';
-import path from 'path'
-import nodemailer from 'nodemailer'
+import path from 'path';
+import nodemailer from "nodemailer";
 
-import { fileURLToPath } from 'url'
+import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 
 let configSES = {
-	region: process.env.SES_REGION,
-	accessKeyId: process.env.SES_ACCESS_KEY_ID,
-	secretAccessKey: process.env.SES_SECRET_ACCESS_KEY,
+  region: process.env.SES_REGION,
+  accessKeyId: process.env.SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.SES_SECRET_ACCESS_KEY
 }
 
 if (process.env.NODE_ENV === 'local') {
-	configSES = {
-		...configSES,
-	}
+  configSES = {
+    ...configSES
+  }
 }
 
 class SesService {
-	// getDataAWS() {
-	//   AWS.config.update(configSES);
-	// }
+  // getDataAWS() {
+  //   AWS.config.update(configSES);
+  // }
 
-	async buildTemplate(templateName, params) {
-		console.log('name', templateName)
-		try {
-			const templatePath = path.join(__dirname, `../email/${templateName}.html`)
-			let emailMessage = await fs.readFileSync(templatePath, 'utf-8')
+  async buildTemplate(templateName, params) {
+    console.log("name",templateName)
+    try {
+      const templatePath = path.join(
+        __dirname,
+        `../email/${templateName}.html`
+      );
+      let emailMessage = await fs.readFileSync(templatePath, "utf-8");
 
-			if (params) {
-				Object.keys(params).forEach(key => {
-					const value = params[key]
-					emailMessage = emailMessage.replaceAll(`{{ ${key} }}`, value)
-				})
-			}
+      if (params) {
+        Object.keys(params).forEach((key) => {
+          const value = params[key];
+          emailMessage = emailMessage.replaceAll(`{{ ${key} }}`, value);
+        });
+      }
 
-			return emailMessage
-		} catch (error) {
-			throw error
-		}
-	}
+      return emailMessage;
+    } catch (error) {
+      throw error;
+    }
+  }
 
-	async sendMail({ templateName, params, subject, toEmails }) {
-		console.log('tới', toEmails)
-		try {
-			const content = await this.buildTemplate(templateName, params)
-			const transporter = nodemailer.createTransport({
-				service: 'gmail',
-				auth: {
-					user: process.env.EMAIL,
-					pass: process.env.PASSWORD,
-				},
-			})
-			const mailOptions = {
-				from: 'SànFont <noreply@sheshi.com>',
-				replyTo: 'noreply@sheshi.com',
-				to: toEmails,
-				subject: subject,
-				html: content,
-			}
+  async sendMail({ templateName, params, subject, toEmails }) {
+    console.log("tới",toEmails)
+    try {
+      const content = await this.buildTemplate(templateName, params);
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          user: process.env.EMAIL,
+          pass: process.env.PASSWORD
+        }
+      });
+      const mailOptions = {
+        from: "sheshi.noreply <noreply@sheshi.com>",
+        replyTo: 'noreply@sheshi.com',
+        to: toEmails,
+        subject: subject,
+        html: content
+      };
 
-			// eslint-disable-next-line func-names
-			transporter.sendMail(mailOptions, function (error, info) {
-				if (error) {
-					console.log(error)
-				} else {
-					console.log(`Email sent: ${info.response}`)
-				}
-			})
-			return { message: 'Success' }
-		} catch (e) {
-			throw e
-		}
-	}
+      // eslint-disable-next-line func-names
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(`Email sent: ${info.response}`);
+        }
+      });
+      return { message: 'Success' };
+    } catch (e) {
+      throw e;
+    }
+  }
 
-	// async sendMail({ toEmails, ccEmails = [], bccEmails = [], subject, templateName, params }) {
-	//   try {
-	//     this.getDataAWS();
-	//     const SES = new AWS.SES();
+  // async sendMail({ toEmails, ccEmails = [], bccEmails = [], subject, templateName, params }) {
+  //   try {
+  //     this.getDataAWS();
+  //     const SES = new AWS.SES();
 
-	//     /** Build template from file html */
-	//     const content = await this.buildTemplate(templateName, params);
+  //     /** Build template from file html */
+  //     const content = await this.buildTemplate(templateName, params);
 
-	//     /** Define sendEmailRequest send email */
-	//     const sendEmailRequest = {
-	//       Destination: {
-	//         CcAddresses: ccEmails,
-	//         BccAddresses: bccEmails,
-	//         ToAddresses: toEmails
-	//       },
-	//       Message: {
-	//         Body: {
-	//           Html: {
-	//             Charset: "UTF-8",
-	//             Data: content
-	//           }
-	//         },
-	//         Subject: {
-	//           Charset: 'UTF-8',
-	//           Data: subject
-	//         }
-	//       },
-	//       Source: process.env.SES_SENDER
-	//     };
+  //     /** Define sendEmailRequest send email */
+  //     const sendEmailRequest = {
+  //       Destination: {
+  //         CcAddresses: ccEmails,
+  //         BccAddresses: bccEmails,
+  //         ToAddresses: toEmails
+  //       },
+  //       Message: {
+  //         Body: {
+  //           Html: {
+  //             Charset: "UTF-8",
+  //             Data: content
+  //           }
+  //         },
+  //         Subject: {
+  //           Charset: 'UTF-8',
+  //           Data: subject
+  //         }
+  //       },
+  //       Source: process.env.SES_SENDER
+  //     };
 
-	//     console.log(`<------Sending email to ${toEmails.join(', ')}------>`)
-	//     return SES.sendEmail(sendEmailRequest).promise();
-	//   } catch (error) {
-	//     throw error;
-	//   }
-	// }
+  //     console.log(`<------Sending email to ${toEmails.join(', ')}------>`)
+  //     return SES.sendEmail(sendEmailRequest).promise();
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // }
 
-	async send({ toEmails, subject, content }) {
-		try {
-			this.getDataAWS()
-			const SES = new AWS.SES()
-			/** Define sendEmailRequest send email */
-			const sendEmailRequest = {
-				Destination: {
-					ToAddresses: toEmails,
-				},
-				Message: {
-					Body: {
-						Html: {
-							Charset: 'UTF-8',
-							Data: content,
-						},
-					},
-					Subject: {
-						Charset: 'UTF-8',
-						Data: subject,
-					},
-				},
-				Source: process.env.SES_SENDER,
-			}
-			return SES.sendEmail(sendEmailRequest).promise()
-		} catch (error) {
-			throw error
-		}
-	}
+  async send({ toEmails, subject, content }) {
+    try {
+      this.getDataAWS();
+      const SES = new AWS.SES();
+      /** Define sendEmailRequest send email */
+      const sendEmailRequest = {
+        Destination: {
+          ToAddresses: toEmails
+        },
+        Message: {
+          Body: {
+            Html: {
+              Charset: "UTF-8",
+              Data: content
+            }
+          },
+          Subject: {
+            Charset: "UTF-8",
+            Data: subject
+          }
+        },
+        Source: process.env.SES_SENDER
+      };
+      return SES.sendEmail(sendEmailRequest).promise();
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
-export const mailAwsService = new SesService()
+export const mailAwsService = new SesService();

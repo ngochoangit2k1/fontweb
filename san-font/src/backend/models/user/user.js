@@ -89,18 +89,18 @@ export default class User extends Model {
     //   foreignKey: "idLevel",
     //   as: "commissionLevel"
     // });
-    this.hasOne(models.UserReferral, {
-      foreignKey: "registerId",
-      as: "userReferral",
-    });
-    this.hasMany(models.UserReferral, {
-      foreignKey: "referrerId",
-      as: "userReferrer",
-    });
-    this.hasMany(models.UserBonus, {
-      foreignKey: "userId",
-      as: "userBonus",
-    });
+    // this.hasOne(models.UserReferral, {
+    //   foreignKey: "registerId",
+    //   as: "userReferral",
+    // });
+    // this.hasMany(models.UserReferral, {
+    //   foreignKey: "referrerId",
+    //   as: "userReferrer",
+    // });
+    // this.hasMany(models.UserBonus, {
+    //   foreignKey: "userId",
+    //   as: "userBonus",
+    // });
   }
 
   toJSON() {
