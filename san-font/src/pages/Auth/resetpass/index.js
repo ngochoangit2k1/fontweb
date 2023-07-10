@@ -4,7 +4,6 @@ import { FiUser } from 'react-icons/fi'
 import { BiError, BiLeftArrowCircle } from 'react-icons/bi'
 import * as yup from 'yup'
 import { toast } from 'react-toastify'
-
 import { useForm, useWatch } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { IoWarningOutline } from 'react-icons/io5'
@@ -32,6 +31,7 @@ const ResetPass = () => {
 		},
 		// paramsSerializer: params => queryString.stringify(params),
 	})
+
 	const ResetSchema = yup.object({
 		email: yup
 			.string()
@@ -58,58 +58,6 @@ const ResetPass = () => {
 				yup.string().oneOf([yup.ref('password')], 'Mật khẩu không đúng'),
 		}),
 	})
-	const onSubmit = values => {
-		const { email, otpCode, password, rePassword } = values
-		setLoading(true)
-		setLoadingSentCodeEmail(true)
-		if (!values?.emailVerified) {
-			axiosClient
-				.post('/api/auth/forgot-password', {
-					email: values.email,
-					type: OTP_CODE_TYPE.FORGOT_PASSWORD,
-				})
-				.then(reponse => {
-					if (reponse) {
-						setCountdownEmail(preCount => preCount - 1)
-						clearInterval(refCountdownOtp.current)
-						refCountdownOtp.current = setInterval(() => {
-							setCountdownEmail(preCount => preCount - 1)
-						}, 1000)
-						setValue('emailVerified', true, { shouldValidate: true })
-					}
-				})
-				.catch(() => toast.error('Không tìm thấy tài khoản'))
-				.finally(() => {
-					setLoadingSentCodeEmail(false)
-					setLoading(false)
-				})
-		} else {
-			axiosClient
-				.post('/api/auth/otp', {
-					email,
-					otpCode,
-					// password,
-					// rePassword,
-				})
-				.then(() => {
-					successHelper('bạn thay đổi mật khẩu thành công')
-					router.push('/login')
-				})
-				.catch(err => {
-					toast.error('err.message')
-				})
-				.finally(() => {
-					setLoadingSentCodeEmail(false)
-					setLoading(false)
-				})
-		}
-	}
-	useEffect(() => {
-		if (countdownEmail === 0) {
-			clearInterval(refCountdownOtp.current)
-			setCountdownEmail(60)
-		}
-	}, [countdownEmail])
 	const {
 		register,
 		control,
@@ -124,10 +72,11 @@ const ResetPass = () => {
 		},
 		mode: 'onChange',
 	})
+
 	const { emailVerified, email, otpCode } = useWatch({
 		control,
 	})
-
+	console.log(emailVerified, email, otpCode)
 	const onSendEmailOTP = () => {
 		setLoadingSentCodeEmail(true)
 		axiosClient
@@ -148,13 +97,68 @@ const ResetPass = () => {
 				setLoadingSentCodeEmail(false)
 			})
 	}
+
+	const onSubmit = values => {
+		const { email, otpCode, password, rePassword } = values
+
+		setLoading(true)
+		setLoadingSentCodeEmail(true)
+		if (!values?.emailVerified) {
+			axiosClient
+				.post('/api/auth/otp', {
+					email: values.email,
+					type: OTP_CODE_TYPE.FORGOT_PASSWORD,
+				})
+				.then(reponse => {
+					if (reponse) {
+						setCountdownEmail(preCount => preCount - 1)
+						clearInterval(refCountdownOtp.current)
+						refCountdownOtp.current = setInterval(() => {
+							setCountdownEmail(preCount => preCount - 1)
+						}, 1000)
+						setValue('emailVerified', true, { shouldValidate: true })
+					}
+				})
+				.catch(() => toast.error('Không tìm thấy tài khoản'))
+				.finally(() => {
+					setLoadingSentCodeEmail(false)
+					setLoading(false)
+				})
+		} else {
+			axiosClient
+				.post('/api/auth/forgot-password', {
+					email,
+					otpCode,
+					password,
+					rePassword,
+				})
+				.then(() => {
+					toast.success('thay đổi mật khẩu thành công')
+					router.push('/Auth/login')
+				})
+				.catch(err => {
+					toast.error('err.message')
+				})
+				.finally(() => {
+					setLoadingSentCodeEmail(false)
+					setLoading(false)
+				})
+		}
+	}
+	useEffect(() => {
+		if (countdownEmail === 0) {
+			clearInterval(refCountdownOtp.current)
+			setCountdownEmail(90)
+		}
+	}, [countdownEmail])
+
 	//eye password
 	const [eyeOne, setEyeOne] = useState(false)
 	const toggle = () => {
 		setEyeOne(!eyeOne)
 	}
 
-	//eye confirmPassword
+	//eye rePassword
 	const [eye, setEye] = useState(false)
 	const toggleOne = () => {
 		setEye(!eye)
@@ -196,12 +200,14 @@ const ResetPass = () => {
 							}}
 						></InputOtp>
 					)}
+
 					<div className=' mt-4 relative '>
 						<input
 							id='email'
 							type='text'
 							placeholder='Email'
 							{...register('email')}
+							disabled={emailVerified}
 							className={`relative bg-whites border-gray-300  rounded border focus:outline-none hover:border-oranges focus:border-oranges placeholder:font-medium placeholder:text-[16px] placeholder:text-[#6d767e] w-full p-3				
 							${
 								errors?.email?.message
@@ -217,62 +223,87 @@ const ResetPass = () => {
 						</span>
 					</div>
 
-					{/* <div className=' mt-4 relative '>
-						<div>
-							<input
-								type={eyeOne === false ? 'password' : 'text'}
-								placeholder='Mật khẩu'
-								id='password'
-								{...register('password')}
-								className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
-									errors?.password?.message
-										? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
-										: 'border border-slate-300 hover:border hover:border-slate-500'
-								}`}
-							/>
-							<span className='flex gap-1 mt-1 text-red-600 text-sm'>
-								{errors?.password?.message}
-								{errors?.password?.message && (
-									<IoWarningOutline className='mt-[3px]' />
+					{emailVerified && (
+						<div className=' mt-4 relative '>
+							<div>
+								<input
+									type={eyeOne === false ? 'password' : 'text'}
+									placeholder='Mật khẩu mới'
+									id='password'
+									{...register('password')}
+									onChange={e =>
+										setValue(
+											'password',
+											(e.target.value || '').replace(' ', ''),
+											{
+												shouldValidate: true,
+												shouldDirty: true,
+											}
+										)
+									}
+									className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
+										errors?.password?.message
+											? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+											: 'border border-slate-300 hover:border hover:border-slate-500'
+									}`}
+								/>
+								<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+									{errors?.password?.message}
+									{errors?.password?.message && (
+										<IoWarningOutline className='mt-[3px]' />
+									)}
+								</span>
+							</div>
+							<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
+								{eyeOne === false ? (
+									<AiOutlineEye onClick={toggle} />
+								) : (
+									<AiOutlineEyeInvisible onClick={toggle} />
 								)}
-							</span>
+							</div>
 						</div>
-						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
-							{eyeOne === false ? (
-								<AiOutlineEye onClick={toggle} />
-							) : (
-								<AiOutlineEyeInvisible onClick={toggle} />
-							)}
-						</div>
-					</div>
-					<div className=' mt-4 relative '>
-						<div>
-							<input
-								type={eye === false ? 'password' : 'text'}
-								id='confirmPassword'
-								placeholder='Nhập lại mật khẩu'
-								{...register('confirmPassword')}
-								className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
-									errors?.confirmPassword?.message
-										? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
-										: 'border border-slate-300 hover:border hover:border-slate-500'
-								}`}
-							/>
-							<span className='flex gap-1 mt-1 text-red-600 text-sm'>
-								{errors?.confirmPassword?.message}
-								{errors?.confirmPassword?.message && (
-									<IoWarningOutline className='mt-[3px]' />
+					)}
+
+					{emailVerified && (
+						<div className=' mt-4 relative '>
+							<div>
+								<input
+									type={eye === false ? 'password' : 'text'}
+									id='rePassword'
+									placeholder='Nhập lại mật khẩu mới'
+									onChange={e =>
+										setValue(
+											'rePassword',
+											(e.target.value || '').replace(' ', ''),
+											{
+												shouldValidate: true,
+												shouldDirty: true,
+											}
+										)
+									}
+									{...register('rePassword')}
+									className={`test relative bg-whites  border-gray-300 text-gray-900  rounded border focus:outline-none hover:border-oranges focus:border-oranges  placeholder:text-[#6d767e]  block w-full p-3 ${
+										errors?.rePassword?.message
+											? 'focus:ring-2 focus:ring-red-300 border border-red-500 '
+											: 'border border-slate-300 hover:border hover:border-slate-500'
+									}`}
+								/>
+								<span className='flex gap-1 mt-1 text-red-600 text-sm'>
+									{errors?.rePassword?.message}
+									{errors?.rePassword?.message && (
+										<IoWarningOutline className='mt-[3px]' />
+									)}
+								</span>
+							</div>
+							<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
+								{eye === false ? (
+									<AiOutlineEye onClick={toggleOne} />
+								) : (
+									<AiOutlineEyeInvisible onClick={toggleOne} />
 								)}
-							</span>
+							</div>
 						</div>
-						<div className='text-2xl cursor-pointer text-[#6a6870] absolute top-3 right-2 max-md:text-lg'>
-							{eye === false ? (
-								<AiOutlineEye onClick={toggleOne} />
-							) : (
-								<AiOutlineEyeInvisible onClick={toggleOne} />
-							)}
-						</div>
-					</div> */}
+					)}
 
 					<div className='w-full'>
 						<button
@@ -280,7 +311,7 @@ const ResetPass = () => {
 							className='flex mx-auto mt-5 px-5  h-10 bg-oranges items-center justify-center text-whites hover:bg-opacity-80 rounded-[30px]  '
 						>
 							<FiUser className='font-extrabold text-[20px] ' />
-							<a className='ml-2 text-base font-normal'>Lấy lại mật khẩu</a>
+							<a className='ml-2 text-base font-normal '>Tiếp tục</a>
 						</button>
 					</div>
 					<div className='text-center text-xl py-6'>

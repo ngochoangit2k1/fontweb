@@ -56,7 +56,7 @@ class SesService {
 				},
 			})
 			const mailOptions = {
-				from: 'SanFont ',
+				from: 'SànFont <noreply@sheshi.com>',
 				replyTo: 'noreply@sheshi.com',
 				to: toEmails,
 				subject: subject,

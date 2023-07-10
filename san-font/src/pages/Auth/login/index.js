@@ -32,7 +32,10 @@ const Login = () => {
 			.email('Vui lòng nhập email hợp lệ')
 			.required('Trường bắt buộc')
 			.max(255)
-			// .matches(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
+			.matches(
+				/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+				'Email không đúng định đạng'
+			)
 			.trim(),
 
 		password: yup
