@@ -2,7 +2,7 @@ import db from '../../../../backend/models/index.js'
 import { checkUserExisted } from '../middleware/otp.js'
 import { USER_STATUS, USER_CODE } from '../../../../backend/models/user/user.js'
 import { getNextUserCode } from '../../../../backend/utils/allCode.utils.js'
-import { registerUserValidator } from '../../../../backend/validator/auth.validator.js'
+import {  registerUserValidator } from '../../../../backend/validator/auth.validator.js'
 import { FIELD_ERROR, HTTP_ERROR } from '../../../../backend/errors/error.js'
 // import { apiHandler, usersRepo } from 'helpers/api';
 

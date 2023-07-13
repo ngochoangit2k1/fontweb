@@ -20,6 +20,12 @@ export default async function handler(req, res) {
     }
     const user = await model.findOne({
       where: { email },
+      include: [
+        {
+          model: db.UserInformation,
+          as: 'userInformation',
+        }
+      ]
     });
     console.log("user", user);
     if (user /*check not null*/) {
@@ -43,6 +49,7 @@ export default async function handler(req, res) {
             },
           }
         );
+
         return res.status(200).json({
           user: userJson,
 

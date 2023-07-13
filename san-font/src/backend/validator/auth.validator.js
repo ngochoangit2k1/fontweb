@@ -16,6 +16,7 @@ export const loginValidator = validator(
 
 export const registerUserValidator = validator(
   joi.object().keys({
+    username: joi.string().trim().allow(null).allow(""),
     fullName: joi.string().trim().allow(null).allow(""),
     email: joi
       .string()
