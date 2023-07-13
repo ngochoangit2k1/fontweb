@@ -1,25 +1,44 @@
 import { createProductValidator } from "../../../../backend/validator/product.validator";
 import db from "../../../../backend/models/index.js";
-import {GLOBAL_SWITCH, GLOBAL_STATUS} from "../../../../backend/constants/common.constant"; 
-import {HTTP_ERROR, FIELD_ERROR} from "../../../../backend/errors/error"
+import {
+  GLOBAL_SWITCH,
+  GLOBAL_STATUS,
+} from "../../../../backend/constants/common.constant";
+import { HTTP_ERROR, FIELD_ERROR } from "../../../../backend/errors/error";
+import checkToken from "@/backend/authentication/auth.authentication";
+
 export default async function handle(req, res, next) {
+  checkToken(req, res);
+
   if (req.method === "POST") {
     // await createProductValidator(req.body, res);
 
     const t = await db.sequelize.transaction();
     let subProductId = 0;
-    const createProductForm = req.body
+    const {
+      categoryId,
+      link,
+      description,
+      mainImage,
+      name,
+      author,
+      productDetail,
+      vip,
+      subImage,
+      productSlug,
+    } = req.body;
+
     try {
-      if (createProductForm.productSlug) {
+      if (productSlug) {
         const slugExist = await db.Product.findOne({
           where: {
-            productSlug: createProductForm.productSlug,
+            productSlug: productSlug,
           },
         });
 
         // Check create order detail
         if (slugExist) {
-         return res.status(HTTP_ERROR.BAD_REQUEST).json({
+          res.status(HTTP_ERROR.BAD_REQUEST).json({
             name: "check_slug",
             code: FIELD_ERROR.SLUG_IS_EXISTS,
             message: "Slug is exists",
@@ -28,13 +47,27 @@ export default async function handle(req, res, next) {
       }
 
       // Create order detail
-      const product = await db.Product.create(createProductForm, {
-        transaction: t,
-      });
-
+      const product = await db.Product.create(
+        {
+          userId: req.user.data.id,
+          categoryId,
+          link,
+          description,
+          mainImage,
+          name,
+          author,
+          productDetail,
+          vip,
+          subImage,
+        },
+        {
+          transaction: t,
+        }
+      );
+      console.log("chwck ", product);
       // Check create order detail
       if (!product) {
-        return  res.status(HTTP_ERROR.BAD_REQUEST).json({
+        res.status(HTTP_ERROR.BAD_REQUEST).json({
           name: "create_product",
           code: FIELD_ERROR.CREATE_PRODUCT_FAILED,
           message: "Create product not success",
@@ -42,9 +75,7 @@ export default async function handle(req, res, next) {
       }
 
       // Create detail product
-      for (const subProduct of createProductForm.productDetail) {
-       
-
+      for (const subProduct of productDetail) {
         await db.ProductInventory.create(
           {
             productId: product.id,
@@ -62,7 +93,7 @@ export default async function handle(req, res, next) {
       await db.ProductImage.create(
         {
           productId: product.id,
-          image: createProductForm.mainImage,
+          image: mainImage,
           isMain: GLOBAL_SWITCH.ON,
           status: GLOBAL_STATUS.ACTIVE,
         },
@@ -72,12 +103,12 @@ export default async function handle(req, res, next) {
       );
 
       // Create sub-image
-      for (const subImage of createProductForm.subImage) {
+      for (const sub_Image of subImage) {
         // Create main image
         await db.ProductImage.create(
           {
             productId: product.id,
-            image: subImage.image, 
+            image: sub_Image.image,
             isMain: GLOBAL_SWITCH.OFF,
             status: GLOBAL_STATUS.ACTIVE,
           },
@@ -97,6 +128,4 @@ export default async function handle(req, res, next) {
       throw e;
     }
   }
-
-
 }
