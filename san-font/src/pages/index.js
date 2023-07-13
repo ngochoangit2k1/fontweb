@@ -2,21 +2,27 @@ import Head from 'next/head'
 import React from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { useState } from 'react'
-import MenuFont from '@/components/MenuFonts/MenuFont'
+
 import ProductHome from '@/components/products/ProductHome'
-import axios from 'axios'
 
-function Home({ Data }) {
-	const [HomeData, setHomeData] = useState(Data)
-	const funcFilter = nameFont => {
-		const nameFonts = Data.filter(item => item.nameFont === nameFont)
-		setHomeData(nameFonts)
-	}
+import productsApis from '../../apis/productApis'
+import axiosClient from '../../apis/axiosClient'
+import {
+	CONTENT_PAGE,
+	GLOBAL_STATUS,
+} from '@/backend/constants/common.constant'
+import categoryApis from '../../apis/categoryApis'
 
-	const [seeMore, setSeeMore] = useState(12)
+function Home({ CategoryData, data }) {
+	// const [HomeData, setHomeData] = useState(data)
+	// const funcFilter = nameFont => {
+	// 	const nameFonts = data.filter(item => item.nameFont === nameFont)
+	// 	setHomeData(nameFonts)
+	// }
 
-	const showMore = HomeData.slice(0, seeMore)
-
+	const [seeMore, setSeeMore] = useState(16)
+	const showMore = data.slice(0, seeMore)
+	console.log('showmore', showMore)
 	const loadMore = () => {
 		setSeeMore(prevValue => prevValue + 4)
 	}
@@ -45,22 +51,28 @@ function Home({ Data }) {
 					</div>
 				</div>
 			</div>
-
 			{/* Menu font */}
-			<MenuFont Data={Data} setHomeData={setHomeData} />
-
+			{/* <MenuFont CategoryData={CategoryData}  /> */}
+			<div className='mt-10 w-[65%]   mx-auto max-xl:w-[90%]'>
+				{CategoryData.map(e => {
+					return (
+						<>
+							<button className='py-3 px-4 mx-3 my-2 cursor-pointer bg-whites rounded-[30px]  focus:bg-oranges focus:text-whites text-blacks'>
+								{e.name}
+							</button>
+						</>
+					)
+				})}
+			</div>
 			{/* products */}
-
 			<div className='flex gap-3'>
 				<h2 className='font-medium text-3xl ml-[7%] mt-16'>
-					{HomeData.length} font
+					{showMore.length} font
 				</h2>
 			</div>
-
 			<div className='w-[85%]	 mx-auto mt-6 grid grid-cols-4 gap-6 max-xl:w-[90%] max-lg:grid-cols-2 max-xl:grid-cols-3 max-sm:grid-cols-1'>
-				<ProductHome showMore={showMore} />
+				<ProductHome data={data} />
 			</div>
-
 			{/* Xem thêm */}
 			<div className='w-full text-center mt-6'>
 				<button
@@ -69,8 +81,7 @@ function Home({ Data }) {
 				>
 					Xem thêm
 				</button>
-			</div>
-
+			</div>{' '}
 			<div className='w-[85%] h-96 bg-whites mx-auto mt-12'></div>
 		</>
 	)
@@ -79,12 +90,36 @@ function Home({ Data }) {
 export default Home
 
 export async function getStaticProps() {
-	const response = await axios.get('http://localhost:4000/HomeData')
-	console.log(response)
+	const ListCategorys = await categoryApis.getAllCategorys({
+		pageCode: [GLOBAL_STATUS.ACTIVE],
+	})
+	console.log('ListCategorys', ListCategorys)
+	const params = {
+		size: 20,
+		getMainImage: true,
+		status: GLOBAL_STATUS.ACTIVE,
+	}
+	const product = await productsApis.getAllProducts(params)
+	console.log(product)
+	// const data = {
+	// 	product: product.data,
+	// }
+	// console.log(data)
 
 	return {
-		props: {
-			Data: response.data,
-		},
+		props: { data: product.rows, CategoryData: ListCategorys },
+
+		revalidate: 60,
 	}
 }
+
+// export async function getStaticProps() {
+// 	const response = await axios.get('http://localhost:4000/HomeData')
+// 	console.log(response)
+
+// 	return {
+// 		props: {
+// 			Data: response.data,
+// 		},
+// 	}
+// }

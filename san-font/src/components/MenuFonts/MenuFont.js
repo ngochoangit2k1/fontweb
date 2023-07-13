@@ -1,73 +1,44 @@
 import NameFont from './NameFont'
 
-const MenuFont = ({ Data, setHomeData }) => {
+const MenuFont = ({ CategoryData }) => {
 	const funcFilter = nameFont => {
 		const nameFonts = Data.filter(item => item.nameFont === nameFont)
 		setHomeData(nameFonts)
 	}
 
-	const filterSeLec = () => {
-		const fontSeLective = Data.filter(item => item.selective)
-		setHomeData(fontSeLective)
-	}
+	// const filterSeLec = () => {
+	// 	const fontSeLective = Data.filter(item => item.selective)
+	// 	setHomeData(fontSeLective)
+	// }
 
-	const filterVip = () => {
-		const fontVips = Data.filter(item => item.special)
-		setHomeData(fontVips)
-	}
+	// const filterVip = () => {
+	// 	const fontVips = Data.filter(item => item.special)
+	// 	setHomeData(fontVips)
+	// }
 
-	const filterQC = () => {
-		const fontQCs = Data.filter(item => item.category === 'FontQC')
-		setHomeData(fontQCs)
-	}
+	// const filterQC = () => {
+	// 	const fontQCs = Data.filter(item => item.category === 'FontQC')
+	// 	setHomeData(fontQCs)
+	// }
 
-	const filterVH = () => {
-		const fontVHs = Data.filter(item => item.category === 'FontVH')
-		setHomeData(fontVHs)
-	}
+	// const filterVH = () => {
+	// 	const fontVHs = Data.filter(item => item.category === 'FontVH')
+	// 	setHomeData(fontVHs)
+	// }
 
-	const filterSelect = (type, checked, item) => {
-		if (checked) {
-			switch (type) {
-				case 'CATEGORY':
-					setFilter({
-						...filter,
-						category: [...filter.category, item.categorySlug],
-					})
-					break
-				case 'CAPACITY':
-					setFilter({
-						...filter,
-						capacity: [...filter.capacity, item.capacity],
-					})
-					break
-				default:
-			}
-		} else {
-			switch (type) {
-				case 'CATEGORY':
-					const newCategory = filter.category.filter(
-						e => e !== item.categorySlug
-					)
-					setFilter({ ...filter, category: newCategory })
-					break
-				case 'CAPACITY':
-					const newCapacity = filter.capacity.filter(e => e !== item.capacity)
-					setFilter({ ...filter, capacity: newCapacity })
-					break
-				default:
-			}
-		}
-	}
 	return (
 		<>
 			<div className='w-[65%] mx-auto mt-10 max-xl:w-[90%]'>
 				<ul className=' flex flex-wrap w-full gap-5 justify-center max-2xl:w-[100%]'>
-					<NameFont onClick={() => setHomeData(Data)} test={'All font'} />
-					<NameFont
-						onClick={() => funcFilter('font-1FTV')}
-						test={'Font 1FTV'}
-					/>
+					{/* <NameFont onClick={() => setHomeData(Data)} test={'All font'} /> */}
+					<li
+						onClick={onClick}
+						className={'bg-whites rounded-[30px] font-medium text-base'}
+					>
+						<button className='py-3 px-4 cursor-pointer bg-whites rounded-[30px]  focus:bg-oranges focus:text-whites text-blacks'>
+							{test}
+						</button>
+					</li>
 					<NameFont onClick={() => funcFilter('UTM-font')} test={'UTM Font'} />
 					<NameFont onClick={() => funcFilter('font-MJ')} test={'Font MJ'} />
 					<NameFont

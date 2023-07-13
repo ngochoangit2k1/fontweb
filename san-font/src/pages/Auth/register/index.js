@@ -11,15 +11,9 @@ import { useForm } from 'react-hook-form'
 import { useMemo } from 'react'
 import * as yup from 'yup'
 import axios from 'axios'
+import AuthApis from '../../../../apis/AuthApis'
 const Register = () => {
 	const router = useRouter()
-
-	const axiosClient = axios.create({
-		baseURL: `http://localhost:3000`,
-		headers: {
-			'content-type': 'application/json',
-		},
-	})
 
 	const SignUpSchema = useMemo(
 		() =>
@@ -75,12 +69,9 @@ const Register = () => {
 
 	const onSubmit = values => {
 		// setLoading(true);
-		axiosClient
-			.post('/api/auth/sign-up', {
-				username: values.username,
-				email: values.email,
-				password: values.password,
-			})
+		const { fullName, email, password, referralCode, username } = values
+
+		AuthApis.signUpUser({ email, password, fullName, referralCode, username })
 			.then(() => {
 				router.push('/Auth/login')
 				toast.success('Đăng ký thành công')

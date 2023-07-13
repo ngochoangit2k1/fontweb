@@ -1,19 +1,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { addToCart } from '../../../redux/cart.slice'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { useSession } from 'next-auth/react'
+
 import { useRouter } from 'next/router'
 
-const ProductHome = ({ showMore }) => {
+const ProductHome = ({ data }) => {
 	const dispatch = useDispatch()
-	const { data } = useSession()
+
 	const router = useRouter()
+	const { token, info } = useSelector(state => state.account)
 
 	return (
 		<>
-			{showMore.map((item, id) => {
+			{data.map((item, id) => {
+				console.log('item', item)
 				return (
 					<div className='bg-whites shadow-md ' key={id}>
 						<div className='relative'>
@@ -21,7 +23,7 @@ const ProductHome = ({ showMore }) => {
 								<div className=' cursor-pointer  duration-500 hover:scale-[1.1] relative '>
 									<label htmlFor='my-modal-3' className=' '>
 										<Image
-											src={item.image}
+											src={item.link}
 											alt=''
 											width={500}
 											height={300}
@@ -51,7 +53,7 @@ const ProductHome = ({ showMore }) => {
 									</label>
 									<div>
 										<Image
-											src={item.image}
+											src={item.link}
 											alt='img'
 											width={800}
 											height={800}
@@ -64,7 +66,7 @@ const ProductHome = ({ showMore }) => {
 							<div>
 								<button
 									onClick={() => {
-										if (data?.user) {
+										if (token) {
 											dispatch(addToCart(item))
 											toast.success('Font đã được lưu vào tài khoản')
 										} else {
@@ -86,7 +88,7 @@ const ProductHome = ({ showMore }) => {
 									<span className='font-bold'>Đã lưu</span>
 								</button> */}
 
-								{item.special && (
+								{/* {item.special && (
 									<button className='btn-vip absolute bg-[#028623] py-[3px] px-[6px] text-whites text-xs shadow-xxl rounded-bl-lg  z-1'>
 										<Link href={'/font-vip'} legacyBehavior>
 											<a className='font-bold '>VIP</a>
@@ -100,7 +102,7 @@ const ProductHome = ({ showMore }) => {
 											<a className='font-bold '>Font chọn lọc</a>
 										</Link>
 									</button>
-								) : null}
+								) : null} */}
 							</div>
 							{/* <button className='btn-vip absolute bg-[#028623] py-[3px] px-[6px] text-whites shadow-orange-400 text-xs rounded-bl-lg  z-1'>
 								<Link href={'/font-vip'} legacyBehavior>
@@ -110,7 +112,7 @@ const ProductHome = ({ showMore }) => {
 						</div>
 						<Link href={`font-viet-hoa/${item.nameFont}/${item.id}`}>
 							<h2 className='ml-3 mt-1 font-semibold text-base text-blacks'>
-								{item.title}
+								{item.name}
 							</h2>
 						</Link>
 						<div className='ml-3 py-4 font-normal text-xs leading-6 text-[#818181]'>
@@ -119,16 +121,16 @@ const ProductHome = ({ showMore }) => {
 								{item.author}
 							</p>
 							<p>
-								<span className='font-bold'>Người đăng:</span>
-								{item.user}
+								<span className='font-bold'>Người đăng: </span>
+								{item.user?.username}
 							</p>
 							<p>
 								<span className='font-bold'>Việt hóa :</span>
-								{item.translate}
+								{}
 							</p>
 							<p>
 								<span className='font-bold'>Ngày đăng:</span>
-								{item.date}
+								{item.createdAt}
 							</p>
 							<p>
 								<span className='font-bold'>Số lượt tải font:</span>

@@ -8,23 +8,18 @@ import { FaFacebook } from 'react-icons/fa'
 import { BiLeftArrowCircle } from 'react-icons/bi'
 import { useRouter } from 'next/router'
 import * as yup from 'yup'
-import axios from 'axios'
+import AuthApis from './../../../../apis/AuthApis'
+
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
-import { setInfoLogin, setToken } from '../../../../redux/accountSlice'
+import { setInfoLogin } from '../../../../redux/accountSlice'
+import axiosClient from '../../../../apis/axiosClient'
 
 const Login = () => {
 	const [error, setError] = useState('')
 	const router = useRouter()
 	const dispatch = useDispatch()
-	const axiosClient = axios.create({
-		baseURL: `http://localhost:3000`,
-		headers: {
-			'content-type': 'application/json',
-		},
-		// paramsSerializer: params => queryString.stringify(params),
-	})
 
 	const LoginSchema = yup.object({
 		email: yup
@@ -56,33 +51,24 @@ const Login = () => {
 		mode: 'onChange',
 	})
 
-	const onSubmit = values => {
-		console.log(values)
-		// setLoading(true);
-		axiosClient
-			.post('/api/auth/sign-in', {
-				email: values.email,
-
-				password: values.password,
-			})
+	const onSubmit = data => {
+		const { email, password } = data
+		console.log(data)
+		AuthApis.login({ email, password })
 			.then(test => {
+				console.log(test)
 				axiosClient.defaults.headers.common = {
-					Authorization: `Bearer ${test.data.token}`,
+					Authorization: `Bearer ${test.token}`,
 				}
 
-				// localStorage.setItem('token', test.data.token)
-				dispatch(setToken(test.data))
-				dispatch(setInfoLogin(test.data))
-				console.log(test.data)
+				dispatch(setInfoLogin(test))
+				console.log(test)
 				router.push('/')
 				toast.success('Đăng nhập thành công')
 			})
 
 			.catch(err => {
-				const error = err.response.data.code.message
-				if (error === 'WRONG_PASSWORD') {
-					setError('Mật khẩu bạn không chính xác.')
-				} else {
+				{
 					setError('Email hoặc mật khẩu bạn không chính xác.')
 				}
 			})

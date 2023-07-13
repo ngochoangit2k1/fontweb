@@ -10,8 +10,8 @@ header {
 }
 
 .Toastify__toast--success {
-	margin-top: 75px;
-	color: rgb(30, 201, 7) !important;
+	 /* color: rgb(30, 201, 7) !important;  */
+	color: white !important; 
 	
 }
 
@@ -41,6 +41,8 @@ header {
 	width: 100%;
 	background-color: transparent;
 }
+
+/* messenger */
 
 .messenger::before {
 	content: '';
@@ -155,7 +157,7 @@ input[type="file"] {
  overflow: auto;
 }
 
-
+	/* pagination */
 .paginationBttns {
   width: 90%;
 justify-content: center;

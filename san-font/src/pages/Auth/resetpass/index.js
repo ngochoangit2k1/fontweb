@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import { useRef } from 'react'
 import { OTP_CODE_TYPE } from '@/backend/constants/common.constant'
 import { useEffect } from 'react'
+import AuthApis from '../../../../apis/AuthApis'
 
 const ResetPass = () => {
 	const refCountdownOtp = useRef()
@@ -23,14 +24,6 @@ const ResetPass = () => {
 	const [loading, setLoading] = useState(false)
 	const [loadingSentcodeEmail, setLoadingSentCodeEmail] = useState(false)
 	const [countdownEmail, setCountdownEmail] = useState(60)
-
-	const axiosClient = axios.create({
-		baseURL: `http://localhost:3000`,
-		headers: {
-			'content-type': 'application/json',
-		},
-		// paramsSerializer: params => queryString.stringify(params),
-	})
 
 	const ResetSchema = yup.object({
 		email: yup
@@ -79,11 +72,10 @@ const ResetPass = () => {
 	console.log(emailVerified, email, otpCode)
 	const onSendEmailOTP = () => {
 		setLoadingSentCodeEmail(true)
-		axiosClient
-			.post('/api/auth/otp', {
-				email: (email || '').trim(),
-				type: OTP_CODE_TYPE.FORGOT_PASSWORD,
-			})
+		AuthApis.sendOTP({
+			email: (email || '').trim(),
+			type: OTP_CODE_TYPE.FORGOT_PASSWORD,
+		})
 			.then(() => {
 				setCountdownEmail(preCount => preCount - 1)
 				clearInterval(refCountdownOtp.current)
@@ -104,11 +96,10 @@ const ResetPass = () => {
 		setLoading(true)
 		setLoadingSentCodeEmail(true)
 		if (!values?.emailVerified) {
-			axiosClient
-				.post('/api/auth/otp', {
-					email: values.email,
-					type: OTP_CODE_TYPE.FORGOT_PASSWORD,
-				})
+			AuthApis.sendOTP({
+				email: values.email,
+				type: OTP_CODE_TYPE.FORGOT_PASSWORD,
+			})
 				.then(reponse => {
 					if (reponse) {
 						setCountdownEmail(preCount => preCount - 1)
@@ -125,19 +116,18 @@ const ResetPass = () => {
 					setLoading(false)
 				})
 		} else {
-			axiosClient
-				.post('/api/auth/forgot-password', {
-					email,
-					otpCode,
-					password,
-					rePassword,
-				})
+			AuthApis.resetPassword({
+				email,
+				otpCode,
+				password,
+				rePassword,
+			})
 				.then(() => {
-					toast.success('thay đổi mật khẩu thành công')
+					toast.success('Thay đổi mật khẩu thành công')
 					router.push('/Auth/login')
 				})
 				.catch(err => {
-					toast.error('err.message')
+					toast.error('Mã OTP không đúng')
 				})
 				.finally(() => {
 					setLoadingSentCodeEmail(false)

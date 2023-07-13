@@ -2,6 +2,7 @@ import ProductCategory from '@/components/Products/ProductCategory'
 import Head from 'next/head'
 import React, { useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate'
+import categoryApis from '../../../apis/categoryApis'
 
 const fontVH = ({ categoryFont }) => {
 	// useEffect(() => {
@@ -68,10 +69,9 @@ const fontVH = ({ categoryFont }) => {
 export default fontVH
 
 export async function getStaticProps() {
-	const response = await fetch(`http://localhost:4000/HomeData`)
-	const data = await response.json()
+	const product = await productsApis.getAllProducts(params)
 
-	const datas = data.filter(e => e.category === 'FontVH')
+	const datas = product.filter(e => e.category === 'FontVH')
 
 	return {
 		props: {
