@@ -1,16 +1,16 @@
-import {userInfo }from "../user-inf";
+import { userInfo } from "../user-inf";
 import db from "../../../../backend/models/index.js";
 const { Op } = db.Sequelize;
 
 export async function updateUserProfile(req, res) {
   console.log("firstvv ", req.body);
   console.log("tesst1", req.user.data.id);
-  const profile = await userInfo(req, res)
-  console.log("profile", profile)
+  const profile = await userInfo(req, res);
+  console.log("profile", profile);
   const transaction = await db.sequelize.transaction();
   const formUpdate = req.body;
-  const user =  req.user.data
- 
+  const user = req.user.data;
+
   try {
     // if (!formUpdate.avatar) {
     //   await checkUserExisted(
@@ -48,7 +48,7 @@ export async function updateUserProfile(req, res) {
         transaction,
       }),
     ]);
-    
+
     await transaction.commit();
     return res.status(200).json("success");
   } catch (e) {

@@ -1,5 +1,7 @@
 import { createProductValidator } from "../../../../backend/validator/product.validator";
 import db from "../../../../backend/models/index.js";
+import cloudinary from "../../../../backend/common/cloudinary.service.js";
+
 import {
   GLOBAL_SWITCH,
   GLOBAL_STATUS,
@@ -46,7 +48,6 @@ export default async function handle(req, res, next) {
         }
       }
 
-      // Create order detail
       const product = await db.Product.create(
         {
           userId: req.user.data.id,
@@ -58,7 +59,6 @@ export default async function handle(req, res, next) {
           author,
           productDetail,
           vip,
-          subImage,
         },
         {
           transaction: t,
@@ -67,7 +67,7 @@ export default async function handle(req, res, next) {
       console.log("chwck ", product);
       // Check create order detail
       if (!product) {
-        res.status(HTTP_ERROR.BAD_REQUEST).json({
+        return res.status(HTTP_ERROR.BAD_REQUEST).json({
           name: "create_product",
           code: FIELD_ERROR.CREATE_PRODUCT_FAILED,
           message: "Create product not success",
@@ -105,12 +105,17 @@ export default async function handle(req, res, next) {
       // Create sub-image
       for (const sub_Image of subImage) {
         // Create main image
+        const result = await cloudinary.uploader.upload(sub_Image, {
+          folder: "blog",
+          with: 1200,
+          scrop: "scale",
+        });
         await db.ProductImage.create(
           {
             productId: product.id,
             image: sub_Image.image,
-            isMain: GLOBAL_SWITCH.OFF,
-            status: GLOBAL_STATUS.ACTIVE,
+            id: result.public_id,
+            image: result.secure_url,
           },
           {
             transaction: t,

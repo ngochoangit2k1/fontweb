@@ -13,20 +13,19 @@ export default async function handle(req, res, next) {
       where: { categorySlug },
       attributes: ["id"],
     });
-    console.log("checkc",category.id)
-  
+    console.log("checkc", category.id);
 
     const products = await db.Product.findAndCountAll({
-      where: {  categoryId: category.id },
+      where: { categoryId: category.id },
       include: [
         {
           model: db.ProductCategory,
-          as: 'productCategory',
+          as: "productCategory",
           where: { status: GLOBAL_STATUS.ACTIVE },
         },
         {
           model: db.ProductImage,
-          as: 'productImage',
+          as: "productImage",
           separate: true,
           where: {
             isMain: getMainImage
@@ -36,7 +35,7 @@ export default async function handle(req, res, next) {
         },
         {
           model: db.ProductInventory,
-          as: 'productInventory',
+          as: "productInventory",
           separate: true,
         },
 
@@ -46,7 +45,7 @@ export default async function handle(req, res, next) {
         //   required: !!discount,
         //   where: { status: GLOBAL_STATUS.ACTIVE },
         // },
-        { model: db.User, as: 'user' },
+        { model: db.User, as: "user" },
       ],
     });
 
@@ -61,26 +60,22 @@ export default async function handle(req, res, next) {
     return res.status(200).json(products);
   }
   if (req.method === "POST") {
-
-  
-
     const products = await db.Product.findAndCountAll({
-      where: {  categoryId: req.body.categoryId },
+      where: { categoryId: req.body.categoryId },
       include: [
         {
           model: db.ProductCategory,
-          as: 'productCategory',
+          as: "productCategory",
           where: { status: GLOBAL_STATUS.ACTIVE },
         },
         {
           model: db.ProductImage,
-          as: 'productImage',
+          as: "productImage",
           separate: true,
-         
         },
         {
           model: db.ProductInventory,
-          as: 'productInventory',
+          as: "productInventory",
           separate: true,
         },
 
@@ -90,7 +85,7 @@ export default async function handle(req, res, next) {
         //   required: !!discount,
         //   where: { status: GLOBAL_STATUS.ACTIVE },
         // },
-        { model: db.User, as: 'user' },
+        { model: db.User, as: "user" },
       ],
     });
 

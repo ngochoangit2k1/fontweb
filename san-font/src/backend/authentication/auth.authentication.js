@@ -1,11 +1,11 @@
 import HttpStatusCode from "../errors/HttpStatusCode.js";
 import jwt from "jsonwebtoken";
 import passport from "passport";
-import db from "../models/index.js"
-import { FIELD_ERROR, HTTP_ERROR } from '../errors/error';
-import { GLOBAL_STATUS } from '../constants/common.constant';
+import db from "../models/index.js";
+import { FIELD_ERROR, HTTP_ERROR } from "../errors/error";
+import { GLOBAL_STATUS } from "../constants/common.constant";
 
-export default async function checkToken  (req, res,moduleId = [], next)  {
+export default async function checkToken(req, res, moduleId = [], next) {
   // khi nào có next chức năng ms hoạt động
   // bỏ qua login và register
   // console.log(req.url);
@@ -34,25 +34,24 @@ export default async function checkToken  (req, res,moduleId = [], next)  {
     } else {
       console.log(Date.now());
       req.user = jwtObject;
-      
-      
+
       next;
     }
 
     debugger;
   } catch (exception) {
-   return res.status(HttpStatusCode.BAD_REQUEST).json({
+    return res.status(HttpStatusCode.BAD_REQUEST).json({
       message: "Bạn chưa login",
     });
   }
   debugger;
 }
-export  function isAuthenticated( moduleId = []) {
+export function isAuthenticated(moduleId = []) {
   return [
-   
-    async (req, res, next) => {console.log("check")
-      checkToken(req, res,moduleId = [], next)
-      
+    async (req, res, next) => {
+      console.log("check");
+      checkToken(req, res, (moduleId = []), next);
+
       // if (req.isAuthenticated() && req.user) {
       //   const account = await db.User.findOne({
       //     where: {
@@ -108,6 +107,6 @@ export  function isAuthenticated( moduleId = []) {
       //   code: FIELD_ERROR.NOT_AUTHENTICATE.message,
       //   message: "Not Authenticated."
       // });
-    }
+    },
   ];
 }

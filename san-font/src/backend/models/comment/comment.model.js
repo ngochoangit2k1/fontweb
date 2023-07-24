@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { GLOBAL_STATUS } from "../constants/common.constant.js";
+import { GLOBAL_STATUS } from "../../constants/common.constant.js";
 
 export default class CommentProduct extends Model {
   static init(sequelize, opts) {
@@ -18,13 +18,17 @@ export default class CommentProduct extends Model {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
+        parent_slug: {
+          type: DataTypes.STRING,
+        },
+        parent_slug: {
+          type: DataTypes.STRING,
+        },
+        full_slug: {
+          type: DataTypes.STRING,
+        },
         comment: {
           type: DataTypes.TEXT,
-        },
-
-        status: {
-          type: DataTypes.TINYINT(1),
-          defaultValue: GLOBAL_STATUS.ACTIVE,
         },
 
         createdById: {
@@ -59,7 +63,6 @@ export default class CommentProduct extends Model {
       as: "userCreate",
     });
     this.belongsTo(models.User, {
-      
       foreignKey: "updatedById",
       as: "userUpdate",
     });

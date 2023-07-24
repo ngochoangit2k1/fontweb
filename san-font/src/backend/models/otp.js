@@ -1,8 +1,8 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export const OTP_STATUS = Object.freeze({
   ACTIVE: 1,
-  DELETE: 0
+  DELETE: 0,
 });
 
 export default class OTP extends Model {
@@ -12,34 +12,35 @@ export default class OTP extends Model {
         id: {
           type: DataTypes.BIGINT,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: true,
         },
         key: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         code: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         status: {
           type: DataTypes.TINYINT(1),
-          default: OTP_STATUS.ACTIVE
+          default: OTP_STATUS.ACTIVE,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         deletedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
-        tableName: 'otp',
-        modelName: 'otp',
+        tableName: "otp",
+        modelName: "otp",
         timestamps: true,
         paranoid: true,
-        sequelize, ...opts
+        sequelize,
+        ...opts,
       }
     );
   }

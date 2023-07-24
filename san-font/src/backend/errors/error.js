@@ -1,4 +1,3 @@
-
 export const HTTP_ERROR = Object.freeze({
   ACCESS_DENIED: 403,
   NOT_FOUND: 404,
@@ -301,7 +300,7 @@ export const FIELD_ERROR = {
 //   }
 // }
 export function badRequest(name, code, message) {
-  return new  FormError(
+  return new FormError(
     { name, code, message },
     FIELD_ERROR.BAD_REQUEST.code,
     FIELD_ERROR.BAD_REQUEST.message

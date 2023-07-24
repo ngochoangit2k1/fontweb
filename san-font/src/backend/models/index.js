@@ -11,7 +11,7 @@ import Product from "./product/product.js";
 import ProductInventory from "./product/product-inventory.js";
 import ProductImage from "./product/product-image.js";
 import ProductCategory from "./product/product-category.js";
-import Category from "./product/category.js"
+import Category from "./product/category.js";
 import Discount from "./product/discount.js";
 import Order from "./order/order.js";
 import OrderPayment from "./order/orderPayment.js";
@@ -19,7 +19,9 @@ import OrderItem from "./order/orderItem.js";
 import CommissionConfig from "./commission-config.js";
 import CommissionLevel from "./commission-level.js";
 import OTP from "./otp.js";
-import CommentProduct from "./comment.model.js"
+import CommentProduct from "./comment/comment.model.js";
+import Blog from "./blog/blog.js";
+import BlogImage from "./blog/blog-image.js";
 // import dotenv from "dotenv";
 
 // dotenv.config();
@@ -37,7 +39,6 @@ const sequelize = new Sequelize(
   config
 );
 const models = {
-
   // User
   User: User.init(sequelize),
   UserInformation: UserInformation.init(sequelize),
@@ -53,8 +54,8 @@ const models = {
   ProductImage: ProductImage.init(sequelize),
   ProductCategory: ProductCategory.init(sequelize),
   Discount: Discount.init(sequelize),
-// Comment
-  CommentProduct:CommentProduct.init(sequelize),
+  // Comment
+  CommentProduct: CommentProduct.init(sequelize),
   // Order
   Order: Order.init(sequelize),
   OrderPayment: OrderPayment.init(sequelize),
@@ -63,6 +64,10 @@ const models = {
   // Master
   CommissionConfig: CommissionConfig.init(sequelize),
   CommissionLevel: CommissionLevel.init(sequelize),
+
+  // Blog
+  Blog: Blog.init(sequelize),
+  BlogImage: BlogImage.init(sequelize),
 };
 
 Object.values(models)

@@ -1,56 +1,64 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export default class Category extends Model {
   static init(sequelize, opts) {
-    return super.init({
+    return super.init(
+      {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: true,
         },
         name: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         categorySlug: {
           type: DataTypes.STRING,
-          unique: true
+          unique: true,
         },
         image: {
-          type: DataTypes.TEXT
+          type: DataTypes.TEXT,
         },
         description: {
-          type: DataTypes.TEXT
+          type: DataTypes.TEXT,
         },
         note: {
-          type: DataTypes.TEXT
+          type: DataTypes.TEXT,
         },
         status: {
-          type: DataTypes.TINYINT(1)
+          type: DataTypes.TINYINT(1),
         },
         createdById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         updatedById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
-        tableName: 'category',
-        modelName: 'category',
+        tableName: "category",
+        modelName: "category",
         timestamps: true,
-        sequelize, ...opts
+        sequelize,
+        ...opts,
       }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'createdById', as: 'userCreate' });
-    this.belongsTo(models.User, { foreignKey: 'updatedById', as: 'userUpdate' });
+    this.belongsTo(models.User, {
+      foreignKey: "createdById",
+      as: "userCreate",
+    });
+    this.belongsTo(models.User, {
+      foreignKey: "updatedById",
+      as: "userUpdate",
+    });
   }
 }

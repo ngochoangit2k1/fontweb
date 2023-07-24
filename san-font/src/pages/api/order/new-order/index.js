@@ -51,7 +51,7 @@ export default async function handle(req, res, next) {
     }
 
     if (
-      productDB.productInventory.length === 0 
+      productDB.productInventory.length === 0
       // ||
       // productDB.productInventory[0].quantity < product.quantity
     ) {
@@ -210,8 +210,7 @@ export default async function handle(req, res, next) {
       // Commit transaction
       await t.commit();
       console.log(payment);
-      console.log("chessss", order
-      )
+      console.log("chessss", order);
       // sendMailComplete({
       //   toEmails: createOrderForm.email,
       //   orderCode: `${ORDER_CODE}${orderCode}`,

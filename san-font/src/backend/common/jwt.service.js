@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import {} from 'dotenv/config';
+import jwt from "jsonwebtoken";
+import {} from "dotenv/config";
 
 class JsonWebToken {
   /**
@@ -9,7 +9,11 @@ class JsonWebToken {
    * @param expiresIn
    * @returns {undefined|*|number|PromiseLike<ArrayBuffer>}
    */
-  sign (data, key = process.env.JWT_SECRET, expiresIn = process.env.JWT_EXPIRED) {
+  sign(
+    data,
+    key = process.env.JWT_SECRET,
+    expiresIn = process.env.JWT_EXPIRED
+  ) {
     return jwt.sign(data, key, { expiresIn });
   }
 
@@ -19,7 +23,7 @@ class JsonWebToken {
    * @param key
    * @returns {{data: object, success: boolean }}
    */
-  verify (token, key = process.env.JWT_SECRET) {
+  verify(token, key = process.env.JWT_SECRET) {
     let data = null;
     let success = true;
     try {
@@ -35,7 +39,7 @@ class JsonWebToken {
    * @param token
    * @returns {null|{payload, signature, header}|Promise<void>|string}
    */
-  decrypt (token) {
+  decrypt(token) {
     return jwt.decode(token);
   }
 }

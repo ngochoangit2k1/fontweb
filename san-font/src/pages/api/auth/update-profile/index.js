@@ -4,7 +4,6 @@ import { updateUserProfileValidator } from "../../../../backend/validator/user.v
 
 import { NextResponse } from "next/server";
 
-   
 export default async function handler(req, res) {
   checkToken(req, res);
 
@@ -12,7 +11,7 @@ export default async function handler(req, res) {
     await updateUserProfileValidator(req.body, res);
 
     return updateUserProfile(req, res)
-    .then((t) => NextResponse.json(t))
-    .catch(NextResponse.next);
+      .then((t) => NextResponse.json(t))
+      .catch(NextResponse.next);
   }
 }

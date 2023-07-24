@@ -1,4 +1,4 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export default class CommissionLevel extends Model {
   static init(sequelize, opts) {
@@ -7,36 +7,45 @@ export default class CommissionLevel extends Model {
         idLevel: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          allowNull: false
+          allowNull: false,
         },
         idCommission: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          allowNull: false
+          allowNull: false,
         },
         updatedById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
         tableName: "commission_level",
         modelName: "commissionLevel",
         timestamps: true,
         sequelize,
-        ...opts
+        ...opts,
       }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'createdById', as: 'userCreate' });
-    this.belongsTo(models.User, { foreignKey: 'updatedById', as: 'userUpdate' });
-    this.belongsTo(models.CommissionConfig, { foreignKey: 'idCommission', as: 'commissionConfig' });
+    this.belongsTo(models.User, {
+      foreignKey: "createdById",
+      as: "userCreate",
+    });
+    this.belongsTo(models.User, {
+      foreignKey: "updatedById",
+      as: "userUpdate",
+    });
+    this.belongsTo(models.CommissionConfig, {
+      foreignKey: "idCommission",
+      as: "commissionConfig",
+    });
   }
 }

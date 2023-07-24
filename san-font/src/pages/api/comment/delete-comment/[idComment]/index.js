@@ -1,4 +1,3 @@
-
 import db from "../../../../../backend/models/index";
 import {
   FIELD_ERROR,
@@ -7,12 +6,10 @@ import {
 
 export default async function handle(req, res, next) {
   if (req.method === "DELETE") {
-    const { comment } = req.body;
-    const id = req.query.idComment;
-    console.log(comment);
-    const cmt = await db.CommentProduct.findOne({ where: { id } });
-    console.log(cmt);
-    if (!cmt) {
+    const id = req.query.idBlog;
+    const blg = await db.Blog.findOne({ where: { id } });
+    console.log(blg);
+    if (!blg) {
       return res.status(HTTP_ERROR.BAD_REQUEST).json({
         name: "find-comment",
 
@@ -21,12 +18,12 @@ export default async function handle(req, res, next) {
       });
     }
 
-    await db.CommentProduct.destroy( { where: { id } })
+    await db.Blog.destroy({ where: { id } })
       .then((newComment) => {
         res.status(200).json("success");
       })
       .catch((err) => {
-        return  res.status(HTTP_ERROR.BAD_REQUEST).json({
+        return res.status(HTTP_ERROR.BAD_REQUEST).json({
           name: "delete-comment",
 
           code: FIELD_ERROR.ACCOUNT_NOT_FOUND,

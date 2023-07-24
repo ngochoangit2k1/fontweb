@@ -1,45 +1,53 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export const PAYMENT_TYPE = Object.freeze({
   PAYMENT_OFFLINE: 0,
-  PAYMENT_ONLINE: 1
+  PAYMENT_ONLINE: 1,
 });
 export default class OrderPayment extends Model {
   static init(sequelize, opts) {
-    return super.init({
+    return super.init(
+      {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: true,
         },
         paymentMethod: {
           type: DataTypes.INTEGER,
-          defaultValue: PAYMENT_TYPE.PAYMENT_OFFLINE
+          defaultValue: PAYMENT_TYPE.PAYMENT_OFFLINE,
         },
         createdById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         updatedById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
-        tableName: 'order_payment',
-        modelName: 'orderPayment',
+        tableName: "order_payment",
+        modelName: "orderPayment",
         timestamps: true,
-        sequelize, ...opts
+        sequelize,
+        ...opts,
       }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'createdById', as: 'userCreate' });
-    this.belongsTo(models.User, { foreignKey: 'updatedById', as: 'userUpdate' });
+    this.belongsTo(models.User, {
+      foreignKey: "createdById",
+      as: "userCreate",
+    });
+    this.belongsTo(models.User, {
+      foreignKey: "updatedById",
+      as: "userUpdate",
+    });
   }
 }

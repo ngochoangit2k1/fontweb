@@ -14,7 +14,7 @@ export default async function hander(req, res, next) {
     // const userInfo = await db.User.findOne({
     //   where: { id: user.id },
     // });
-  
+
     try {
       const newComment = await db.CommentProduct.create({
         productId: createCommentForm.productId,

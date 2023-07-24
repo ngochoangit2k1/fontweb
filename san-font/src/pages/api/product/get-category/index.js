@@ -9,16 +9,12 @@ const { Op } = db.Sequelize;
 
 export default async function handler(req, res) {
   pagingParse(req, res);
-//   checkToken(req, res);
+  //   checkToken(req, res);
 
   if (req.method === "POST") {
-
     const products = await db.ProductCategory.findOne({
-      where: { categorySlug : req.body.category_slug  },
-    
+      where: { categorySlug: req.body.category_slug },
     });
-
-   
 
     return res.status(200).json({ products });
   }

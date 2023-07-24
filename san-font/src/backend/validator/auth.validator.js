@@ -4,15 +4,12 @@ import { REGEX } from "../utils/regex.util.js";
 import { validator, validatorType } from "./index.js";
 
 export const loginValidator = validator(
- 
   joi.object().keys({
     email: joi.string().email().required(),
     password: joi.string().max(256).required(),
   }),
   validatorType.BODY
-  
 );
-
 
 export const registerUserValidator = validator(
   joi.object().keys({

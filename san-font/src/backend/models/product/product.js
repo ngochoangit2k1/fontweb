@@ -20,8 +20,8 @@ export default class Product extends Model {
         discountId: {
           type: DataTypes.INTEGER,
         },
-        link:{
-          type: DataTypes.TEXT
+        link: {
+          type: DataTypes.TEXT,
         },
         productSlug: {
           type: DataTypes.STRING,

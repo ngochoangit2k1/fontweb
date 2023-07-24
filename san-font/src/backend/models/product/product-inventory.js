@@ -1,52 +1,60 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export default class ProductInventory extends Model {
   static init(sequelize, opts) {
-    return super.init({
+    return super.init(
+      {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: true,
         },
         productId: {
           primaryKey: true,
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         subProductId: {
           type: DataTypes.INTEGER,
-          allowNull: false
+          allowNull: false,
         },
         quantity: {
-          type: DataTypes.INTEGER.UNSIGNED
+          type: DataTypes.INTEGER.UNSIGNED,
         },
         cityCode: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         updatedById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
-        tableName: 'product_inventory',
-        modelName: 'productInventory',
+        tableName: "product_inventory",
+        modelName: "productInventory",
         timestamps: true,
-        sequelize, ...opts
+        sequelize,
+        ...opts,
       }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.Product, { foreignKey: 'productId', as: 'product' });
-    this.belongsTo(models.User, { foreignKey: 'createdById', as: 'userCreate' });
-    this.belongsTo(models.User, { foreignKey: 'updatedById', as: 'userUpdate' });
+    this.belongsTo(models.Product, { foreignKey: "productId", as: "product" });
+    this.belongsTo(models.User, {
+      foreignKey: "createdById",
+      as: "userCreate",
+    });
+    this.belongsTo(models.User, {
+      foreignKey: "updatedById",
+      as: "userUpdate",
+    });
   }
 }

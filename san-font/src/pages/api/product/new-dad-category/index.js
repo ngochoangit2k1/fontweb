@@ -2,15 +2,15 @@ import { createDadCategoryValidator } from "../../../../backend/validator/produc
 import db from "../../../../backend/models/index.js";
 import { GLOBAL_STATUS } from "../../../../backend/constants/common.constant";
 import checkToken from "../../../../backend/authentication/auth.authentication.js";
-import {HTTP_ERROR, FIELD_ERROR} from "../../../../backend/errors/error"
+import { HTTP_ERROR, FIELD_ERROR } from "../../../../backend/errors/error";
 export default async function handler(req, res, next) {
-  if (req.method === 'GET'){
+  if (req.method === "GET") {
     const listProductCategory = await db.Category.findAll({
-        where: { status: GLOBAL_STATUS.ACTIVE }
-      });
-    
-      return res.status(200).json(listProductCategory);
-}
+      where: { status: GLOBAL_STATUS.ACTIVE },
+    });
+
+    return res.status(200).json(listProductCategory);
+  }
   if (req.method == "POST") {
     checkToken(req, res);
     await createDadCategoryValidator(req.body, res);

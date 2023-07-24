@@ -1,4 +1,4 @@
-import {DataTypes, Model} from 'sequelize';
+import { DataTypes, Model } from "sequelize";
 
 export default class CommissionConfig extends Model {
   static init(sequelize, opts) {
@@ -7,49 +7,55 @@ export default class CommissionConfig extends Model {
         id: {
           type: DataTypes.INTEGER,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: true,
         },
         commissionName: {
           type: DataTypes.STRING,
-          allowNull: false
+          allowNull: false,
         },
         percent: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         conditions: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         type: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         note: {
-          type: DataTypes.STRING
+          type: DataTypes.STRING,
         },
         createdById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         updatedById: {
-          type: DataTypes.INTEGER
+          type: DataTypes.INTEGER,
         },
         createdAt: {
-          type: DataTypes.DATE
+          type: DataTypes.DATE,
         },
         updatedAt: {
-          type: DataTypes.DATE
-        }
+          type: DataTypes.DATE,
+        },
       },
       {
         tableName: "commission_config",
         modelName: "commissionConfig",
         timestamps: true,
         sequelize,
-        ...opts
+        ...opts,
       }
     );
   }
 
   static associate(models) {
-    this.belongsTo(models.User, { foreignKey: 'createdById', as: 'userCreate' });
-    this.belongsTo(models.User, { foreignKey: 'updatedById', as: 'userUpdate' });
+    this.belongsTo(models.User, {
+      foreignKey: "createdById",
+      as: "userCreate",
+    });
+    this.belongsTo(models.User, {
+      foreignKey: "updatedById",
+      as: "userUpdate",
+    });
   }
 }
