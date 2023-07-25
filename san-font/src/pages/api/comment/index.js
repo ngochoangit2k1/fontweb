@@ -1,6 +1,7 @@
 import db from "../../../backend/models/index.js";
 import { HTTP_ERROR, FIELD_ERROR } from "../../../backend/errors/error";
 import checkToken from "../../../backend/authentication/auth.authentication.js";
+import pagingParse from "../../../backend/middleware/paging.middleware.js";
 
 export default async function hander(req, res, next) {
   const createCommentForm = req.body;
@@ -11,27 +12,34 @@ export default async function hander(req, res, next) {
 
     const t = await db.sequelize.transaction();
 
-    // const userInfo = await db.User.findOne({
-    //   where: { id: user.id },
-    // });
-
     try {
       const newComment = await db.CommentProduct.create({
         productId: createCommentForm.productId,
         userId: user.id,
         comment: createCommentForm.comment,
       });
-      console.log(newComment);
+
       return res.status(200).json({ newComment });
     } catch (error) {
-      console.log(error);
+      return res.status(HTTP_ERROR.BAD_REQUEST).json({
+        name: "comment",
+
+        code: FIELD_ERROR.ACCOUNT_NOT_FOUND,
+        message: "Failed update comment ",
+      });
     }
   }
+
   if (req.method === "GET") {
+    pagingParse(req, res);
+    const { offset, limit } = req.paging;
+
     const conditions = {};
     try {
       const products = await db.CommentProduct.findAndCountAll({
         where: conditions,
+        offset,
+        limit,
       });
       return res.status(200).json(products);
     } catch (error) {

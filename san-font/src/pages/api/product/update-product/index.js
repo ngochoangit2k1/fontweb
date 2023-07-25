@@ -5,6 +5,9 @@ import {
   GLOBAL_STATUS,
   GLOBAL_SWITCH,
 } from "../../../../backend/constants/common.constant";
+import cloudinary from "../../../../backend/common/cloudinary.service.js";
+import { where } from "sequelize";
+
 const { Op } = db.Sequelize;
 
 export default async function handle(req, res, next) {
@@ -79,34 +82,26 @@ export default async function handle(req, res, next) {
         subProductId += 1;
       }
 
-      // Delete old main image
-      await db.ProductImage.destroy({
-        where: {
-          productId: updateProductForm.id,
-        },
+      const images = await db.ProductImage.findAll({
+        where: { productId: updateProductForm.id },
       });
-      // Create main image
-      await db.ProductImage.create(
-        {
-          productId: updateProductForm.id,
-          image: updateProductForm.mainImage,
-          isMain: GLOBAL_SWITCH.ON,
-          status: GLOBAL_STATUS.ACTIVE,
-        },
-        {
-          transaction: t,
-        }
-      );
-
+      for(const image of images){
+        await cloudinary.delêt
+      }
       // Create sub-image
-      for (const subImage of updateProductForm.subImage) {
+      for (const subImage of subImage.subImage) {
+        const result = await cloudinary.uploader.upload(subImage, {
+          folder: "blog",
+          with: 1200,
+          scrop: "scale",
+        });
         // Create main image
         await db.ProductImage.create(
           {
             productId: updateProductForm.id,
-            image: subImage.url,
-            isMain: GLOBAL_SWITCH.OFF,
-            status: GLOBAL_STATUS.ACTIVE,
+            image: subImage.image,
+            id: result.public_id,
+            image: result.secure_url,
           },
           {
             transaction: t,

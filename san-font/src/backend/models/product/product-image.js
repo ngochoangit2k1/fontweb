@@ -8,7 +8,7 @@ export default class ProductImage extends Model {
           type: DataTypes.STRING,
           primaryKey: true,
         },
-        blogId: {
+        productId: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },

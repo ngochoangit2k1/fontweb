@@ -21,13 +21,14 @@ export default async function handle(req, res, next) {
       categoryId,
       link,
       description,
-      mainImage,
+      
       name,
       author,
       productDetail,
       vip,
       subImage,
       productSlug,
+      categorySlug
     } = req.body;
 
     try {
@@ -52,9 +53,10 @@ export default async function handle(req, res, next) {
         {
           userId: req.user.data.id,
           categoryId,
+    
           link,
           description,
-          mainImage,
+          // mainImage,
           name,
           author,
           productDetail,
@@ -75,41 +77,42 @@ export default async function handle(req, res, next) {
       }
 
       // Create detail product
-      for (const subProduct of productDetail) {
-        await db.ProductInventory.create(
-          {
-            productId: product.id,
-            subProductId,
-            quantity: 0,
-          },
-          {
-            transaction: t,
-          }
-        );
-        subProductId += 1;
-      }
+      // for (const subProduct of productDetail) {
+      //   await db.ProductInventory.create(
+      //     {
+      //       productId: product.id,
+      //       subProductId,
+      //       quantity: 0,
+      //     },
+      //     {
+      //       transaction: t,
+      //     }
+      //   );
+      //   subProductId += 1;
+      // }
 
       // Create main image
-      await db.ProductImage.create(
-        {
-          productId: product.id,
-          image: mainImage,
-          isMain: GLOBAL_SWITCH.ON,
-          status: GLOBAL_STATUS.ACTIVE,
-        },
-        {
-          transaction: t,
-        }
-      );
+      // await db.ProductImage.create(
+      //   {
+      //     productId: product.id,
+      //     image: mainImage,
+      //     isMain: GLOBAL_SWITCH.ON,
+      //     status: GLOBAL_STATUS.ACTIVE,
+      //   },
+      //   {
+      //     transaction: t,
+      //   }
+      // );
 
       // Create sub-image
       for (const sub_Image of subImage) {
         // Create main image
-        const result = await cloudinary.uploader.upload(sub_Image, {
+        const result = await cloudinary.uploader.upload(sub_Image.image, {
           folder: "blog",
           with: 1200,
           scrop: "scale",
         });
+        console.log(sub_Image)
         await db.ProductImage.create(
           {
             productId: product.id,

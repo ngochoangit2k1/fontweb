@@ -51,17 +51,13 @@ export default async function handler(req, res) {
           {
             model: db.ProductCategory,
             as: "productCategory",
-            where: { status: GLOBAL_STATUS.ACTIVE },
+            // where: { status: GLOBAL_STATUS.ACTIVE },
           },
           {
             model: db.ProductImage,
             as: "productImage",
             separate: true,
-            where: {
-              isMain: getMainImage
-                ? GLOBAL_SWITCH.ON
-                : [GLOBAL_SWITCH.ON, GLOBAL_SWITCH.OFF],
-            },
+          
           },
           {
             model: db.ProductInventory,
@@ -79,7 +75,7 @@ export default async function handler(req, res) {
         ],
         offset,
         limit,
-        order,
+        
       });
 
       return res.status(200).json(products);
