@@ -22,16 +22,16 @@ export default async function handle(req, res, next) {
           model: db.ProductCategory,
           as: "productCategory",
           where: { status: GLOBAL_STATUS.ACTIVE },
+          include: {
+            model: db.Category,
+            as: "category"
+          }
         },
         {
           model: db.ProductImage,
           as: "productImage",
           separate: true,
-          where: {
-            isMain: getMainImage
-              ? GLOBAL_SWITCH.ON
-              : [GLOBAL_SWITCH.ON, GLOBAL_SWITCH.OFF],
-          },
+          
         },
         {
           model: db.ProductInventory,
@@ -67,6 +67,7 @@ export default async function handle(req, res, next) {
           model: db.ProductCategory,
           as: "productCategory",
           where: { status: GLOBAL_STATUS.ACTIVE },
+        
         },
         {
           model: db.ProductImage,

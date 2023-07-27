@@ -21,7 +21,7 @@ export default async function handle(req, res, next) {
       categoryId,
       link,
       description,
-      
+      selective,
       name,
       author,
       productDetail,
@@ -53,7 +53,7 @@ export default async function handle(req, res, next) {
         {
           userId: req.user.data.id,
           categoryId,
-    
+          selective,
           link,
           description,
           // mainImage,

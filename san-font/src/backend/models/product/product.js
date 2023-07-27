@@ -41,20 +41,14 @@ export default class Product extends Model {
           type: DataTypes.TEXT,
         },
 
-        guide: {
-          type: DataTypes.TEXT,
-        },
         price: {
           type: DataTypes.DECIMAL,
         },
-        vip: {
+        selective: {
           type: DataTypes.ENUM(0, 1),
         },
-        originId: {
-          type: DataTypes.INTEGER,
-        },
-        expiry: {
-          type: DataTypes.STRING,
+        vip: {
+          type: DataTypes.ENUM(0, 1),
         },
 
         status: {
